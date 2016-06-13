@@ -7,7 +7,7 @@
 #include "TestOverviewDialog.h"
 #include "LogonDialog.h"
 #include "PersonalInfoDialog.h"
-#include "User.h"
+#include "..\PsiCommon\User.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW

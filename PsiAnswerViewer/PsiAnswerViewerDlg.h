@@ -2,10 +2,12 @@
 #include "afxcmn.h"
 #include "afxwin.h"
 #include "..\Utilities\EasySizeDialog.h"
-#include "..\PsiCommon\PsiScale.h"
 #include <memory>
+#include "afxeditbrowsectrl.h"
 
-
+class CPsiScale;
+class CAnswerManagerOld;
+class CUser;
 
 	// CPsiAnswerViewerDlg dialog
 	class CPsiAnswerViewerDlg : public CEasySizeDialog
@@ -37,12 +39,23 @@ protected:
 	DECLARE_EASYSIZE;
 
 	bool InitialScaleList();
+	bool InitialPersonCombo();
 	void UpdateAnswerScale();
+	bool InsertAnswer(CAnswerManagerOld& answer_manager);
+	bool InsertInfo(CUser& user);
 
 	CListCtrl _answer_table;
 	CComboBox _combo_scale;
 	CString _working_folder;
+	CMFCEditBrowseCtrl _working_folder_edit;
 	std::shared_ptr<CPsiScale> _scale;
+	
+	CComboBox _combo_person;
+	unsigned int _row;
 public:
 	afx_msg void OnCbnSelchangeComboScale();
-};
+	
+	afx_msg void OnBnClickedButtonAdd();
+	afx_msg void OnBnClickedButtonRemove();
+	afx_msg void OnEnChangeEditWorkingFolder();
+	};

@@ -6,7 +6,6 @@
 using namespace Utilities;
 using namespace std;
 
-
 const TCHAR * XML_ID = _T("Id");
 const TCHAR * XML_NAME = _T("Name");
 const TCHAR * XML_DESCRIPTION = _T("Description");

@@ -33,9 +33,6 @@
     <ClInclude Include="Resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="AnswerManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="TestOverviewDialog.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -48,13 +45,7 @@
     <ClInclude Include="UserManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="User.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="PersonalInfoDialog.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="xml_name_space.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -66,9 +57,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="stdafx.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="AnswerManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="TestOverviewDialog.cpp">
@@ -83,13 +71,7 @@
     <ClCompile Include="UserManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="User.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="PersonalInfoDialog.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="xml_name_space.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

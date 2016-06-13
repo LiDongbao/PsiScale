@@ -1,10 +1,10 @@
 #include "stdafx.h"
 #include "UserManager.h"
-#include "User.h"
+#include "..\PsiCommon\User.h"
 #include "..\Utilities\macros.h"
 #include "..\Utilities\xml.h"
 #include "..\Utilities\FileSystem.h"
-#include "xml_name_space.h"
+#include "..\PsiCommon\xml_name_space.h"
 #include <algorithm>
 
 

@@ -69,6 +69,7 @@ public:
 	void SetSameChoice(bool samechoice);;
 	std::vector<CQuestionChoice>& Choices();
 
+
 	void Reset();
 private:
 	unsigned _id;

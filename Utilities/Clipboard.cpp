@@ -15,9 +15,7 @@
 #include "macros.h"
 #include <winbase.h>
 
-using Utilities::CClipboard;
-
-bool CClipboard::SetClipboardText(const TCHAR* str)
+bool Utilities::OS::SetClipboardText(const TCHAR* str)
 {
 	size_t text_length = _tcslen(str);
 	GLOBALHANDLE hGlobal = GlobalAlloc(GHND | GMEM_SHARE, (text_length + 1) * 2);
@@ -50,7 +48,7 @@ bool CClipboard::SetClipboardText(const TCHAR* str)
 	return true;
 }
 
-CString CClipboard::GetClipboardText()
+CString Utilities::OS::GetClipboardText()
 {
 	if (!IsClipboardFormatAvailable(CF_TEXT) || !OpenClipboard(NULL))
 		return _T("");

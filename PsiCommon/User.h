@@ -24,7 +24,7 @@ class CUser
 {
 public:
 	CUser();
-	CUser(const CString& name, const CString& password);
+	CUser(const CString& user_id, const CString& password);
 	CString CreateUid();
 
 	const CString& GetUserId() const;

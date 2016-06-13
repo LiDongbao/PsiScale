@@ -7,7 +7,7 @@
 #include "afxdialogex.h"
 #include "UserManager.h"
 #include "TestOverviewDialog.h"
-#include "User.h"
+#include "..\PsiCommon\User.h"
 
 #include <memory>
 

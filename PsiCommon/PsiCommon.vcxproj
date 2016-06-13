@@ -112,13 +112,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AnswerManager.cpp" />
     <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="PsiScale.cpp" />
+    <ClCompile Include="User.cpp" />
+    <ClCompile Include="xml_name_space.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AnswerManager.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="PsiScale.h" />
+    <ClInclude Include="User.h" />
+    <ClInclude Include="xml_name_space.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -18,11 +18,10 @@
 #pragma once
 namespace Utilities
 {
-	class CClipboard
+	namespace OS
 	{
-	public:
-		static CString GetClipboardText();
-		static bool SetClipboardText(const TCHAR * text);
+		CString GetClipboardText();
+		bool SetClipboardText(const TCHAR * text);
 	};
 
 }

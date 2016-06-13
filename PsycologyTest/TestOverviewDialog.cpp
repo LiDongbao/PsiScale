@@ -9,7 +9,7 @@
 #include "../PsiCommon/PsiScale.h"
 #include "PsycologyTestDlg.h"
 #include <algorithm>
-#include "User.h"
+#include "..\PsiCommon\User.h"
 #include "PersonalInfoDialog.h"
 
 using namespace std;

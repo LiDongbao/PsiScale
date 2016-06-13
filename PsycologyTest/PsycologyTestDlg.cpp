@@ -8,6 +8,7 @@
 #include "afxdialogex.h"
 #include "../PsiCommon/PsiScale.h"
 #include "afxwin.h"
+#include "../Utilities/macros.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -80,6 +81,7 @@ END_MESSAGE_MAP()
 
 CPsycologyTestDlg::CPsycologyTestDlg(shared_ptr<CPsiScale> scale,
 	CAnswerManager& answer_manager,
+	CUser& user,
 	HWND notify_wnd, 
 	CWnd* pParent /*=NULL*/)
 	: CDialogEx(IDD_PSYCOLOGYTEST_DIALOG, pParent),
@@ -90,6 +92,7 @@ CPsycologyTestDlg::CPsycologyTestDlg(shared_ptr<CPsiScale> scale,
 	, _notify_wnd(notify_wnd)
 	, _timer_text(_T(""))
 	, _timer(0)
+	, _user(user)
 {
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
 }
@@ -135,6 +138,8 @@ BOOL CPsycologyTestDlg::OnInitDialog()
 	// IDM_ABOUTBOX must be in the system command range.
 	ASSERT((IDM_ABOUTBOX & 0xFFF0) == IDM_ABOUTBOX);
 	ASSERT(IDM_ABOUTBOX < 0xF000);
+
+	TODO(初始化_start_time。如果在现有的答案中已经有了，则加载先前的时间。);
 
 	CMenu* pSysMenu = GetSystemMenu(FALSE);
 	if (pSysMenu != NULL)
@@ -237,10 +242,10 @@ bool CPsycologyTestDlg::ShowQuestion(unsigned question_index)
 		UpdateSelectionButtons(_psi_scale->Question(_current_question_index).Choices());
 	}
 
-	if (_answer_manager.IsAnswered(_psi_scale->GetName(), _current_question_index))
+	int index = _answer_manager.GetAnswerIndex(_user.GetUid(), _psi_scale->GetName(), _start_time);
+	if (_answer_manager.IsAnswered(index, _current_question_index))
 	{
-		Check(_answer_manager.GetAnswer(_psi_scale->GetName(), 
-			_current_question_index) - 1);
+		Check(_answer_manager.GetAnswer(index, _current_question_index) - 1);
 	}
 	else
 	{
@@ -343,7 +348,7 @@ void CPsycologyTestDlg::ProcessAnswer(unsigned int answer)
 
 	// 1. 记录
 	_answer_manager.AddAnswer(_psi_scale->GetName(), _current_question_index, answer, (_end - _start) * 1000 / CLOCKS_PER_SEC);
-	_answer_manager.SetScore(_psi_scale->GetName(), _psi_scale->GetQuestion(_current_question_index).GetGroup(), 0); // 分值定义尚未定义。
+	TODO(分值定义尚未定义。);
 	// 2. 下一道题。
 	if (_current_question_index < _psi_scale->GetQuestionCount() - 1)
 	{
@@ -357,9 +362,16 @@ void CPsycologyTestDlg::ProcessAnswer(unsigned int answer)
 			if (AfxMessageBox(_T("您已经完成了该问卷，点击“确认”按钮返回。"), MB_OKCANCEL) ==
 				IDOK)
 			{
+				SYSTEMTIME sys;
+				GetLocalTime(&sys);
+				CString date;
+				CString time;
+				date.Format(_T("%4d-%02d-%02d"), sys.wYear, sys.wMonth, sys.wDay);
+				time.Format(_T("%02d:%02d"), sys.wHour, sys.wMinute);
+			//	_answer_manager.SetScaleTime(_psi_scale->GetName(), date, time);
 				_answer_manager.FinishScale(_psi_scale->GetName());
-				::SendMessage(_notify_wnd, WM_SCALE_FINISHED, 0, 0);
 
+				::SendMessage(_notify_wnd, WM_SCALE_FINISHED, 0, 0);
 
 				__super::OnOK();
 			}

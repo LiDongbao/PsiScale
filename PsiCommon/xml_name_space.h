@@ -23,6 +23,8 @@ namespace XMLNameSpace
 	extern "C"  const TCHAR* XML_TEST_PARTICIPANT_UID;
 	extern "C"  const TCHAR* XML_TEST_NAME;
 	extern "C"  const TCHAR* XML_TEST_FINISHED;
+	extern "C"  const TCHAR* XML_TEST_FINISHED_DATE;
+	extern "C"  const TCHAR* XML_TEST_FINISHED_TIME;
 	extern "C"  const TCHAR* XML_TEST_ANSWERS;
 	extern "C"  const TCHAR* XML_TEST_ITEM;
 	extern "C"  const TCHAR* XML_TEST_ID;

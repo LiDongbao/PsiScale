@@ -186,7 +186,6 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AnswerManager.h" />
     <ClInclude Include="LogonDialog.h" />
     <ClInclude Include="PersonalInfoDialog.h" />
     <ClInclude Include="PsycologyTest.h" />
@@ -196,12 +195,9 @@
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="TestOverviewDialog.h" />
-    <ClInclude Include="User.h" />
     <ClInclude Include="UserManager.h" />
-    <ClInclude Include="xml_name_space.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="AnswerManager.cpp" />
     <ClCompile Include="LogonDialog.cpp" />
     <ClCompile Include="PersonalInfoDialog.cpp" />
     <ClCompile Include="PsycologyTest.cpp" />
@@ -214,9 +210,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="TestOverviewDialog.cpp" />
-    <ClCompile Include="User.cpp" />
     <ClCompile Include="UserManager.cpp" />
-    <ClCompile Include="xml_name_space.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="PsycologyTest.rc" />
