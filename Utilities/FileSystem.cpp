@@ -313,7 +313,7 @@ namespace FileSystem
 		{
 			finder.FindNextFile();
 
-			return (finder.IsDirectory()); // found, already exist
+			return (finder.IsDirectory() != FALSE); // found, already exist
 		}
 
 		return (::CreateDirectory(folder_path, NULL) != 0);

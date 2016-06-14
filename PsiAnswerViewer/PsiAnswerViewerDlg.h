@@ -6,7 +6,7 @@
 #include "afxeditbrowsectrl.h"
 
 class CPsiScale;
-class CAnswerManager;
+class CAnswerManagerOld;
 class CUser;
 
 	// CPsiAnswerViewerDlg dialog
@@ -41,7 +41,7 @@ protected:
 	bool InitialScaleList();
 	bool InitialPersonCombo();
 	void UpdateAnswerScale();
-	bool InsertAnswer(CAnswerManager& answer_manager);
+	bool InsertAnswer(CAnswerManagerOld& answer_manager);
 	bool InsertInfo(CUser& user);
 
 	CListCtrl _answer_table;

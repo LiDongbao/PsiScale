@@ -264,7 +264,7 @@ void CPsiAnswerViewerDlg::UpdateAnswerScale()
 	_answer_table.InsertColumn(7 + _scale->GetQuestionCount() + _scale->GetGroupCount(), _T("Total"), LVCFMT_LEFT, 120, -1);
 }
 
-bool CPsiAnswerViewerDlg::InsertAnswer(CAnswerManager& answer_manager)
+bool CPsiAnswerViewerDlg::InsertAnswer(CAnswerManagerOld& answer_manager)
 {
 	CString date, time;
 	date = answer_manager.GetScaleTime(_scale->GetName()).date;
@@ -366,7 +366,7 @@ void CPsiAnswerViewerDlg::OnBnClickedButtonAdd()
 
 		CString file_path = _working_folder + _T("/TestUsers/Answers/") + user_uid + _T(".xml");
 
-		CAnswerManager answer_manager;
+		CAnswerManagerOld answer_manager;
 		CUser user(L"Temp", L"0");
 		if (answer_manager.Load(file_path, user) && answer_manager.ScaleFinished(_scale->GetName()))
 		{

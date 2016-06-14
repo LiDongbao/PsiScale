@@ -10,7 +10,7 @@
 #include "..\PsiCommon\AnswerManager.h"
 
 class CPsiScale;
-class CAnswerManager;
+class CAnswerManagerOld;
 struct CQuestionChoice;
 
 #define WM_SCALE_FINISHED WM_APP + 101
@@ -20,7 +20,9 @@ class CPsycologyTestDlg : public CDialogEx
 	
 // Construction
 public:
-	CPsycologyTestDlg(std::shared_ptr<CPsiScale> scale, CAnswerManager& answer_manager, HWND notify_wnd, CWnd* pParent = NULL);	// standard constructor
+	CPsycologyTestDlg(std::shared_ptr<CPsiScale> scale, CAnswerManager& answer_manager, 
+		CUser& user,
+		HWND notify_wnd, CWnd* pParent = NULL);	// standard constructor
 // Dialog Data
 #ifdef AFX_DESIGN_TIME
 	enum { IDD = IDD_PSYCOLOGYTEST_DIALOG };
@@ -79,6 +81,9 @@ public:
 	void AdjustSize(int last_button);
 	CString _question_number;
 	HWND _notify_wnd;
+
+	COleDateTime _start_time;
+	CUser& _user;
 	afx_msg void OnClose();
 	afx_msg void OnTimer(UINT_PTR nIDEvent);
 	afx_msg void OnStnClickedTimer();
