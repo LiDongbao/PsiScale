@@ -121,6 +121,7 @@ BEGIN_MESSAGE_MAP(CPsycologyTestDlg, CDialogEx)
 	ON_STN_CLICKED(IDC_TIMER, &CPsycologyTestDlg::OnStnClickedTimer)
 	ON_BN_CLICKED(ID_FIRST, &CPsycologyTestDlg::OnBnClickedFirst)
 	ON_BN_CLICKED(ID_LAST, &CPsycologyTestDlg::OnBnClickedLast)
+	ON_BN_CLICKED(IDC_BUTTON_PROLOGUE, &CPsycologyTestDlg::OnBnClickedButtonPrologue)
 END_MESSAGE_MAP()
 
 
@@ -503,3 +504,9 @@ void CPsycologyTestDlg::OnStnClickedTimer()
 	// TODO: Add your control notification handler code here
 }
 
+
+
+void CPsycologyTestDlg::OnBnClickedButtonPrologue()
+{
+	AfxMessageBox(_psi_scale->GetPrologue());
+}
