@@ -6,8 +6,9 @@
 #include "afxeditbrowsectrl.h"
 
 class CPsiScale;
-class CAnswerManagerOld;
+class CAnswerManager;
 class CUser;
+struct ScaleAnswers;
 
 	// CPsiAnswerViewerDlg dialog
 	class CPsiAnswerViewerDlg : public CEasySizeDialog
@@ -23,8 +24,6 @@ public:
 
 protected:
 	virtual void DoDataExchange(CDataExchange* pDX);	// DDX/DDV support
-
-
 														// Implementation
 protected:
 	HICON m_hIcon;
@@ -40,9 +39,11 @@ protected:
 
 	bool InitialScaleList();
 	bool InitialPersonCombo();
-	void UpdateAnswerScale();
-	bool InsertAnswer(CAnswerManagerOld& answer_manager);
+	void UpdateAnswerScaleHeader();
+	bool InsertAnswer(ScaleAnswers& scale_answers);
 	bool InsertInfo(CUser& user);
+
+	void UpdateAnswerList(const TCHAR* scale);
 
 	CListCtrl _answer_table;
 	CComboBox _combo_scale;
@@ -51,6 +52,7 @@ protected:
 	std::shared_ptr<CPsiScale> _scale;
 	
 	CComboBox _combo_person;
+	std::shared_ptr<CAnswerManager> _answer_manager;
 	unsigned int _row;
 public:
 	afx_msg void OnCbnSelchangeComboScale();
@@ -58,4 +60,4 @@ public:
 	afx_msg void OnBnClickedButtonAdd();
 	afx_msg void OnBnClickedButtonRemove();
 	afx_msg void OnEnChangeEditWorkingFolder();
-	};
+};

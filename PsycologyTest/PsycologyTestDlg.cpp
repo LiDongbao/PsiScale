@@ -142,6 +142,8 @@ BOOL CPsycologyTestDlg::OnInitDialog()
 
 	TODO(初始化_start_time。如果在现有的答案中已经有了，则加载先前的时间。);
 
+	_start_time = _answer_manager.FindTimeByUserScale(_user.GetUid(), _psi_scale->GetName());
+	
 	CMenu* pSysMenu = GetSystemMenu(FALSE);
 	if (pSysMenu != NULL)
 	{
@@ -166,7 +168,12 @@ BOOL CPsycologyTestDlg::OnInitDialog()
 		GetDlgItem(buttons[i])->ShowWindow(SW_HIDE);
 	}
 //	ShowQuestion(0);
-	auto un_answered_question =_answer_manager.CheckForUnansweredQuestion(*_psi_scale);
+	auto index = _answer_manager.GetAnswerIndex(_user.GetUid(), _psi_scale->GetName(), _start_time, true);
+	if (index == -1)
+	{
+		index = _answer_manager.AddScaleAnswer(_user.GetUid(), _psi_scale->GetName(), _start_time, _psi_scale->GetQuestionCount());
+	}
+	auto un_answered_question =_answer_manager.CheckForUnansweredQuestion(index);
 	ShowQuestion((un_answered_question == -1) ? _psi_scale->GetQuestionCount() - 1 : un_answered_question);
 
 	SetTimer(1, 1000, NULL);
@@ -348,7 +355,8 @@ void CPsycologyTestDlg::ProcessAnswer(unsigned int answer)
 	::SetFocus(_notify_wnd); //为了让选项失去焦点, 但感觉可能有点问题.
 
 	// 1. 记录
-	_answer_manager.AddAnswer(_psi_scale->GetName(), _current_question_index, answer, (_end - _start) * 1000 / CLOCKS_PER_SEC);
+	unsigned int index = _answer_manager.GetAnswerIndex(_user.GetUid(), _psi_scale->GetName(), _start_time, false);
+	_answer_manager.AddAnswer(index, _current_question_index, answer, (_end - _start) * 1000 / CLOCKS_PER_SEC);
 	TODO(分值定义尚未定义。);
 	// 2. 下一道题。
 	if (_current_question_index < _psi_scale->GetQuestionCount() - 1)
@@ -357,20 +365,16 @@ void CPsycologyTestDlg::ProcessAnswer(unsigned int answer)
 	}
 	else
 	{
-		int unanswer_question = _answer_manager.CheckForUnansweredQuestion(*_psi_scale);
+		unsigned int index = _answer_manager.GetAnswerIndex(_user.GetUid(), _psi_scale->GetName(), _start_time, false);
+		int unanswer_question = _answer_manager.CheckForUnansweredQuestion(index);
 		if (unanswer_question == -1)
 		{
 			if (AfxMessageBox(_T("您已经完成了该问卷，点击“确认”按钮返回。"), MB_OKCANCEL) ==
 				IDOK)
 			{
-				SYSTEMTIME sys;
-				GetLocalTime(&sys);
-				CString date;
-				CString time;
-				date.Format(_T("%4d-%02d-%02d"), sys.wYear, sys.wMonth, sys.wDay);
-				time.Format(_T("%02d:%02d"), sys.wHour, sys.wMinute);
-			//	_answer_manager.SetScaleTime(_psi_scale->GetName(), date, time);
-				_answer_manager.FinishScale(_psi_scale->GetName());
+				unsigned int index = _answer_manager.GetAnswerIndex(_user.GetUid(), _psi_scale->GetName(), _start_time, false);
+				_answer_manager.SetScaleFinished(index, true);
+		
 
 				::SendMessage(_notify_wnd, WM_SCALE_FINISHED, 0, 0);
 
