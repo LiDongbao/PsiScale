@@ -44,7 +44,7 @@ public:
 	CScaleList _scale_list;
 	std::shared_ptr<CPsiScale> _scale;
 	CUser& _user;
-	CAnswerManagerOld _answer_manager;
+	CAnswerManager _answer_manager;
 	afx_msg void OnBnClickedStart();
 	afx_msg void OnLvnItemchangedListScales(NMHDR *pNMHDR, LRESULT *pResult);
 	CButton _start;

@@ -52,6 +52,7 @@ std::shared_ptr<CUser> CUserManager::CreateUser(const CString& name,
 	_users.insert(make_pair(name, user));
 	
 	_user_name_to_uid.insert(make_pair(name, user->GetUid()));
+	SetWorkingFolder(user);
 
 	return user;
 }

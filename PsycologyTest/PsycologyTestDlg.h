@@ -89,4 +89,5 @@ public:
 	afx_msg void OnStnClickedTimer();
 	afx_msg void OnBnClickedFirst();
 	afx_msg void OnBnClickedLast();
+	afx_msg void OnBnClickedButtonPrologue();
 };

@@ -127,6 +127,7 @@ BOOL CPsiAnswerViewerDlg::OnInitDialog()
 	SetIcon(m_hIcon, TRUE);			// Set big icon
 	SetIcon(m_hIcon, FALSE);		// Set small icon
 
+	_answer_manager = std::shared_ptr<CAnswerManager>(new CAnswerManager);
 	_working_folder_edit.EnableFolderBrowseButton();
 
 	CRegKey regkey;
@@ -221,7 +222,7 @@ bool CPsiAnswerViewerDlg::InitialPersonCombo()
 }
 
 
-void CPsiAnswerViewerDlg::UpdateAnswerScale()
+void CPsiAnswerViewerDlg::UpdateAnswerScaleHeader()
 {
 	//删除表格中的原有信息
 	unsigned int num_columns = _answer_table.GetHeaderCtrl()->GetItemCount();
@@ -264,18 +265,20 @@ void CPsiAnswerViewerDlg::UpdateAnswerScale()
 	_answer_table.InsertColumn(7 + _scale->GetQuestionCount() + _scale->GetGroupCount(), _T("Total"), LVCFMT_LEFT, 120, -1);
 }
 
-bool CPsiAnswerViewerDlg::InsertAnswer(CAnswerManagerOld& answer_manager)
+bool CPsiAnswerViewerDlg::InsertAnswer(ScaleAnswers& scale_answers)
 {
 	CString date, time;
-	date = answer_manager.GetScaleTime(_scale->GetName()).date;
+	
+	date = scale_answers.start_time.Format(_T("%Y%M%D"));
 	_answer_table.SetItemText(_row, num_info - 2, date);
-	time = answer_manager.GetScaleTime(_scale->GetName()).time;
+	date = scale_answers.start_time.Format(_T("%H%m"));
 	_answer_table.SetItemText(_row, num_info - 1, time);
+	
 
 	for (unsigned int i = 0; i < _scale->GetQuestionCount(); ++i)
 	{
 		CString str;
-		str.Format(_T("%d"), answer_manager.GetAnswer(_scale->GetName(), i));
+		str.Format(_T("%d"), scale_answers.answer_info[i].answer);
 		_answer_table.SetItemText(_row, num_info + i, str);
 	}
 
@@ -286,9 +289,9 @@ bool CPsiAnswerViewerDlg::InsertAnswer(CAnswerManagerOld& answer_manager)
 	//	_answer_table.InsertColumn(i + num_info + _scale->GetQuestionCount(), str, LVCFMT_LEFT, 120, -1);
 	//}
 
-	CString str;
-	str.Format(_T("%d"), answer_manager.GetTotalScore(_scale->GetName(), L""));
-	_answer_table.SetItemText(_row, num_info + _scale->GetQuestionCount() + _scale->GetGroupCount(), str);
+	//CString str;
+	//str.Format(_T("%d"), answer_manager.GetTotalScore(_scale->GetName(), L""));
+	//_answer_table.SetItemText(_row, num_info + _scale->GetQuestionCount() + _scale->GetGroupCount(), str);
 
 	return true;
 }
@@ -324,6 +327,28 @@ bool CPsiAnswerViewerDlg::InsertInfo(CUser& user)
 	return true;
 }
 
+void CPsiAnswerViewerDlg::UpdateAnswerList(const TCHAR* scale)
+{
+	auto index = _answer_manager->GetIndexByScale(scale);
+
+	for (auto iter = index.begin(); iter != index.end(); ++iter)
+	{
+		if (_answer_manager->ScaleFinished(*iter) == false)
+		{
+			continue;
+		}
+
+		auto user = _answer_manager->GetUser(_answer_manager->GetScaleAnswers(*iter).user_uid);
+		if (user != nullptr)
+		{
+			InsertInfo(*user);
+		}
+
+		auto scale_answers = _answer_manager->GetScaleAnswers(*iter);
+		InsertAnswer(scale_answers);
+	}
+}
+
 void CPsiAnswerViewerDlg::OnCbnSelchangeComboScale()
 {
 	int nIndex = _combo_scale.GetCurSel();
@@ -350,45 +375,47 @@ void CPsiAnswerViewerDlg::OnCbnSelchangeComboScale()
 	}
 	else
 	{
-		UpdateAnswerScale();
+		UpdateAnswerScaleHeader();
 		_row = 0;
+		CString temp = scale_name.Right(scale_name.GetLength() - scale_name.ReverseFind(_T('.')) - 1);
+		UpdateAnswerList(temp);
 	}
 }
 
 
 void CPsiAnswerViewerDlg::OnBnClickedButtonAdd()
 {
-	int nIndex = _combo_person.GetCurSel();
-	if (nIndex != -1)
-	{
-		CString user_uid;
-		_combo_person.GetLBText(nIndex, user_uid);
+	//int nIndex = _combo_person.GetCurSel();
+	//if (nIndex != -1)
+	//{
+	//	CString user_uid;
+	//	_combo_person.GetLBText(nIndex, user_uid);
 
-		CString file_path = _working_folder + _T("/TestUsers/Answers/") + user_uid + _T(".xml");
+	//	CString file_path = _working_folder + _T("/TestUsers/Answers/") + user_uid + _T(".xml");
 
-		CAnswerManagerOld answer_manager;
-		CUser user(L"Temp", L"0");
-		if (answer_manager.Load(file_path, user) && answer_manager.ScaleFinished(_scale->GetName()))
-		{
-			if (InsertInfo(user))
-			{
-				if (InsertAnswer(answer_manager))
-				{
-					++_row;
-				}
-				else
-					AfxMessageBox(_T("插入答案有错."));
-			}
-			else
-			{
-				AfxMessageBox(_T("插入用户信息有错."));
-			}
-		}
-		else
-		{
-			AfxMessageBox(_T("载入错误或者该被试并未答题."));
-		}
-	}
+	//	CAnswerManager answer_manager;
+	//	CUser user(L"Temp", L"0");
+	//	if (answer_manager.Load(file_path, user) && answer_manager.ScaleFinished(_scale->GetName()))
+	//	{
+	//		if (InsertInfo(user))
+	//		{
+	//			if (InsertAnswer(answer_manager))
+	//			{
+	//				++_row;
+	//			}
+	//			else
+	//				AfxMessageBox(_T("插入答案有错."));
+	//		}
+	//		else
+	//		{
+	//			AfxMessageBox(_T("插入用户信息有错."));
+	//		}
+	//	}
+	//	else
+	//	{
+	//		AfxMessageBox(_T("载入错误或者该被试并未答题."));
+	//	}
+	//}
 }
 
 
@@ -434,4 +461,8 @@ void CPsiAnswerViewerDlg::OnEnChangeEditWorkingFolder()
 	{
 		_combo_scale.AddString(*iter);
 	}
+
+	CString file_path = _working_folder + _T("\\TestUsers\\Answers");
+	_answer_manager->LoadAll(file_path);
 }
+
