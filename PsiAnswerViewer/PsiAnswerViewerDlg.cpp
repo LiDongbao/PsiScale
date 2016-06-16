@@ -269,9 +269,9 @@ bool CPsiAnswerViewerDlg::InsertAnswer(ScaleAnswers& scale_answers)
 {
 	CString date, time;
 	
-	date = scale_answers.start_time.Format(_T("%Y%M%D"));
+	date.Format(_T("%4d-%02d-%02d"), scale_answers.start_time.GetYear(), scale_answers.start_time.GetMonth(), scale_answers.start_time.GetDay());
 	_answer_table.SetItemText(_row, num_info - 2, date);
-	date = scale_answers.start_time.Format(_T("%H%m"));
+	time.Format(_T("%02d:%02d"), scale_answers.start_time.GetHour(), scale_answers.start_time.GetMinute());
 	_answer_table.SetItemText(_row, num_info - 1, time);
 	
 

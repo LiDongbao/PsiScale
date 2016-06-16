@@ -93,6 +93,7 @@ CPsycologyTestDlg::CPsycologyTestDlg(shared_ptr<CPsiScale> scale,
 	, _timer_text(_T(""))
 	, _timer(0)
 	, _user(user)
+	, _is_pause(false)
 {
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
 }
@@ -121,9 +122,9 @@ BEGIN_MESSAGE_MAP(CPsycologyTestDlg, CDialogEx)
 	ON_WM_CLOSE()
 	ON_WM_TIMER()
 	ON_STN_CLICKED(IDC_TIMER, &CPsycologyTestDlg::OnStnClickedTimer)
-	ON_BN_CLICKED(ID_FIRST, &CPsycologyTestDlg::OnBnClickedFirst)
-	ON_BN_CLICKED(ID_LAST, &CPsycologyTestDlg::OnBnClickedLast)
 	ON_BN_CLICKED(IDC_BUTTON_PROLOGUE, &CPsycologyTestDlg::OnBnClickedButtonPrologue)
+	ON_BN_CLICKED(IDC_BUTTON_PAUSE, &CPsycologyTestDlg::OnBnClickedButtonPause)
+	ON_BN_CLICKED(IDC_BUTTON_STOP, &CPsycologyTestDlg::OnBnClickedButtonStop)
 END_MESSAGE_MAP()
 
 
@@ -139,8 +140,6 @@ BOOL CPsycologyTestDlg::OnInitDialog()
 	// IDM_ABOUTBOX must be in the system command range.
 	ASSERT((IDM_ABOUTBOX & 0xFFF0) == IDM_ABOUTBOX);
 	ASSERT(IDM_ABOUTBOX < 0xF000);
-
-	TODO(初始化_start_time。如果在现有的答案中已经有了，则加载先前的时间。);
 
 	_start_time = _answer_manager.FindTimeByUserScale(_user.GetUid(), _psi_scale->GetName());
 	
@@ -335,17 +334,6 @@ void CPsycologyTestDlg::OnBnClickedNext()
 	}
 }
 
-void CPsycologyTestDlg::OnBnClickedFirst()
-{
-	ShowQuestion(0);
-}
-
-
-void CPsycologyTestDlg::OnBnClickedLast()
-{
-	ShowQuestion(_psi_scale->GetQuestionCount() - 1);
-}
-
 void CPsycologyTestDlg::ProcessAnswer(unsigned int answer)
 {
 	_end = clock();
@@ -449,10 +437,9 @@ void CPsycologyTestDlg::AdjustSize(int last_button)
 
 	MoveButtonUp(*GetDlgItem(ID_PREV), button_rect.bottom + 15);
 	MoveButtonUp(*GetDlgItem(ID_NEXT), button_rect.bottom + 15);
-	MoveButtonUp(*GetDlgItem(ID_FIRST), button_rect.bottom + 15);
-	MoveButtonUp(*GetDlgItem(ID_LAST), button_rect.bottom + 15);
-
-
+	MoveButtonUp(*GetDlgItem(IDC_BUTTON_PAUSE), button_rect.bottom + 15);
+	MoveButtonUp(*GetDlgItem(IDC_BUTTON_STOP), button_rect.bottom + 15);
+	
 	GetClientRect(&clientrect);  // client area of the dialog
 	GetWindowRect(&dlgrect);	  // rectangle of the dialog window
 
@@ -515,4 +502,45 @@ void CPsycologyTestDlg::OnStnClickedTimer()
 void CPsycologyTestDlg::OnBnClickedButtonPrologue()
 {
 	AfxMessageBox(_psi_scale->GetPrologue());
+}
+
+
+void CPsycologyTestDlg::OnBnClickedButtonPause()
+{
+	_is_pause = !_is_pause;
+
+	if (_is_pause)
+	{
+		(CButton*)GetDlgItem(ID_NEXT)->EnableWindow(FALSE);
+		(CButton*)GetDlgItem(ID_PREV)->EnableWindow(FALSE);
+		(CButton*)GetDlgItem(IDC_BUTTON_1)->EnableWindow(FALSE);
+		(CButton*)GetDlgItem(IDC_BUTTON_2)->EnableWindow(FALSE);
+		(CButton*)GetDlgItem(IDC_BUTTON_3)->EnableWindow(FALSE);
+		(CButton*)GetDlgItem(IDC_BUTTON_4)->EnableWindow(FALSE);
+		(CButton*)GetDlgItem(IDC_BUTTON_5)->EnableWindow(FALSE);
+		(CButton*)GetDlgItem(IDC_BUTTON_6)->EnableWindow(FALSE);
+		(CButton*)GetDlgItem(IDC_BUTTON_7)->EnableWindow(FALSE);
+		KillTimer(1);
+	}
+	else
+	{
+		_start = clock();
+		(CButton*)GetDlgItem(ID_NEXT)->EnableWindow(TRUE);
+		(CButton*)GetDlgItem(ID_PREV)->EnableWindow(TRUE);
+		(CButton*)GetDlgItem(IDC_BUTTON_1)->EnableWindow(TRUE);
+		(CButton*)GetDlgItem(IDC_BUTTON_2)->EnableWindow(TRUE);
+		(CButton*)GetDlgItem(IDC_BUTTON_3)->EnableWindow(TRUE);
+		(CButton*)GetDlgItem(IDC_BUTTON_4)->EnableWindow(TRUE);
+		(CButton*)GetDlgItem(IDC_BUTTON_5)->EnableWindow(TRUE);
+		(CButton*)GetDlgItem(IDC_BUTTON_6)->EnableWindow(TRUE);
+		(CButton*)GetDlgItem(IDC_BUTTON_7)->EnableWindow(TRUE);
+		SetTimer(1, 1000, NULL);
+	}
+}
+
+void CPsycologyTestDlg::OnBnClickedButtonStop()
+{
+	KillTimer(1);
+
+	EndDialog(0);
 }

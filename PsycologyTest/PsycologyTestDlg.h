@@ -66,6 +66,7 @@ protected:
 
 	clock_t _start;
 	clock_t _end;
+	bool _is_pause;
 	
 public:
 	afx_msg void OnBnClickedButton1();
@@ -87,7 +88,7 @@ public:
 	afx_msg void OnClose();
 	afx_msg void OnTimer(UINT_PTR nIDEvent);
 	afx_msg void OnStnClickedTimer();
-	afx_msg void OnBnClickedFirst();
-	afx_msg void OnBnClickedLast();
 	afx_msg void OnBnClickedButtonPrologue();
+	afx_msg void OnBnClickedButtonPause();
+	afx_msg void OnBnClickedButtonStop();
 };
