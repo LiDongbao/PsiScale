@@ -483,8 +483,8 @@ void CPsiAnswerViewerDlg::OnBnClickedButtonCopy()
 		}
 		str += "\n";
 	}
-
-	if (!Utilities::OS::SetClipboardText(str))
+	
+	if (!Utilities::OS::SetClipboardText(str.GetString()))
 	{
 		AfxMessageBox(_T("Copy Failed"));
 	}
