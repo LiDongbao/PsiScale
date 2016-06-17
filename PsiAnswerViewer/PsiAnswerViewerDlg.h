@@ -60,4 +60,5 @@ public:
 	afx_msg void OnBnClickedButtonAdd();
 	afx_msg void OnBnClickedButtonRemove();
 	afx_msg void OnEnChangeEditWorkingFolder();
-};
+	afx_msg void OnBnClickedButtonCopy();
+	};

@@ -13,6 +13,7 @@
 #include <afxstr.h>
 #include <vector>
 #include <algorithm>
+#include "..\Utilities\Clipboard.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -94,6 +95,7 @@ BEGIN_MESSAGE_MAP(CPsiAnswerViewerDlg, CEasySizeDialog)
 	ON_BN_CLICKED(IDC_BUTTON_ADD, &CPsiAnswerViewerDlg::OnBnClickedButtonAdd)
 	ON_BN_CLICKED(IDC_BUTTON_REMOVE, &CPsiAnswerViewerDlg::OnBnClickedButtonRemove)
 	ON_EN_CHANGE(IDC_EDIT_WORKING_FOLDER, &CPsiAnswerViewerDlg::OnEnChangeEditWorkingFolder)
+	ON_BN_CLICKED(IDC_BUTTON_COPY, &CPsiAnswerViewerDlg::OnBnClickedButtonCopy)
 END_MESSAGE_MAP()
 
 // CPsiAnswerViewerDlg message handlers
@@ -255,23 +257,30 @@ void CPsiAnswerViewerDlg::UpdateAnswerScaleHeader()
 		_answer_table.InsertColumn(i + num_info,str, LVCFMT_LEFT, 60, -1);
 	}
 
-	for (unsigned int i = 0; i < _scale->GetGroupCount(); ++i)
+	//for (unsigned int i = 0; i < _scale->GetGroupCount(); ++i)
+	//{
+	//	CString str;
+	//	str.Format(_T("Group.%d"), i + 1);
+	//	_answer_table.InsertColumn(i + num_info + _scale->GetQuestionCount(), str, LVCFMT_LEFT, 120, -1);
+	//}
+
+	//_answer_table.InsertColumn(7 + _scale->GetQuestionCount() + _scale->GetGroupCount(), _T("Total"), LVCFMT_LEFT, 120, -1);
+
+	for (unsigned int i = 0; i < _scale->GetQuestionCount(); ++i)
 	{
 		CString str;
-		str.Format(_T("Group.%d"), i + 1);
-		_answer_table.InsertColumn(i + num_info + _scale->GetQuestionCount(), str, LVCFMT_LEFT, 120, -1);
+		str.Format(_T("RT %d"), i + 1);
+		_answer_table.InsertColumn(i + num_info + _scale->GetQuestionCount(), str, LVCFMT_LEFT, 60, -1);
 	}
-
-	_answer_table.InsertColumn(7 + _scale->GetQuestionCount() + _scale->GetGroupCount(), _T("Total"), LVCFMT_LEFT, 120, -1);
 }
 
 bool CPsiAnswerViewerDlg::InsertAnswer(ScaleAnswers& scale_answers)
 {
 	CString date, time;
 	
-	date = scale_answers.start_time.Format(_T("%Y%M%D"));
+	date.Format(_T("%4d-%02d-%02d"), scale_answers.start_time.GetYear(), scale_answers.start_time.GetMonth(), scale_answers.start_time.GetDay());
 	_answer_table.SetItemText(_row, num_info - 2, date);
-	date = scale_answers.start_time.Format(_T("%H%m"));
+	time.Format(_T("%02d:%02d"), scale_answers.start_time.GetHour(), scale_answers.start_time.GetMinute());
 	_answer_table.SetItemText(_row, num_info - 1, time);
 	
 
@@ -293,12 +302,21 @@ bool CPsiAnswerViewerDlg::InsertAnswer(ScaleAnswers& scale_answers)
 	//str.Format(_T("%d"), answer_manager.GetTotalScore(_scale->GetName(), L""));
 	//_answer_table.SetItemText(_row, num_info + _scale->GetQuestionCount() + _scale->GetGroupCount(), str);
 
+
+	for (unsigned int i = 0; i < _scale->GetQuestionCount(); ++i)
+	{
+		CString str;
+		str.Format(_T("%d"), scale_answers.answer_info[i].reaction_time);
+		_answer_table.SetItemText(_row, num_info + _scale->GetQuestionCount() + i, str);
+	}
 	return true;
 }
 
 bool CPsiAnswerViewerDlg::InsertInfo(CUser& user)
 {
-	_answer_table.InsertItem(_row, L"1");
+	CString row;
+	row.Format(L"%d", _row + 1);
+	_answer_table.InsertItem(_row, row.GetString());
 	_answer_table.SetItemText(_row, 1, user.GetInfo().birth_date.Format(_T("%Y-%M")));
 
 	CString sex;
@@ -346,6 +364,7 @@ void CPsiAnswerViewerDlg::UpdateAnswerList(const TCHAR* scale)
 
 		auto scale_answers = _answer_manager->GetScaleAnswers(*iter);
 		InsertAnswer(scale_answers);
+		++_row;
 	}
 }
 
@@ -466,3 +485,24 @@ void CPsiAnswerViewerDlg::OnEnChangeEditWorkingFolder()
 	_answer_manager->LoadAll(file_path);
 }
 
+
+
+void CPsiAnswerViewerDlg::OnBnClickedButtonCopy()
+{
+	CString str;
+	for (unsigned int i = 0; i < _row; ++i)
+	{
+		for (unsigned int j = 0; j < _answer_table.GetHeaderCtrl()->GetItemCount(); ++j)
+		{
+			str += _answer_table.GetItemText(i, j);
+			str += "\t";
+		}
+		str += "\n";
+	}
+	
+	if (!Utilities::OS::SetClipboardText(str.GetString()))
+	{
+		AfxMessageBox(_T("Copy Failed"));
+	}
+	
+}

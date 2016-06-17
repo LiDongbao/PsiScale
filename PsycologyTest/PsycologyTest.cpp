@@ -70,18 +70,18 @@ BOOL CPsycologyTestApp::InitInstance()
 		INT_PTR nResponse = logon_dlg.DoModal();
 		if (nResponse == IDOK)
 		{
-			if (logon_dlg.IsFirstTime())
-			{
-				CPersonalInfoDialog info_dlg;
-				if (info_dlg.DoModal() == IDOK)
-				{
-					logon_dlg.GetUser()->SetInfo(info_dlg.GetInfo());
-				}
-				else
-				{
-					continue;
-				}
-			}
+			//if (logon_dlg.IsFirstTime())
+			//{
+			//	CPersonalInfoDialog info_dlg;
+			//	if (info_dlg.DoModal() == IDOK)
+			//	{
+			//		logon_dlg.GetUser()->SetInfo(info_dlg.GetInfo());
+			//	}
+			//	else
+			//	{
+			//		continue;
+			//	}
+			//}
 			CScaleOverviewDialog overview_dialog(*logon_dlg.GetUser());
 
 			overview_dialog.DoModal();
