@@ -166,7 +166,7 @@ BOOL CPsycologyTestDlg::OnInitDialog()
 	{
 		GetDlgItem(buttons[i])->ShowWindow(SW_HIDE);
 	}
-//	ShowQuestion(0);
+
 	auto index = _answer_manager.GetAnswerIndex(_user.GetUid(), _psi_scale->GetName(), _start_time, true);
 	if (index == -1)
 	{
@@ -176,6 +176,7 @@ BOOL CPsycologyTestDlg::OnInitDialog()
 	ShowQuestion((un_answered_question == -1) ? _psi_scale->GetQuestionCount() - 1 : un_answered_question);
 
 	SetTimer(1, 1000, NULL);
+	SetTimer(2, 1000*300, NULL);	//每五分钟进行一次自动保存
 
 	return TRUE;  // return TRUE  unless you set the focus to a control
 }
@@ -485,8 +486,14 @@ void CPsycologyTestDlg::OnTimer(UINT_PTR nIDEvent)
 	{
 		++_timer;
 		_timer_text.Format(_T("用时:%2d分%2d秒"), _timer / 60, _timer % 60);
+		UpdateData(FALSE);
 	}
-	UpdateData(FALSE);
+
+	if (2 == nIDEvent)
+	{
+		_answer_manager.Save(_user.GetWorkingFolder() + _T("\\") + _user.GetUid() + _T(".xml"), _user.GetUid());
+	}
+	
 
 	CDialogEx::OnTimer(nIDEvent);
 }
