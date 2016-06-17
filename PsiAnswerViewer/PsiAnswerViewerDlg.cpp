@@ -13,6 +13,7 @@
 #include <afxstr.h>
 #include <vector>
 #include <algorithm>
+#include "..\Utilities\Clipboard.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -94,6 +95,7 @@ BEGIN_MESSAGE_MAP(CPsiAnswerViewerDlg, CEasySizeDialog)
 	ON_BN_CLICKED(IDC_BUTTON_ADD, &CPsiAnswerViewerDlg::OnBnClickedButtonAdd)
 	ON_BN_CLICKED(IDC_BUTTON_REMOVE, &CPsiAnswerViewerDlg::OnBnClickedButtonRemove)
 	ON_EN_CHANGE(IDC_EDIT_WORKING_FOLDER, &CPsiAnswerViewerDlg::OnEnChangeEditWorkingFolder)
+	ON_BN_CLICKED(IDC_BUTTON_COPY, &CPsiAnswerViewerDlg::OnBnClickedButtonCopy)
 END_MESSAGE_MAP()
 
 // CPsiAnswerViewerDlg message handlers
@@ -346,6 +348,7 @@ void CPsiAnswerViewerDlg::UpdateAnswerList(const TCHAR* scale)
 
 		auto scale_answers = _answer_manager->GetScaleAnswers(*iter);
 		InsertAnswer(scale_answers);
+		++_row;
 	}
 }
 
@@ -466,3 +469,24 @@ void CPsiAnswerViewerDlg::OnEnChangeEditWorkingFolder()
 	_answer_manager->LoadAll(file_path);
 }
 
+
+
+void CPsiAnswerViewerDlg::OnBnClickedButtonCopy()
+{
+	CString str;
+	for (unsigned int i = 0; i < _row; ++i)
+	{
+		for (unsigned int j = 0; j < _answer_table.GetHeaderCtrl()->GetItemCount(); ++j)
+		{
+			str += _answer_table.GetItemText(i, j);
+			str += "\t";
+		}
+		str += "\n";
+	}
+
+	if (!Utilities::OS::SetClipboardText(str))
+	{
+		AfxMessageBox(_T("Copy Failed"));
+	}
+	
+}
