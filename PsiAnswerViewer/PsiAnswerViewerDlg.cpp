@@ -257,14 +257,21 @@ void CPsiAnswerViewerDlg::UpdateAnswerScaleHeader()
 		_answer_table.InsertColumn(i + num_info,str, LVCFMT_LEFT, 60, -1);
 	}
 
-	for (unsigned int i = 0; i < _scale->GetGroupCount(); ++i)
+	//for (unsigned int i = 0; i < _scale->GetGroupCount(); ++i)
+	//{
+	//	CString str;
+	//	str.Format(_T("Group.%d"), i + 1);
+	//	_answer_table.InsertColumn(i + num_info + _scale->GetQuestionCount(), str, LVCFMT_LEFT, 120, -1);
+	//}
+
+	//_answer_table.InsertColumn(7 + _scale->GetQuestionCount() + _scale->GetGroupCount(), _T("Total"), LVCFMT_LEFT, 120, -1);
+
+	for (unsigned int i = 0; i < _scale->GetQuestionCount(); ++i)
 	{
 		CString str;
-		str.Format(_T("Group.%d"), i + 1);
-		_answer_table.InsertColumn(i + num_info + _scale->GetQuestionCount(), str, LVCFMT_LEFT, 120, -1);
+		str.Format(_T("RT %d"), i + 1);
+		_answer_table.InsertColumn(i + num_info + _scale->GetQuestionCount(), str, LVCFMT_LEFT, 60, -1);
 	}
-
-	_answer_table.InsertColumn(7 + _scale->GetQuestionCount() + _scale->GetGroupCount(), _T("Total"), LVCFMT_LEFT, 120, -1);
 }
 
 bool CPsiAnswerViewerDlg::InsertAnswer(ScaleAnswers& scale_answers)
@@ -295,12 +302,21 @@ bool CPsiAnswerViewerDlg::InsertAnswer(ScaleAnswers& scale_answers)
 	//str.Format(_T("%d"), answer_manager.GetTotalScore(_scale->GetName(), L""));
 	//_answer_table.SetItemText(_row, num_info + _scale->GetQuestionCount() + _scale->GetGroupCount(), str);
 
+
+	for (unsigned int i = 0; i < _scale->GetQuestionCount(); ++i)
+	{
+		CString str;
+		str.Format(_T("%d"), scale_answers.answer_info[i].reaction_time);
+		_answer_table.SetItemText(_row, num_info + _scale->GetQuestionCount() + i, str);
+	}
 	return true;
 }
 
 bool CPsiAnswerViewerDlg::InsertInfo(CUser& user)
 {
-	_answer_table.InsertItem(_row, L"1");
+	CString row;
+	row.Format(L"%d", _row + 1);
+	_answer_table.InsertItem(_row, row.GetString());
 	_answer_table.SetItemText(_row, 1, user.GetInfo().birth_date.Format(_T("%Y-%M")));
 
 	CString sex;
