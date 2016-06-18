@@ -5,9 +5,9 @@
 #include "PsycologyTest.h"
 #include "LogonDialog.h"
 #include "afxdialogex.h"
-#include "UserManager.h"
 #include "TestOverviewDialog.h"
 #include "..\PsiCommon\User.h"
+#include "../PsiCommon/UserManager.h"
 
 #include <memory>
 
@@ -19,11 +19,10 @@ IMPLEMENT_DYNAMIC(CLogonDialog, CDialogEx)
 
 CLogonDialog::CLogonDialog(CWnd* pParent /*=NULL*/)
 	: CDialogEx(IDD_LOGON_DIALOG, pParent)
-	, _user_name(_T(""))
+	, _user_id(_T(""))
 	, _password(_T(""))
 	, _password2(_T(""))
 	, _first_time(FALSE)
-	, _user_manager(new CUserManager)
 {
 }
 
@@ -34,7 +33,7 @@ CLogonDialog::~CLogonDialog()
 void CLogonDialog::DoDataExchange(CDataExchange* pDX)
 {
 	CDialogEx::DoDataExchange(pDX);
-	DDX_Text(pDX, IDC_EDIT_NAME, _user_name);
+	DDX_Text(pDX, IDC_EDIT_NAME, _user_id);
 	DDX_Text(pDX, IDC_EDIT_PASSWORD, _password);
 	DDX_Text(pDX, IDC_EDIT_PASSWORD2, _password2);
 	DDX_Check(pDX, IDC_CHECK_FIRST_TIME, _first_time);
@@ -66,7 +65,7 @@ void CLogonDialog::OnBnClickedLogon()
 {
 	UpdateData();
 	
-	if (_user_name.IsEmpty())
+	if (_user_id.IsEmpty())
 	{
 		AfxMessageBox(_T("用户名不能为空。"));
 		return;
@@ -86,7 +85,7 @@ void CLogonDialog::OnBnClickedLogon()
 		}
 		else
 		{
-			auto user = _user_manager->CreateUser(_user_name, _password);
+			auto user = CUserManager::GetInstance().CreateUser(_user_id, _password);
 			if (!user)
 			{
 				AfxMessageBox(_T("不是第一次登陆，该用户名和密码已存在，若需重新生成账号，请修改用户名或密码。"));
@@ -97,7 +96,7 @@ void CLogonDialog::OnBnClickedLogon()
 	}
 	else
 	{
-		auto user = _user_manager->GetUser(_user_name, _password);
+		auto user = CUserManager::GetInstance().GetUser(_user_id, _password);
 		if (!user)
 		{
 			AfxMessageBox(_T("用户名或者密码不正确，请重新输入。"));
@@ -112,7 +111,7 @@ void CLogonDialog::RunScale(std::shared_ptr<CUser> user)
 {
 	if (_first_time)
 	{
-		_user_manager->Save();
+		CUserManager::GetInstance().SaveLogonInfo();
 	}
 	_user = user;
 
@@ -136,7 +135,7 @@ BOOL CLogonDialog::OnInitDialog()
 
 	_first_time = true;
 	UpdateData(FALSE);
-	_user_manager->Init();
+
 	return TRUE;  // return TRUE unless you set the focus to a control
 				  // EXCEPTION: OCX Property Pages should return FALSE
 }

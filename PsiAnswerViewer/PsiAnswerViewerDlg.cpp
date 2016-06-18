@@ -356,8 +356,8 @@ void CPsiAnswerViewerDlg::UpdateAnswerList(const TCHAR* scale)
 			continue;
 		}
 
-		auto user = _answer_manager->GetUser(_answer_manager->GetScaleAnswers(*iter).user_uid);
-		if (user != nullptr)
+		auto user = CUserManager::GetInstance().GetUser(_answer_manager->GetScaleAnswers(*iter).user_uid);
+		if (user)
 		{
 			InsertInfo(*user);
 		}
@@ -465,8 +465,6 @@ void CPsiAnswerViewerDlg::OnEnChangeEditWorkingFolder()
 	// function and call CRichEditCtrl().SetEventMask()
 	// with the ENM_CHANGE flag ORed into the mask.
 
-	// TODO:  Add your control notification handler code here
-
 	UpdateData();
 	std::vector<CString> files;
 	FileSystem::ForEachFile(_working_folder, _T("*.scale"), false, [&](const CString& file) {
@@ -485,14 +483,12 @@ void CPsiAnswerViewerDlg::OnEnChangeEditWorkingFolder()
 	_answer_manager->LoadAll(file_path);
 }
 
-
-
 void CPsiAnswerViewerDlg::OnBnClickedButtonCopy()
 {
 	CString str;
 	for (unsigned int i = 0; i < _row; ++i)
 	{
-		for (unsigned int j = 0; j < _answer_table.GetHeaderCtrl()->GetItemCount(); ++j)
+		for (int j = 0; j < _answer_table.GetHeaderCtrl()->GetItemCount(); ++j)
 		{
 			str += _answer_table.GetItemText(i, j);
 			str += "\t";
@@ -504,5 +500,5 @@ void CPsiAnswerViewerDlg::OnBnClickedButtonCopy()
 	{
 		AfxMessageBox(_T("Copy Failed"));
 	}
-	
+
 }

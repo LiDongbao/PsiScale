@@ -63,27 +63,28 @@ BOOL CPsycologyTestApp::InitInstance()
 	// such as the name of your company or organization
 	SetRegistryKey(_T("SKMR"));
 
+	CLogonDialog logon_dlg;
+
 	for (;;)
 	{
-		CLogonDialog logon_dlg;
 
 		INT_PTR nResponse = logon_dlg.DoModal();
 		if (nResponse == IDOK)
 		{
-			//if (logon_dlg.IsFirstTime())
-			//{
-			//	CPersonalInfoDialog info_dlg;
-			//	if (info_dlg.DoModal() == IDOK)
-			//	{
-			//		logon_dlg.GetUser()->SetInfo(info_dlg.GetInfo());
-			//	}
-			//	else
-			//	{
-			//		continue;
-			//	}
-			//}
-			CScaleOverviewDialog overview_dialog(*logon_dlg.GetUser());
+			if (logon_dlg.IsFirstTime())
+			{
+				CPersonalInfoDialog info_dlg;
+				if (info_dlg.DoModal() == IDOK)
+				{
+					logon_dlg.GetUser()->SetInfo(info_dlg.GetInfo());
+				}
+				else
+				{
+					continue;
+				}
+			}
 
+			CScaleOverviewDialog overview_dialog(*logon_dlg.GetUser());
 			overview_dialog.DoModal();
 		}
 		else if (nResponse == IDCANCEL)

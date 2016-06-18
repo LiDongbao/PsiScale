@@ -33,10 +33,9 @@ public:
 	bool IsFirstTime() const;
 
 private:
-	std::shared_ptr<CUserManager> _user_manager;
 	std::shared_ptr<CUser> _user;
 
-	CString _user_name;
+	CString _user_id;
 	CString _password;
 	CString _password2;
 	BOOL _first_time;
