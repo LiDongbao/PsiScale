@@ -23,7 +23,7 @@ bool IsShort(const CString& s1, const CString& s2)
 
 IMPLEMENT_DYNAMIC(CScaleOverviewDialog, CDialogEx)
 
-CScaleOverviewDialog::CScaleOverviewDialog(CUser& user, 
+CScaleOverviewDialog::CScaleOverviewDialog(shared_ptr<CUser> user, 
 	CWnd* pParent /*=NULL*/)
 	: CDialogEx(IDD_DIALOG_OVERVIEW, pParent),
 	_user(user),
@@ -58,7 +58,7 @@ END_MESSAGE_MAP()
 
 void CScaleOverviewDialog::GetTestInfoAndSetListInfo(std::vector<CString>& test_infos)
 {
-	_answer_manager.Load(_user.GetWorkingFolder() + _T("\\") + _user.GetUid() + _T(".xml"));
+	_answer_manager.Load(_user->GetWorkingFolder() + _T("\\") + _user->GetUid() + _T(".xml"));
 	std::for_each(test_infos.begin(), test_infos.end(), [&, this](CString item) {
 		CString temp = item.Right(item.GetLength() - item.ReverseFind(_T('.')) - 1);
 		auto index = _answer_manager.GetIndexByScale(temp);
@@ -126,7 +126,7 @@ BOOL CScaleOverviewDialog::OnInitDialog()
 		}
 	}
 
-	_answer_manager.SetUser(_user.GetUid(), _user);
+	_answer_manager.SetUser(_user->GetUid(), _user);
 
 	return TRUE;
 }
@@ -140,7 +140,7 @@ void CScaleOverviewDialog::OnCancel()
 {
 	if (AfxMessageBox(_T("È·ÈÏÍË³ö£¿"), MB_OKCANCEL) == IDOK)
 	{
-		_answer_manager.Save(_user.GetWorkingFolder() + _T("\\") + _user.GetUid() + _T(".xml"), _user.GetUid());
+		_answer_manager.Save(_user->GetWorkingFolder() + _T("\\") + _user->GetUid() + _T(".xml"), _user->GetUid());
 		__super::OnCancel();
 	}
 }
@@ -179,7 +179,7 @@ void CScaleOverviewDialog::OnBnClickedStart()
 			dlg.DoModal();
 		}
 
-		_answer_manager.Save(_user.GetWorkingFolder() + _T("\\") + _user.GetUid() + _T(".xml"), _user.GetUid());
+		_answer_manager.Save(_user->GetWorkingFolder() + _T("\\") + _user->GetUid() + _T(".xml"), _user->GetUid());
 		ShowWindow(SW_SHOW);
 	}
 }
@@ -209,13 +209,13 @@ void CScaleOverviewDialog::OnLvnItemchangedListScales(NMHDR *pNMHDR, LRESULT *pR
 void CScaleOverviewDialog::OnBnClickedModifyPersonalInfo()
 {
 	CPersonalInfoDialog Info_dlg;
-	Info_dlg.SetInfo(_user.GetInfo());
+	Info_dlg.SetInfo(_user->GetInfo());
 
 	if (Info_dlg.DoModal() == IDOK)
 	{
-		_user.SetInfo(Info_dlg.GetInfo());
+		_user->SetInfo(Info_dlg.GetInfo());
 	}
 
-	_answer_manager.SetUser(_user.GetUid(), _user);
-	_answer_manager.Save(_user.GetWorkingFolder() + _T("\\") + _user.GetUid() + _T(".xml"), _user.GetUid());
+	_answer_manager.SetUser(_user->GetUid(), _user);
+	_answer_manager.Save(_user->GetWorkingFolder() + _T("\\") + _user->GetUid() + _T(".xml"), _user->GetUid());
 }

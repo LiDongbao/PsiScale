@@ -16,7 +16,7 @@ class CScaleOverviewDialog : public CDialogEx
 	DECLARE_DYNAMIC(CScaleOverviewDialog)
 
 public:
-	CScaleOverviewDialog(CUser& user, CWnd* pParent = NULL);   // standard constructor
+	CScaleOverviewDialog(std::shared_ptr<CUser> user, CWnd* pParent = NULL);   // standard constructor
 	virtual ~CScaleOverviewDialog();
 
 // Dialog Data
@@ -43,7 +43,7 @@ public:
 
 	CScaleList _scale_list;
 	std::shared_ptr<CPsiScale> _scale;
-	CUser& _user;
+	std::shared_ptr<CUser> _user;
 	CAnswerManager _answer_manager;
 	afx_msg void OnBnClickedStart();
 	afx_msg void OnLvnItemchangedListScales(NMHDR *pNMHDR, LRESULT *pResult);

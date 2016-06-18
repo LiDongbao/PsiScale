@@ -81,7 +81,7 @@ END_MESSAGE_MAP()
 
 CPsycologyTestDlg::CPsycologyTestDlg(shared_ptr<CPsiScale> scale,
 	CAnswerManager& answer_manager,
-	CUser& user,
+	shared_ptr<CUser> user,
 	HWND notify_wnd, 
 	CWnd* pParent /*=NULL*/)
 	: CDialogEx(IDD_PSYCOLOGYTEST_DIALOG, pParent),
@@ -141,7 +141,7 @@ BOOL CPsycologyTestDlg::OnInitDialog()
 	ASSERT((IDM_ABOUTBOX & 0xFFF0) == IDM_ABOUTBOX);
 	ASSERT(IDM_ABOUTBOX < 0xF000);
 
-	_start_time = _answer_manager.FindTimeByUserScale(_user.GetUid(), _psi_scale->GetName());
+	_start_time = _answer_manager.FindTimeByUserScale(_user->GetUid(), _psi_scale->GetName());
 	
 	CMenu* pSysMenu = GetSystemMenu(FALSE);
 	if (pSysMenu != NULL)
@@ -167,10 +167,10 @@ BOOL CPsycologyTestDlg::OnInitDialog()
 		GetDlgItem(buttons[i])->ShowWindow(SW_HIDE);
 	}
 
-	auto index = _answer_manager.GetAnswerIndex(_user.GetUid(), _psi_scale->GetName(), _start_time, true);
+	auto index = _answer_manager.GetAnswerIndex(_user->GetUid(), _psi_scale->GetName(), _start_time, true);
 	if (index == -1)
 	{
-		index = _answer_manager.AddScaleAnswer(_user.GetUid(), _psi_scale->GetName(), _start_time, _psi_scale->GetQuestionCount());
+		index = _answer_manager.AddScaleAnswer(_user->GetUid(), _psi_scale->GetName(), _start_time, _psi_scale->GetQuestionCount());
 	}
 	auto un_answered_question =_answer_manager.CheckForUnansweredQuestion(index);
 	ShowQuestion((un_answered_question == -1) ? _psi_scale->GetQuestionCount() - 1 : un_answered_question);
@@ -251,7 +251,7 @@ bool CPsycologyTestDlg::ShowQuestion(unsigned question_index)
 		UpdateSelectionButtons(_psi_scale->Question(_current_question_index).Choices());
 	}
 
-	int index = _answer_manager.GetAnswerIndex(_user.GetUid(), _psi_scale->GetName(), _start_time);
+	int index = _answer_manager.GetAnswerIndex(_user->GetUid(), _psi_scale->GetName(), _start_time);
 	if (_answer_manager.IsAnswered(index, _current_question_index))
 	{
 		Check(_answer_manager.GetAnswer(index, _current_question_index) - 1);
@@ -343,7 +343,7 @@ void CPsycologyTestDlg::ProcessAnswer(unsigned int answer)
 	ASSERT(_end > _start);
 
 	// 1. 记录
-	unsigned int index = _answer_manager.GetAnswerIndex(_user.GetUid(), _psi_scale->GetName(), _start_time, false);
+	unsigned int index = _answer_manager.GetAnswerIndex(_user->GetUid(), _psi_scale->GetName(), _start_time, false);
 	_answer_manager.AddAnswer(index, _current_question_index, answer, (_end - _start) * 1000 / CLOCKS_PER_SEC);
 	TODO(分值定义尚未定义。);
 	// 2. 下一道题。
@@ -360,7 +360,7 @@ void CPsycologyTestDlg::ProcessAnswer(unsigned int answer)
 			if (AfxMessageBox(_T("您已经完成了该问卷，点击“确认”按钮返回。"), MB_OKCANCEL) ==
 				IDOK)
 			{
-				unsigned int index = _answer_manager.GetAnswerIndex(_user.GetUid(), _psi_scale->GetName(), _start_time, false);
+				unsigned int index = _answer_manager.GetAnswerIndex(_user->GetUid(), _psi_scale->GetName(), _start_time, false);
 				_answer_manager.SetScaleFinished(index, true);
 		
 
@@ -490,7 +490,7 @@ void CPsycologyTestDlg::OnTimer(UINT_PTR nIDEvent)
 
 	if (2 == nIDEvent)
 	{
-		_answer_manager.Save(_user.GetWorkingFolder() + _T("\\") + _user.GetUid() + _T(".xml"), _user.GetUid());
+		_answer_manager.Save(_user->GetWorkingFolder() + _T("\\") + _user->GetUid() + _T(".xml"), _user->GetUid());
 	}
 	
 

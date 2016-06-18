@@ -21,7 +21,7 @@ class CPsycologyTestDlg : public CDialogEx
 // Construction
 public:
 	CPsycologyTestDlg(std::shared_ptr<CPsiScale> scale, CAnswerManager& answer_manager, 
-		CUser& user,
+		std::shared_ptr<CUser> user,
 		HWND notify_wnd, CWnd* pParent = NULL);	// standard constructor
 // Dialog Data
 #ifdef AFX_DESIGN_TIME
@@ -84,7 +84,7 @@ public:
 	HWND _notify_wnd;
 
 	COleDateTime _start_time;
-	CUser& _user;
+	std::shared_ptr<CUser> _user;
 	afx_msg void OnClose();
 	afx_msg void OnTimer(UINT_PTR nIDEvent);
 	afx_msg void OnStnClickedTimer();

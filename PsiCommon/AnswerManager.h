@@ -68,7 +68,7 @@ public:
 	void SaveScaleItem(Utilities::CXmlElement* scale_xml, unsigned index);
 	bool LoadAll(CString folder_path);
 
-	bool SetUser(CString user_uid, CUser& user);
+	bool SetUser(CString user_uid, std::shared_ptr<CUser> user);
 	std::shared_ptr<CUser> GetUser(const CString user_uid);
 	std::map<CString, std::shared_ptr<CUser>> GetAllUsers();
 
