@@ -14,6 +14,8 @@
 #include <vector>
 #include <algorithm>
 #include "..\Utilities\Clipboard.h"
+#include "..\Utilities\xml.h"
+#include "..\PsiCommon\xml_name_space.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -26,6 +28,7 @@ BEGIN_EASYSIZE_MAP(CPsiAnswerViewerDlg)
 END_EASYSIZE_MAP
 
 using namespace std;
+using namespace XMLNameSpace;
 
 const unsigned int num_info = 7;
 
@@ -96,6 +99,7 @@ BEGIN_MESSAGE_MAP(CPsiAnswerViewerDlg, CEasySizeDialog)
 	ON_BN_CLICKED(IDC_BUTTON_REMOVE, &CPsiAnswerViewerDlg::OnBnClickedButtonRemove)
 	ON_EN_CHANGE(IDC_EDIT_WORKING_FOLDER, &CPsiAnswerViewerDlg::OnEnChangeEditWorkingFolder)
 	ON_BN_CLICKED(IDC_BUTTON_COPY, &CPsiAnswerViewerDlg::OnBnClickedButtonCopy)
+	ON_BN_CLICKED(IDC_BUTTON_MERGE, &CPsiAnswerViewerDlg::OnBnClickedButtonMerge)
 END_MESSAGE_MAP()
 
 // CPsiAnswerViewerDlg message handlers
@@ -505,4 +509,36 @@ void CPsiAnswerViewerDlg::OnBnClickedButtonCopy()
 		AfxMessageBox(_T("Copy Failed"));
 	}
 	
+}
+
+
+void CPsiAnswerViewerDlg::OnBnClickedButtonMerge()
+{
+	ASSERT(_answer_manager);
+	
+	Utilities::CXml users_info(XML_USERS_INFO);
+	auto users = _answer_manager->GetAllUsers();
+
+	if (users.empty())
+	{
+		AfxMessageBox(L"No users");
+		return;
+	}
+
+	for (auto iter = users.begin(); iter != users.end(); ++iter)
+	{
+		auto user_info_element = users_info.AddElement(XML_USER_INFO);
+		user_info_element->SetAttrib(XML_USER_NAME, iter->second->GetUserId());
+		user_info_element->SetAttrib(XML_USER_PASSWORD, iter->second->GetPassword());
+		user_info_element->SetAttrib(XML_USER_UID, iter->second->GetUid());
+	}
+	bool result = users_info.Save(_working_folder + _T("\\TestUsers\\UserInfo.xml"));
+	if (result)
+	{
+		AfxMessageBox(L"Merge Successfully.");
+	}
+	else
+	{
+		AfxMessageBox(L"Merge Failed!");
+	}
 }

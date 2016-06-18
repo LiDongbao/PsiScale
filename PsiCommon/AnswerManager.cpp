@@ -583,6 +583,11 @@ std::shared_ptr<CUser> CAnswerManager::GetUser(const CString user_uid)
 	return nullptr;
 }
 
+std::map<CString, std::shared_ptr<CUser>> CAnswerManager::GetAllUsers()
+{
+	return _users;
+}
+
 bool CAnswerManager::LoadAll(CString folder_path)
 {
 	if (FileSystem::FileExists(folder_path))
