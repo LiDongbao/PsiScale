@@ -18,6 +18,7 @@ public:
 	bool SaveLogonInfo();
 
 	static CUserManager& GetInstance();
+	const std::map<CString, std::shared_ptr<CUser>>& Users() const;
 
 private:
 	CUserManager();

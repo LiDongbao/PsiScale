@@ -156,6 +156,11 @@ CUserManager& CUserManager::GetInstance()
 	return s_instance;
 }
 
+const std::map<CString, std::shared_ptr<CUser>>& CUserManager::Users() const
+{
+	return _users;
+}
+
 const wchar_t * CUserManager::GetWorkingFolder() const
 {
 	CString folder_path = _logon_info_path.Left(_logon_info_path.ReverseFind(_T('\\'))) + _T("\\Answers");
