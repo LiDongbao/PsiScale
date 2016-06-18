@@ -234,6 +234,7 @@ HCURSOR CPsycologyTestDlg::OnQueryDragIcon()
 bool CPsycologyTestDlg::ShowQuestion(unsigned question_index)
 {
 	ASSERT(_psi_scale);
+	::SetFocus(_notify_wnd); //为了让选项失去焦点, 但感觉可能有点问题.
 
 	if (question_index >= _psi_scale->GetQuestionCount())
 		return false;
@@ -341,20 +342,18 @@ void CPsycologyTestDlg::ProcessAnswer(unsigned int answer)
 
 	ASSERT(_end > _start);
 
-	::SetFocus(_notify_wnd); //为了让选项失去焦点, 但感觉可能有点问题.
-
 	// 1. 记录
 	unsigned int index = _answer_manager.GetAnswerIndex(_user.GetUid(), _psi_scale->GetName(), _start_time, false);
 	_answer_manager.AddAnswer(index, _current_question_index, answer, (_end - _start) * 1000 / CLOCKS_PER_SEC);
 	TODO(分值定义尚未定义。);
 	// 2. 下一道题。
-	if (_current_question_index < _psi_scale->GetQuestionCount() - 1)
+	//unsigned int index = _answer_manager.GetAnswerIndex(_user.GetUid(), _psi_scale->GetName(), _start_time, false);
+	if ((_current_question_index < _psi_scale->GetQuestionCount() - 1) && (!_answer_manager.IsAnswered(index, _current_question_index + 1)))
 	{
 		ShowQuestion(_current_question_index + 1);
 	}
 	else
 	{
-		unsigned int index = _answer_manager.GetAnswerIndex(_user.GetUid(), _psi_scale->GetName(), _start_time, false);
 		int unanswer_question = _answer_manager.CheckForUnansweredQuestion(index);
 		if (unanswer_question == -1)
 		{
