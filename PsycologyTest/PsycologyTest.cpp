@@ -82,7 +82,7 @@ BOOL CPsycologyTestApp::InitInstance()
 			//		continue;
 			//	}
 			//}
-			CScaleOverviewDialog overview_dialog(*logon_dlg.GetUser());
+			CScaleOverviewDialog overview_dialog(logon_dlg.GetUser());
 
 			overview_dialog.DoModal();
 		}

@@ -559,16 +559,16 @@ void CAnswerManager::SaveScaleItem(Utilities::CXmlElement* scale_xml, unsigned i
 	// 	return true;
 }
 
-bool CAnswerManager::SetUser(CString user_uid, CUser& user)
+bool CAnswerManager::SetUser(CString user_uid, shared_ptr<CUser> user)
 {
 	auto user_iter = _users.find(user_uid);
 	if (user_iter != _users.end())
 	{
-		user_iter->second->SetInfo(user.GetInfo());
+		user_iter->second->SetInfo(user->GetInfo());
 		return false;
 	}
 	
-	_users.insert(make_pair(user_uid, shared_ptr<CUser>(&user)));
+	_users.insert(make_pair(user_uid, user));
 
 	return true;
 }
@@ -581,6 +581,11 @@ std::shared_ptr<CUser> CAnswerManager::GetUser(const CString user_uid)
 		return user->second;
 	}
 	return nullptr;
+}
+
+std::map<CString, std::shared_ptr<CUser>> CAnswerManager::GetAllUsers()
+{
+	return _users;
 }
 
 bool CAnswerManager::LoadAll(CString folder_path)
