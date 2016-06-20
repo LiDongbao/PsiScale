@@ -59,7 +59,8 @@ END_MESSAGE_MAP()
 void CScaleOverviewDialog::GetTestInfoAndSetListInfo(std::vector<CString>& test_infos)
 {
 	_answer_manager.Load(_user->GetWorkingFolder() + _T("\\") + _user->GetUid() + _T(".xml"));
-	std::for_each(test_infos.begin(), test_infos.end(), [&, this](CString item) {
+	for (auto item : test_infos)
+	{
 		CString temp = item.Right(item.GetLength() - item.ReverseFind(_T('.')) - 1);
 		auto index = _answer_manager.GetIndexByScale(temp);
 		TODO(这里还没有考虑一张量表做多次的情况);
@@ -71,7 +72,7 @@ void CScaleOverviewDialog::GetTestInfoAndSetListInfo(std::vector<CString>& test_
 		{
 			_scale_list.InsertScale(item, _answer_manager.ScaleFinished(index[0]));
 		}
-	});
+	}
 }
 
 
@@ -126,13 +127,12 @@ BOOL CScaleOverviewDialog::OnInitDialog()
 		}
 	}
 
-	_answer_manager.SetUser(_user->GetUid(), _user);
-
 	return TRUE;
 }
 
 void CScaleOverviewDialog::OnOK()
 {
+	// Disable default exit from dialog.
 	// __super::OnOK();
 }
 
@@ -216,6 +216,5 @@ void CScaleOverviewDialog::OnBnClickedModifyPersonalInfo()
 		_user->SetInfo(Info_dlg.GetInfo());
 	}
 
-	_answer_manager.SetUser(_user->GetUid(), _user);
 	_answer_manager.Save(_user->GetWorkingFolder() + _T("\\") + _user->GetUid() + _T(".xml"), _user->GetUid());
 }

@@ -360,8 +360,8 @@ void CPsiAnswerViewerDlg::UpdateAnswerList(const TCHAR* scale)
 			continue;
 		}
 
-		auto user = _answer_manager->GetUser(_answer_manager->GetScaleAnswers(*iter).user_uid);
-		if (user != nullptr)
+		auto user = CUserManager::GetInstance().GetUser(_answer_manager->GetScaleAnswers(*iter).user_uid);
+		if (user)
 		{
 			InsertInfo(*user);
 		}
@@ -469,8 +469,6 @@ void CPsiAnswerViewerDlg::OnEnChangeEditWorkingFolder()
 	// function and call CRichEditCtrl().SetEventMask()
 	// with the ENM_CHANGE flag ORed into the mask.
 
-	// TODO:  Add your control notification handler code here
-
 	UpdateData();
 	std::vector<CString> files;
 	FileSystem::ForEachFile(_working_folder, _T("*.scale"), false, [&](const CString& file) {
@@ -489,14 +487,12 @@ void CPsiAnswerViewerDlg::OnEnChangeEditWorkingFolder()
 	_answer_manager->LoadAll(file_path);
 }
 
-
-
 void CPsiAnswerViewerDlg::OnBnClickedButtonCopy()
 {
 	CString str;
 	for (unsigned int i = 0; i < _row; ++i)
 	{
-		for (unsigned int j = 0; j < _answer_table.GetHeaderCtrl()->GetItemCount(); ++j)
+		for (int j = 0; j < _answer_table.GetHeaderCtrl()->GetItemCount(); ++j)
 		{
 			str += _answer_table.GetItemText(i, j);
 			str += "\t";
@@ -508,7 +504,7 @@ void CPsiAnswerViewerDlg::OnBnClickedButtonCopy()
 	{
 		AfxMessageBox(_T("Copy Failed"));
 	}
-	
+
 }
 
 
@@ -517,21 +513,21 @@ void CPsiAnswerViewerDlg::OnBnClickedButtonMerge()
 	ASSERT(_answer_manager);
 	
 	Utilities::CXml users_info(XML_USERS_INFO);
-	auto users = _answer_manager->GetAllUsers();
 
-	if (users.empty())
+	if (CUserManager::GetInstance().Users().empty())
 	{
 		AfxMessageBox(L"No users");
 		return;
 	}
 
-	for (auto iter = users.begin(); iter != users.end(); ++iter)
+	for (auto item : CUserManager::GetInstance().Users())
 	{
 		auto user_info_element = users_info.AddElement(XML_USER_INFO);
-		user_info_element->SetAttrib(XML_USER_NAME, iter->second->GetUserId());
-		user_info_element->SetAttrib(XML_USER_PASSWORD, iter->second->GetPassword());
-		user_info_element->SetAttrib(XML_USER_UID, iter->second->GetUid());
+		user_info_element->SetAttrib(XML_USER_NAME, item.second->GetUserId());
+		user_info_element->SetAttrib(XML_USER_PASSWORD, item.second->GetPassword());
+		user_info_element->SetAttrib(XML_USER_UID, item.second->GetUid());
 	}
+
 	bool result = users_info.Save(_working_folder + _T("\\TestUsers\\UserInfo.xml"));
 	if (result)
 	{
