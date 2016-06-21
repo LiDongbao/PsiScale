@@ -45,6 +45,9 @@ protected:
 
 	void UpdateAnswerList(const TCHAR* scale);
 
+	bool UpdateScaleTableHeaderForSubjects();
+	bool UpdateSubjectsTable();
+
 	CListCtrl _answer_table;
 	CComboBox _combo_scale;
 	CString _working_folder;
@@ -54,6 +57,7 @@ protected:
 	CComboBox _combo_person;
 	std::shared_ptr<CAnswerManager> _answer_manager;
 	unsigned int _row;
+	bool _is_answer;
 public:
 	afx_msg void OnCbnSelchangeComboScale();
 	
@@ -62,4 +66,8 @@ public:
 	afx_msg void OnEnChangeEditWorkingFolder();
 	afx_msg void OnBnClickedButtonCopy();
 	afx_msg void OnBnClickedButtonMerge();
+	afx_msg void OnBnClickedCheckAnswer();
+
+	void ClearTable();
+
 	};

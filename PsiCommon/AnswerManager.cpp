@@ -278,7 +278,10 @@ bool CAnswerManager::LoadAll(CString folder_path)
 			CString filename = FileSystem::GetFileNameFromPath(file);
 			Load(folder_path + _T("\\") + filename + _T(".xml"));
 		});
+		return true;
 	}
-
-	return true;
+	else
+	{
+		return false;
+	}
 }

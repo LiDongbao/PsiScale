@@ -24,7 +24,7 @@ private:
 	CUserManager();
 
 	bool UserExists(const CString& name, const CString& password);
-	const wchar_t * GetWorkingFolder() const;
+	const CString GetWorkingFolder() const;
 
 	std::map<CString, std::shared_ptr<CUser>> _users; ///< User UID to User
 	std::multimap<CString, CString> _user_name_to_uid;	

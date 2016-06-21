@@ -16,6 +16,7 @@
 #include "..\Utilities\Clipboard.h"
 #include "..\Utilities\xml.h"
 #include "..\PsiCommon\xml_name_space.h"
+#include "Resource.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -74,7 +75,8 @@ END_MESSAGE_MAP()
 CPsiAnswerViewerDlg::CPsiAnswerViewerDlg(CWnd* pParent /*=NULL*/)
 	: CEasySizeDialog(IDD_PSIANSWERVIEWER_DIALOG, L"PsiAnswerViewer", pParent, true),
 	_row(0),
-	_working_folder(_T(""))
+	_working_folder(_T("")),
+	_is_answer(true)
 {
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
 	//_working_folder.Format(_T("../Scales"));
@@ -100,6 +102,7 @@ BEGIN_MESSAGE_MAP(CPsiAnswerViewerDlg, CEasySizeDialog)
 	ON_EN_CHANGE(IDC_EDIT_WORKING_FOLDER, &CPsiAnswerViewerDlg::OnEnChangeEditWorkingFolder)
 	ON_BN_CLICKED(IDC_BUTTON_COPY, &CPsiAnswerViewerDlg::OnBnClickedButtonCopy)
 	ON_BN_CLICKED(IDC_BUTTON_MERGE, &CPsiAnswerViewerDlg::OnBnClickedButtonMerge)
+	ON_BN_CLICKED(IDC_CHECK_ANSWER, &CPsiAnswerViewerDlg::OnBnClickedCheckAnswer)
 END_MESSAGE_MAP()
 
 // CPsiAnswerViewerDlg message handlers
@@ -153,6 +156,9 @@ BOOL CPsiAnswerViewerDlg::OnInitDialog()
 	InitialScaleList();
 	TODO(被试信息路径是硬编码);
 	InitialPersonCombo();
+
+	CButton* pBtn = (CButton*)GetDlgItem(IDC_CHECK_ANSWER);
+	pBtn->SetCheck(1);
 
 	return TRUE;  // return TRUE  unless you set the focus to a control
 }
@@ -231,12 +237,7 @@ bool CPsiAnswerViewerDlg::InitialPersonCombo()
 void CPsiAnswerViewerDlg::UpdateAnswerScaleHeader()
 {
 	//删除表格中的原有信息
-	unsigned int num_columns = _answer_table.GetHeaderCtrl()->GetItemCount();
-	for (unsigned int i = 0; i < num_columns; ++i)
-	{
-		_answer_table.DeleteColumn(0);
-	}
-	_answer_table.DeleteAllItems();
+	ClearTable();
 
 	CRect mRect;
 	_answer_table.GetWindowRect(&mRect);     //获取控件矩形区域
@@ -246,19 +247,19 @@ void CPsiAnswerViewerDlg::UpdateAnswerScaleHeader()
 	_answer_table.InsertColumn(2, _T("性别"), LVCFMT_CENTER, 60, -1);
 	_answer_table.InsertColumn(3, _T("民族"), LVCFMT_CENTER, 60, -1);
 	_answer_table.InsertColumn(4, _T("体重"), LVCFMT_CENTER, 60, -1);
-	_answer_table.InsertColumn(5, _T("填表日期"), LVCFMT_CENTER, 120, -1);
-	_answer_table.InsertColumn(6, _T("填表时间"), LVCFMT_CENTER, 120, -1);
 	DWORD dwStyle = _answer_table.GetExtendedStyle(); //获取当前扩展样式
 	dwStyle |= LVS_EX_FULLROWSELECT; //选中某行使整行高亮（report风格时）
 	dwStyle |= LVS_EX_GRIDLINES; //网格线（report风格时）
 	dwStyle |= LVS_EX_CHECKBOXES; //item前生成checkbox控件
 	_answer_table.SetExtendedStyle(dwStyle); //设置扩展风格
 
+	_answer_table.InsertColumn(5, _T("填表日期"), LVCFMT_CENTER, 120, -1);
+	_answer_table.InsertColumn(6, _T("填表时间"), LVCFMT_CENTER, 120, -1);
 	for (unsigned int i = 0; i < _scale->GetQuestionCount(); ++i)
 	{
-		CString str; 
+		CString str;
 		str.Format(_T("No.%d"), i + 1);
-		_answer_table.InsertColumn(i + num_info,str, LVCFMT_LEFT, 60, -1);
+		_answer_table.InsertColumn(i + num_info, str, LVCFMT_LEFT, 60, -1);
 	}
 
 	//for (unsigned int i = 0; i < _scale->GetGroupCount(); ++i)
@@ -276,6 +277,7 @@ void CPsiAnswerViewerDlg::UpdateAnswerScaleHeader()
 		str.Format(_T("RT %d"), i + 1);
 		_answer_table.InsertColumn(i + num_info + _scale->GetQuestionCount(), str, LVCFMT_LEFT, 60, -1);
 	}
+
 }
 
 bool CPsiAnswerViewerDlg::InsertAnswer(ScaleAnswers& scale_answers)
@@ -366,10 +368,87 @@ void CPsiAnswerViewerDlg::UpdateAnswerList(const TCHAR* scale)
 			InsertInfo(*user);
 		}
 
-		auto scale_answers = _answer_manager->GetScaleAnswers(*iter);
-		InsertAnswer(scale_answers);
+		if (_is_answer)
+		{
+			auto scale_answers = _answer_manager->GetScaleAnswers(*iter);
+			InsertAnswer(scale_answers);
+		}
+		
 		++_row;
 	}
+}
+
+bool CPsiAnswerViewerDlg::UpdateScaleTableHeaderForSubjects()
+{
+	//删除表格中的原有信息
+	ClearTable();
+
+	CRect mRect;
+	_answer_table.GetWindowRect(&mRect);     //获取控件矩形区域
+	int kuan = mRect.Width();
+	_answer_table.InsertColumn(0, _T("用户名"), LVCFMT_LEFT, 100, -1);
+	_answer_table.InsertColumn(1, _T("密码"), LVCFMT_LEFT, 100, -1);
+	_answer_table.InsertColumn(2, _T("UID"), LVCFMT_LEFT, 150, -1);
+	_answer_table.InsertColumn(3, _T("姓名"), LVCFMT_CENTER, 60, -1);
+	_answer_table.InsertColumn(4, _T("拼音"), LVCFMT_CENTER, 80, -1);
+	_answer_table.InsertColumn(5, _T("出生年月"), LVCFMT_CENTER, 100, -1);
+	_answer_table.InsertColumn(6, _T("性别"), LVCFMT_CENTER, 60, -1);
+	_answer_table.InsertColumn(7, _T("民族"), LVCFMT_CENTER, 60, -1);
+	_answer_table.InsertColumn(8, _T("体重"), LVCFMT_CENTER, 60, -1);
+	_answer_table.InsertColumn(9, _T("电话"), LVCFMT_CENTER, 150, -1);
+	_answer_table.InsertColumn(10, _T("电邮"), LVCFMT_CENTER, 150, -1);
+	DWORD dwStyle = _answer_table.GetExtendedStyle(); //获取当前扩展样式
+	dwStyle |= LVS_EX_FULLROWSELECT; //选中某行使整行高亮（report风格时）
+	dwStyle |= LVS_EX_GRIDLINES; //网格线（report风格时）
+	dwStyle |= LVS_EX_CHECKBOXES; //item前生成checkbox控件
+	_answer_table.SetExtendedStyle(dwStyle); //设置扩展风格
+
+	return true;
+}
+
+bool CPsiAnswerViewerDlg::UpdateSubjectsTable()
+{
+	auto users = CUserManager::GetInstance().Users();
+
+	for (auto iter = users.begin(); iter != users.end(); ++iter)
+	{
+		_answer_table.InsertItem(_row, iter->second->GetUserId());
+		_answer_table.SetItemText(_row, 1, iter->second->GetPassword());
+		_answer_table.SetItemText(_row, 2, iter->second->GetUid());
+		_answer_table.SetItemText(_row, 3, iter->second->GetInfo().name);
+		_answer_table.SetItemText(_row, 4, iter->second->GetInfo().name_pinyin);
+		_answer_table.SetItemText(_row, 5, iter->second->GetInfo().birth_date.Format(_T("%Y-%M")));
+
+
+		CString sex;
+		switch (Sex(iter->second->GetInfo().sex))
+		{
+		case Sex::SexMale:
+			sex.Format(_T("男"));
+			break;
+		case Sex::SexFemale:
+			sex.Format(_T("女"));
+			break;
+		case Sex::SexUnknown:
+			sex.Format(_T("未知"));
+			break;
+		default:
+			break;
+		}
+		_answer_table.SetItemText(_row, 6, sex);
+		_answer_table.SetItemText(_row, 7, iter->second->GetInfo().nationality);
+
+		CString weight;
+		weight.Format(_T("%d"), iter->second->GetInfo().weight);
+		_answer_table.SetItemText(_row, 8, weight);
+
+		_answer_table.SetItemText(_row, 9, iter->second->GetInfo().mobile);
+		_answer_table.SetItemText(_row, 10, iter->second->GetInfo().email);
+
+		++_row;
+	}
+
+	return true;
 }
 
 void CPsiAnswerViewerDlg::OnCbnSelchangeComboScale()
@@ -537,4 +616,47 @@ void CPsiAnswerViewerDlg::OnBnClickedButtonMerge()
 	{
 		AfxMessageBox(L"Merge Failed!");
 	}
+}
+
+
+void CPsiAnswerViewerDlg::OnBnClickedCheckAnswer()
+{
+	_is_answer = !_is_answer;
+
+	CButton* pBtn = (CButton*)GetDlgItem(IDC_CHECK_ANSWER);
+	pBtn->SetCheck(_is_answer ? 1 : 0);
+
+	_row = 0;
+	
+	if (!_is_answer)
+	{
+		_combo_scale.EnableWindow(FALSE);
+		_combo_person.EnableWindow(FALSE);
+		UpdateScaleTableHeaderForSubjects();
+		UpdateSubjectsTable();
+	}
+	else
+	{
+		_combo_scale.EnableWindow(TRUE);
+		_combo_person.EnableWindow(TRUE);
+
+		if (_combo_scale.GetCurSel() == -1)
+		{
+			ClearTable();
+		}
+		else
+		{
+			OnCbnSelchangeComboScale();
+		}
+	}
+}
+
+void CPsiAnswerViewerDlg::ClearTable()
+{
+	unsigned int num_columns = _answer_table.GetHeaderCtrl()->GetItemCount();
+	for (unsigned int i = 0; i < num_columns; ++i)
+	{
+		_answer_table.DeleteColumn(0);
+	}
+	_answer_table.DeleteAllItems();
 }
