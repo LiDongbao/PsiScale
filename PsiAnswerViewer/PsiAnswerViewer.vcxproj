@@ -118,6 +118,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <IgnoreSpecificDefaultLibraries>uafxcwd.lib;libcmtd.lib;</IgnoreSpecificDefaultLibraries>
+      <AdditionalDependencies>$(Solutiondir)Debug\Utilities.lib;$(Solutiondir)Debug\PsiCommon.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <Midl>
       <MkTypLibCompatible>false</MkTypLibCompatible>
@@ -186,6 +187,7 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="PersonInfoDlg.h" />
     <ClInclude Include="PsiAnswerViewer.h" />
     <ClInclude Include="PsiAnswerViewerDlg.h" />
     <ClInclude Include="Resource.h" />
@@ -193,6 +195,7 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="PersonInfoDlg.cpp" />
     <ClCompile Include="PsiAnswerViewer.cpp" />
     <ClCompile Include="PsiAnswerViewerDlg.cpp" />
     <ClCompile Include="stdafx.cpp">

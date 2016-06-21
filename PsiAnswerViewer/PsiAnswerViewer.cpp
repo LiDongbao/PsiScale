@@ -5,6 +5,7 @@
 #include "stdafx.h"
 #include "PsiAnswerViewer.h"
 #include "PsiAnswerViewerDlg.h"
+#include "PersonInfoDlg.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -70,7 +71,8 @@ BOOL CPsiAnswerViewerApp::InitInstance()
 	// such as the name of your company or organization
 	SetRegistryKey(_T("Local AppWizard-Generated Applications"));
 
-	CPsiAnswerViewerDlg dlg;
+	//CPsiAnswerViewerDlg dlg;
+	CPersonInfoDlg dlg;
 	m_pMainWnd = &dlg;
 	INT_PTR nResponse = dlg.DoModal();
 	if (nResponse == IDOK)
