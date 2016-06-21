@@ -117,7 +117,7 @@ bool CUserManager::LoadLogonInfo()
 	{
 		for (auto item : users_info.GetChildElements())
 		{
-			std::shared_ptr<CUser> user(new CUser(item->GetAttrib(XML_USER_NAME), item->GetAttrib(XML_USER_PASSWORD)));
+			std::shared_ptr<CUser> user(new CUser(item->GetAttrib(XML_USER_USERID), item->GetAttrib(XML_USER_PASSWORD)));
 			user->SetUid(item->GetAttrib(XML_USER_UID));
 			user->SetWorkingFolder(CString(GetWorkingFolder()));
 
@@ -139,7 +139,7 @@ bool CUserManager::SaveLogonInfo()
 	for (auto user : _users)
 	{
 		auto user_info_element = users_info.AddElement(XML_USER_INFO);
-		user_info_element->SetAttrib(XML_USER_NAME, user.first);
+		user_info_element->SetAttrib(XML_USER_USERID, user.second->GetUserId());
 		user_info_element->SetAttrib(XML_USER_PASSWORD, user.second->GetPassword());
 		user_info_element->SetAttrib(XML_USER_UID, user.second->GetUid());
 	}
@@ -161,7 +161,7 @@ const std::map<CString, std::shared_ptr<CUser>>& CUserManager::Users() const
 	return _users;
 }
 
-const wchar_t * CUserManager::GetWorkingFolder() const
+const CString CUserManager::GetWorkingFolder() const
 {
 	CString folder_path = _logon_info_path.Left(_logon_info_path.ReverseFind(_T('\\'))) + _T("\\Answers");
 	if (!FileSystem::FileExists(folder_path) && !FileSystem::CreateFolderTree(folder_path))
