@@ -27,6 +27,7 @@ public:
 // Implementation
 
 	DECLARE_MESSAGE_MAP()
+	afx_msg void OnBnClickedPersoninfoButton();
 };
 
 extern CPsiAnswerViewerApp theApp;

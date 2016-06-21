@@ -187,7 +187,6 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="PersonInfoDlg.h" />
     <ClInclude Include="PsiAnswerViewer.h" />
     <ClInclude Include="PsiAnswerViewerDlg.h" />
     <ClInclude Include="Resource.h" />
@@ -195,7 +194,6 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="PersonInfoDlg.cpp" />
     <ClCompile Include="PsiAnswerViewer.cpp" />
     <ClCompile Include="PsiAnswerViewerDlg.cpp" />
     <ClCompile Include="stdafx.cpp">
