@@ -69,6 +69,9 @@ public:
 	void SaveScaleItem(Utilities::CXmlElement* scale_xml, unsigned index);
 	bool LoadAll(CString folder_path);
 
+	std::map<std::wstring, double> GetScore(const wchar_t * scale_name, const std::vector<AnswerInfo>& answers);
+	
+
 protected:
 	std::map<std::tuple<CString, CString, COleDateTime>, unsigned int> _answer_table_index;
 	

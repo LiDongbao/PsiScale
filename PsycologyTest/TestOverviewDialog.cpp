@@ -111,6 +111,9 @@ BOOL CScaleOverviewDialog::OnInitDialog()
 	__super::OnInitDialog();
 
 	_working_folder_edit.EnableFolderBrowseButton();
+
+	_answer_manager.Save(_user->GetWorkingFolder() + _T("\\") + _user->GetUid() + _T(".xml"), _user->GetUid());
+
 	_scale_list.Init();
 
 	CRegKey regkey;
