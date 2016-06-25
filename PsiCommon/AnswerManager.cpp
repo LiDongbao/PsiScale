@@ -7,6 +7,7 @@
 #include <utility>
 #include "..\Utilities\macros.h"
 #include "..\Utilities\FileSystem.h"
+#include "Scorer.h"
 
 using namespace XMLNameSpace;
 using namespace std;
@@ -284,4 +285,30 @@ bool CAnswerManager::LoadAll(CString folder_path)
 	{
 		return false;
 	}
+}
+
+std::map<std::wstring, double> CAnswerManager::GetScore(const wchar_t * scale_name, 
+	const std::vector<AnswerInfo>& answers)
+{
+	std::map<std::wstring, double> result;
+	auto score_matrix = CScorer::GetInstance().GetScoreMatrix(scale_name);
+	if (score_matrix == nullptr)
+		return result;
+
+	auto& groups = score_matrix->GetGroups();
+	for (auto group : groups)
+	{
+		result[group] = 0.0;
+	}
+
+	for (unsigned int question_index = 0; question_index < answers.size(); ++question_index)
+	{
+		for (unsigned int group_index = 0; group_index < groups.size(); ++group_index)
+		{
+			result[groups[group_index]] += score_matrix->GetWeight(question_index, 
+				answers[question_index].answer, group_index);
+		}
+	}
+
+	return result;
 }
