@@ -13,6 +13,10 @@
 #include <afxstr.h>
 #include <vector>
 #include <algorithm>
+#include "..\Utilities\Clipboard.h"
+#include "..\Utilities\xml.h"
+#include "..\PsiCommon\xml_name_space.h"
+#include "Resource.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -25,6 +29,7 @@ BEGIN_EASYSIZE_MAP(CPsiAnswerViewerDlg)
 END_EASYSIZE_MAP
 
 using namespace std;
+using namespace XMLNameSpace;
 
 const unsigned int num_info = 7;
 
@@ -70,7 +75,8 @@ END_MESSAGE_MAP()
 CPsiAnswerViewerDlg::CPsiAnswerViewerDlg(CWnd* pParent /*=NULL*/)
 	: CEasySizeDialog(IDD_PSIANSWERVIEWER_DIALOG, L"PsiAnswerViewer", pParent, true),
 	_row(0),
-	_working_folder(_T(""))
+	_working_folder(_T("")),
+	_is_answer(true)
 {
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
 	//_working_folder.Format(_T("../Scales"));
@@ -94,6 +100,9 @@ BEGIN_MESSAGE_MAP(CPsiAnswerViewerDlg, CEasySizeDialog)
 	ON_BN_CLICKED(IDC_BUTTON_ADD, &CPsiAnswerViewerDlg::OnBnClickedButtonAdd)
 	ON_BN_CLICKED(IDC_BUTTON_REMOVE, &CPsiAnswerViewerDlg::OnBnClickedButtonRemove)
 	ON_EN_CHANGE(IDC_EDIT_WORKING_FOLDER, &CPsiAnswerViewerDlg::OnEnChangeEditWorkingFolder)
+	ON_BN_CLICKED(IDC_BUTTON_COPY, &CPsiAnswerViewerDlg::OnBnClickedButtonCopy)
+	ON_BN_CLICKED(IDC_BUTTON_MERGE, &CPsiAnswerViewerDlg::OnBnClickedButtonMerge)
+	ON_BN_CLICKED(IDC_CHECK_ANSWER, &CPsiAnswerViewerDlg::OnBnClickedCheckAnswer)
 END_MESSAGE_MAP()
 
 // CPsiAnswerViewerDlg message handlers
@@ -127,6 +136,7 @@ BOOL CPsiAnswerViewerDlg::OnInitDialog()
 	SetIcon(m_hIcon, TRUE);			// Set big icon
 	SetIcon(m_hIcon, FALSE);		// Set small icon
 
+	_answer_manager = std::shared_ptr<CAnswerManager>(new CAnswerManager);
 	_working_folder_edit.EnableFolderBrowseButton();
 
 	CRegKey regkey;
@@ -146,6 +156,9 @@ BOOL CPsiAnswerViewerDlg::OnInitDialog()
 	InitialScaleList();
 	TODO(被试信息路径是硬编码);
 	InitialPersonCombo();
+
+	CButton* pBtn = (CButton*)GetDlgItem(IDC_CHECK_ANSWER);
+	pBtn->SetCheck(1);
 
 	return TRUE;  // return TRUE  unless you set the focus to a control
 }
@@ -221,15 +234,10 @@ bool CPsiAnswerViewerDlg::InitialPersonCombo()
 }
 
 
-void CPsiAnswerViewerDlg::UpdateAnswerScale()
+void CPsiAnswerViewerDlg::UpdateAnswerScaleHeader()
 {
 	//删除表格中的原有信息
-	unsigned int num_columns = _answer_table.GetHeaderCtrl()->GetItemCount();
-	for (unsigned int i = 0; i < num_columns; ++i)
-	{
-		_answer_table.DeleteColumn(0);
-	}
-	_answer_table.DeleteAllItems();
+	ClearTable();
 
 	CRect mRect;
 	_answer_table.GetWindowRect(&mRect);     //获取控件矩形区域
@@ -239,43 +247,53 @@ void CPsiAnswerViewerDlg::UpdateAnswerScale()
 	_answer_table.InsertColumn(2, _T("性别"), LVCFMT_CENTER, 60, -1);
 	_answer_table.InsertColumn(3, _T("民族"), LVCFMT_CENTER, 60, -1);
 	_answer_table.InsertColumn(4, _T("体重"), LVCFMT_CENTER, 60, -1);
-	_answer_table.InsertColumn(5, _T("填表日期"), LVCFMT_CENTER, 120, -1);
-	_answer_table.InsertColumn(6, _T("填表时间"), LVCFMT_CENTER, 120, -1);
 	DWORD dwStyle = _answer_table.GetExtendedStyle(); //获取当前扩展样式
 	dwStyle |= LVS_EX_FULLROWSELECT; //选中某行使整行高亮（report风格时）
 	dwStyle |= LVS_EX_GRIDLINES; //网格线（report风格时）
 	dwStyle |= LVS_EX_CHECKBOXES; //item前生成checkbox控件
 	_answer_table.SetExtendedStyle(dwStyle); //设置扩展风格
 
+	_answer_table.InsertColumn(5, _T("填表日期"), LVCFMT_CENTER, 120, -1);
+	_answer_table.InsertColumn(6, _T("填表时间"), LVCFMT_CENTER, 120, -1);
 	for (unsigned int i = 0; i < _scale->GetQuestionCount(); ++i)
 	{
-		CString str; 
+		CString str;
 		str.Format(_T("No.%d"), i + 1);
-		_answer_table.InsertColumn(i + num_info,str, LVCFMT_LEFT, 60, -1);
+		_answer_table.InsertColumn(i + num_info, str, LVCFMT_LEFT, 60, -1);
 	}
 
-	for (unsigned int i = 0; i < _scale->GetGroupCount(); ++i)
+	//for (unsigned int i = 0; i < _scale->GetGroupCount(); ++i)
+	//{
+	//	CString str;
+	//	str.Format(_T("Group.%d"), i + 1);
+	//	_answer_table.InsertColumn(i + num_info + _scale->GetQuestionCount(), str, LVCFMT_LEFT, 120, -1);
+	//}
+
+	//_answer_table.InsertColumn(7 + _scale->GetQuestionCount() + _scale->GetGroupCount(), _T("Total"), LVCFMT_LEFT, 120, -1);
+
+	for (unsigned int i = 0; i < _scale->GetQuestionCount(); ++i)
 	{
 		CString str;
-		str.Format(_T("Group.%d"), i + 1);
-		_answer_table.InsertColumn(i + num_info + _scale->GetQuestionCount(), str, LVCFMT_LEFT, 120, -1);
+		str.Format(_T("RT %d"), i + 1);
+		_answer_table.InsertColumn(i + num_info + _scale->GetQuestionCount(), str, LVCFMT_LEFT, 60, -1);
 	}
 
-	_answer_table.InsertColumn(7 + _scale->GetQuestionCount() + _scale->GetGroupCount(), _T("Total"), LVCFMT_LEFT, 120, -1);
 }
 
-bool CPsiAnswerViewerDlg::InsertAnswer(CAnswerManagerOld& answer_manager)
+bool CPsiAnswerViewerDlg::InsertAnswer(ScaleAnswers& scale_answers)
 {
 	CString date, time;
-	date = answer_manager.GetScaleTime(_scale->GetName()).date;
+	
+	date.Format(_T("%4d-%02d-%02d"), scale_answers.start_time.GetYear(), scale_answers.start_time.GetMonth(), scale_answers.start_time.GetDay());
 	_answer_table.SetItemText(_row, num_info - 2, date);
-	time = answer_manager.GetScaleTime(_scale->GetName()).time;
+	time.Format(_T("%02d:%02d"), scale_answers.start_time.GetHour(), scale_answers.start_time.GetMinute());
 	_answer_table.SetItemText(_row, num_info - 1, time);
+	
 
 	for (unsigned int i = 0; i < _scale->GetQuestionCount(); ++i)
 	{
 		CString str;
-		str.Format(_T("%d"), answer_manager.GetAnswer(_scale->GetName(), i));
+		str.Format(_T("%d"), scale_answers.answer_info[i].answer);
 		_answer_table.SetItemText(_row, num_info + i, str);
 	}
 
@@ -286,16 +304,25 @@ bool CPsiAnswerViewerDlg::InsertAnswer(CAnswerManagerOld& answer_manager)
 	//	_answer_table.InsertColumn(i + num_info + _scale->GetQuestionCount(), str, LVCFMT_LEFT, 120, -1);
 	//}
 
-	CString str;
-	str.Format(_T("%d"), answer_manager.GetTotalScore(_scale->GetName(), L""));
-	_answer_table.SetItemText(_row, num_info + _scale->GetQuestionCount() + _scale->GetGroupCount(), str);
+	//CString str;
+	//str.Format(_T("%d"), answer_manager.GetTotalScore(_scale->GetName(), L""));
+	//_answer_table.SetItemText(_row, num_info + _scale->GetQuestionCount() + _scale->GetGroupCount(), str);
 
+
+	for (unsigned int i = 0; i < _scale->GetQuestionCount(); ++i)
+	{
+		CString str;
+		str.Format(_T("%d"), scale_answers.answer_info[i].reaction_time);
+		_answer_table.SetItemText(_row, num_info + _scale->GetQuestionCount() + i, str);
+	}
 	return true;
 }
 
 bool CPsiAnswerViewerDlg::InsertInfo(CUser& user)
 {
-	_answer_table.InsertItem(_row, L"1");
+	CString row;
+	row.Format(L"%d", _row + 1);
+	_answer_table.InsertItem(_row, row.GetString());
 	_answer_table.SetItemText(_row, 1, user.GetInfo().birth_date.Format(_T("%Y-%M")));
 
 	CString sex;
@@ -320,6 +347,106 @@ bool CPsiAnswerViewerDlg::InsertInfo(CUser& user)
 	CString weight; 
 	weight.Format(_T("%d"), user.GetInfo().weight);
 	_answer_table.SetItemText(_row, 4, weight);
+
+	return true;
+}
+
+void CPsiAnswerViewerDlg::UpdateAnswerList(const TCHAR* scale)
+{
+	auto index = _answer_manager->GetIndexByScale(scale);
+
+	for (auto iter = index.begin(); iter != index.end(); ++iter)
+	{
+		if (_answer_manager->ScaleFinished(*iter) == false)
+		{
+			continue;
+		}
+
+		auto user = CUserManager::GetInstance().GetUser(_answer_manager->GetScaleAnswers(*iter).user_uid);
+		if (user)
+		{
+			InsertInfo(*user);
+		}
+
+		if (_is_answer)
+		{
+			auto scale_answers = _answer_manager->GetScaleAnswers(*iter);
+			InsertAnswer(scale_answers);
+		}
+		
+		++_row;
+	}
+}
+
+bool CPsiAnswerViewerDlg::UpdateScaleTableHeaderForSubjects()
+{
+	//删除表格中的原有信息
+	ClearTable();
+
+	CRect mRect;
+	_answer_table.GetWindowRect(&mRect);     //获取控件矩形区域
+	int kuan = mRect.Width();
+	_answer_table.InsertColumn(0, _T("用户名"), LVCFMT_LEFT, 100, -1);
+	_answer_table.InsertColumn(1, _T("密码"), LVCFMT_LEFT, 100, -1);
+	_answer_table.InsertColumn(2, _T("UID"), LVCFMT_LEFT, 150, -1);
+	_answer_table.InsertColumn(3, _T("姓名"), LVCFMT_CENTER, 60, -1);
+	_answer_table.InsertColumn(4, _T("拼音"), LVCFMT_CENTER, 80, -1);
+	_answer_table.InsertColumn(5, _T("出生年月"), LVCFMT_CENTER, 100, -1);
+	_answer_table.InsertColumn(6, _T("性别"), LVCFMT_CENTER, 60, -1);
+	_answer_table.InsertColumn(7, _T("民族"), LVCFMT_CENTER, 60, -1);
+	_answer_table.InsertColumn(8, _T("体重"), LVCFMT_CENTER, 60, -1);
+	_answer_table.InsertColumn(9, _T("电话"), LVCFMT_CENTER, 150, -1);
+	_answer_table.InsertColumn(10, _T("电邮"), LVCFMT_CENTER, 150, -1);
+	DWORD dwStyle = _answer_table.GetExtendedStyle(); //获取当前扩展样式
+	dwStyle |= LVS_EX_FULLROWSELECT; //选中某行使整行高亮（report风格时）
+	dwStyle |= LVS_EX_GRIDLINES; //网格线（report风格时）
+	dwStyle |= LVS_EX_CHECKBOXES; //item前生成checkbox控件
+	_answer_table.SetExtendedStyle(dwStyle); //设置扩展风格
+
+	return true;
+}
+
+bool CPsiAnswerViewerDlg::UpdateSubjectsTable()
+{
+	auto users = CUserManager::GetInstance().Users();
+
+	for (auto iter = users.begin(); iter != users.end(); ++iter)
+	{
+		_answer_table.InsertItem(_row, iter->second->GetUserId());
+		_answer_table.SetItemText(_row, 1, iter->second->GetPassword());
+		_answer_table.SetItemText(_row, 2, iter->second->GetUid());
+		_answer_table.SetItemText(_row, 3, iter->second->GetInfo().name);
+		_answer_table.SetItemText(_row, 4, iter->second->GetInfo().name_pinyin);
+		_answer_table.SetItemText(_row, 5, iter->second->GetInfo().birth_date.Format(_T("%Y-%M")));
+
+
+		CString sex;
+		switch (Sex(iter->second->GetInfo().sex))
+		{
+		case Sex::SexMale:
+			sex.Format(_T("男"));
+			break;
+		case Sex::SexFemale:
+			sex.Format(_T("女"));
+			break;
+		case Sex::SexUnknown:
+			sex.Format(_T("未知"));
+			break;
+		default:
+			break;
+		}
+		_answer_table.SetItemText(_row, 6, sex);
+		_answer_table.SetItemText(_row, 7, iter->second->GetInfo().nationality);
+
+		CString weight;
+		weight.Format(_T("%d"), iter->second->GetInfo().weight);
+		_answer_table.SetItemText(_row, 8, weight);
+
+		_answer_table.SetItemText(_row, 9, iter->second->GetInfo().mobile);
+		_answer_table.SetItemText(_row, 10, iter->second->GetInfo().email);
+
+		++_row;
+	}
 
 	return true;
 }
@@ -350,45 +477,47 @@ void CPsiAnswerViewerDlg::OnCbnSelchangeComboScale()
 	}
 	else
 	{
-		UpdateAnswerScale();
+		UpdateAnswerScaleHeader();
 		_row = 0;
+		CString temp = scale_name.Right(scale_name.GetLength() - scale_name.ReverseFind(_T('.')) - 1);
+		UpdateAnswerList(temp);
 	}
 }
 
 
 void CPsiAnswerViewerDlg::OnBnClickedButtonAdd()
 {
-	int nIndex = _combo_person.GetCurSel();
-	if (nIndex != -1)
-	{
-		CString user_uid;
-		_combo_person.GetLBText(nIndex, user_uid);
+	//int nIndex = _combo_person.GetCurSel();
+	//if (nIndex != -1)
+	//{
+	//	CString user_uid;
+	//	_combo_person.GetLBText(nIndex, user_uid);
 
-		CString file_path = _working_folder + _T("/TestUsers/Answers/") + user_uid + _T(".xml");
+	//	CString file_path = _working_folder + _T("/TestUsers/Answers/") + user_uid + _T(".xml");
 
-		CAnswerManagerOld answer_manager;
-		CUser user(L"Temp", L"0");
-		if (answer_manager.Load(file_path, user) && answer_manager.ScaleFinished(_scale->GetName()))
-		{
-			if (InsertInfo(user))
-			{
-				if (InsertAnswer(answer_manager))
-				{
-					++_row;
-				}
-				else
-					AfxMessageBox(_T("插入答案有错."));
-			}
-			else
-			{
-				AfxMessageBox(_T("插入用户信息有错."));
-			}
-		}
-		else
-		{
-			AfxMessageBox(_T("载入错误或者该被试并未答题."));
-		}
-	}
+	//	CAnswerManager answer_manager;
+	//	CUser user(L"Temp", L"0");
+	//	if (answer_manager.Load(file_path, user) && answer_manager.ScaleFinished(_scale->GetName()))
+	//	{
+	//		if (InsertInfo(user))
+	//		{
+	//			if (InsertAnswer(answer_manager))
+	//			{
+	//				++_row;
+	//			}
+	//			else
+	//				AfxMessageBox(_T("插入答案有错."));
+	//		}
+	//		else
+	//		{
+	//			AfxMessageBox(_T("插入用户信息有错."));
+	//		}
+	//	}
+	//	else
+	//	{
+	//		AfxMessageBox(_T("载入错误或者该被试并未答题."));
+	//	}
+	//}
 }
 
 
@@ -419,8 +548,6 @@ void CPsiAnswerViewerDlg::OnEnChangeEditWorkingFolder()
 	// function and call CRichEditCtrl().SetEventMask()
 	// with the ENM_CHANGE flag ORed into the mask.
 
-	// TODO:  Add your control notification handler code here
-
 	UpdateData();
 	std::vector<CString> files;
 	FileSystem::ForEachFile(_working_folder, _T("*.scale"), false, [&](const CString& file) {
@@ -434,4 +561,102 @@ void CPsiAnswerViewerDlg::OnEnChangeEditWorkingFolder()
 	{
 		_combo_scale.AddString(*iter);
 	}
+
+	CString file_path = _working_folder + _T("\\TestUsers\\Answers");
+	_answer_manager->LoadAll(file_path);
+}
+
+void CPsiAnswerViewerDlg::OnBnClickedButtonCopy()
+{
+	CString str;
+	for (unsigned int i = 0; i < _row; ++i)
+	{
+		for (int j = 0; j < _answer_table.GetHeaderCtrl()->GetItemCount(); ++j)
+		{
+			str += _answer_table.GetItemText(i, j);
+			str += "\t";
+		}
+		str += "\n";
+	}
+	
+	if (!Utilities::OS::SetClipboardText(str.GetString()))
+	{
+		AfxMessageBox(_T("Copy Failed"));
+	}
+
+}
+
+
+void CPsiAnswerViewerDlg::OnBnClickedButtonMerge()
+{
+	ASSERT(_answer_manager);
+	
+	Utilities::CXml users_info(XML_USERS_INFO);
+
+	if (CUserManager::GetInstance().Users().empty())
+	{
+		AfxMessageBox(L"No users");
+		return;
+	}
+
+	for (auto item : CUserManager::GetInstance().Users())
+	{
+		auto user_info_element = users_info.AddElement(XML_USER_INFO);
+		user_info_element->SetAttrib(XML_USER_NAME, item.second->GetUserId());
+		user_info_element->SetAttrib(XML_USER_PASSWORD, item.second->GetPassword());
+		user_info_element->SetAttrib(XML_USER_UID, item.second->GetUid());
+	}
+
+	bool result = users_info.Save(_working_folder + _T("\\TestUsers\\UserInfo.xml"));
+	if (result)
+	{
+		AfxMessageBox(L"Merge Successfully.");
+	}
+	else
+	{
+		AfxMessageBox(L"Merge Failed!");
+	}
+}
+
+
+void CPsiAnswerViewerDlg::OnBnClickedCheckAnswer()
+{
+	_is_answer = !_is_answer;
+
+	CButton* pBtn = (CButton*)GetDlgItem(IDC_CHECK_ANSWER);
+	pBtn->SetCheck(_is_answer ? 1 : 0);
+
+	_row = 0;
+	
+	if (!_is_answer)
+	{
+		_combo_scale.EnableWindow(FALSE);
+		_combo_person.EnableWindow(FALSE);
+		UpdateScaleTableHeaderForSubjects();
+		UpdateSubjectsTable();
+	}
+	else
+	{
+		_combo_scale.EnableWindow(TRUE);
+		_combo_person.EnableWindow(TRUE);
+
+		if (_combo_scale.GetCurSel() == -1)
+		{
+			ClearTable();
+		}
+		else
+		{
+			OnCbnSelchangeComboScale();
+		}
+	}
+}
+
+void CPsiAnswerViewerDlg::ClearTable()
+{
+	unsigned int num_columns = _answer_table.GetHeaderCtrl()->GetItemCount();
+	for (unsigned int i = 0; i < num_columns; ++i)
+	{
+		_answer_table.DeleteColumn(0);
+	}
+	_answer_table.DeleteAllItems();
 }

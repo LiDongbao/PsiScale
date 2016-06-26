@@ -81,7 +81,7 @@ END_MESSAGE_MAP()
 
 CPsycologyTestDlg::CPsycologyTestDlg(shared_ptr<CPsiScale> scale,
 	CAnswerManager& answer_manager,
-	CUser& user,
+	shared_ptr<CUser> user,
 	HWND notify_wnd, 
 	CWnd* pParent /*=NULL*/)
 	: CDialogEx(IDD_PSYCOLOGYTEST_DIALOG, pParent),
@@ -93,6 +93,7 @@ CPsycologyTestDlg::CPsycologyTestDlg(shared_ptr<CPsiScale> scale,
 	, _timer_text(_T(""))
 	, _timer(0)
 	, _user(user)
+	, _is_pause(false)
 {
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
 }
@@ -121,8 +122,9 @@ BEGIN_MESSAGE_MAP(CPsycologyTestDlg, CDialogEx)
 	ON_WM_CLOSE()
 	ON_WM_TIMER()
 	ON_STN_CLICKED(IDC_TIMER, &CPsycologyTestDlg::OnStnClickedTimer)
-	ON_BN_CLICKED(ID_FIRST, &CPsycologyTestDlg::OnBnClickedFirst)
-	ON_BN_CLICKED(ID_LAST, &CPsycologyTestDlg::OnBnClickedLast)
+	ON_BN_CLICKED(IDC_BUTTON_PROLOGUE, &CPsycologyTestDlg::OnBnClickedButtonPrologue)
+	ON_BN_CLICKED(IDC_BUTTON_PAUSE, &CPsycologyTestDlg::OnBnClickedButtonPause)
+	ON_BN_CLICKED(IDC_BUTTON_STOP, &CPsycologyTestDlg::OnBnClickedButtonStop)
 END_MESSAGE_MAP()
 
 
@@ -139,8 +141,8 @@ BOOL CPsycologyTestDlg::OnInitDialog()
 	ASSERT((IDM_ABOUTBOX & 0xFFF0) == IDM_ABOUTBOX);
 	ASSERT(IDM_ABOUTBOX < 0xF000);
 
-	TODO(初始化_start_time。如果在现有的答案中已经有了，则加载先前的时间。);
-
+	_start_time = _answer_manager.FindTimeByUserScale(_user->GetUid(), _psi_scale->GetName());
+	
 	CMenu* pSysMenu = GetSystemMenu(FALSE);
 	if (pSysMenu != NULL)
 	{
@@ -164,11 +166,17 @@ BOOL CPsycologyTestDlg::OnInitDialog()
 	{
 		GetDlgItem(buttons[i])->ShowWindow(SW_HIDE);
 	}
-//	ShowQuestion(0);
-	auto un_answered_question =_answer_manager.CheckForUnansweredQuestion(*_psi_scale);
+
+	auto index = _answer_manager.GetAnswerIndex(_user->GetUid(), _psi_scale->GetName(), _start_time, true);
+	if (index == -1)
+	{
+		index = _answer_manager.AddScaleAnswer(_user->GetUid(), _psi_scale->GetName(), _start_time, _psi_scale->GetQuestionCount());
+	}
+	auto un_answered_question =_answer_manager.CheckForUnansweredQuestion(index);
 	ShowQuestion((un_answered_question == -1) ? _psi_scale->GetQuestionCount() - 1 : un_answered_question);
 
 	SetTimer(1, 1000, NULL);
+	SetTimer(2, 1000*300, NULL);	//每五分钟进行一次自动保存
 
 	return TRUE;  // return TRUE  unless you set the focus to a control
 }
@@ -226,6 +234,7 @@ HCURSOR CPsycologyTestDlg::OnQueryDragIcon()
 bool CPsycologyTestDlg::ShowQuestion(unsigned question_index)
 {
 	ASSERT(_psi_scale);
+	::SetFocus(_notify_wnd); //为了让选项失去焦点, 但感觉可能有点问题.
 
 	if (question_index >= _psi_scale->GetQuestionCount())
 		return false;
@@ -242,7 +251,7 @@ bool CPsycologyTestDlg::ShowQuestion(unsigned question_index)
 		UpdateSelectionButtons(_psi_scale->Question(_current_question_index).Choices());
 	}
 
-	int index = _answer_manager.GetAnswerIndex(_user.GetUid(), _psi_scale->GetName(), _start_time);
+	int index = _answer_manager.GetAnswerIndex(_user->GetUid(), _psi_scale->GetName(), _start_time);
 	if (_answer_manager.IsAnswered(index, _current_question_index))
 	{
 		Check(_answer_manager.GetAnswer(index, _current_question_index) - 1);
@@ -327,49 +336,33 @@ void CPsycologyTestDlg::OnBnClickedNext()
 	}
 }
 
-void CPsycologyTestDlg::OnBnClickedFirst()
-{
-	ShowQuestion(0);
-}
-
-
-void CPsycologyTestDlg::OnBnClickedLast()
-{
-	ShowQuestion(_psi_scale->GetQuestionCount() - 1);
-}
-
 void CPsycologyTestDlg::ProcessAnswer(unsigned int answer)
 {
 	_end = clock();
 
 	ASSERT(_end > _start);
 
-	::SetFocus(_notify_wnd); //为了让选项失去焦点, 但感觉可能有点问题.
-
 	// 1. 记录
-	_answer_manager.AddAnswer(_psi_scale->GetName(), _current_question_index, answer, (_end - _start) * 1000 / CLOCKS_PER_SEC);
+	unsigned int index = _answer_manager.GetAnswerIndex(_user->GetUid(), _psi_scale->GetName(), _start_time, false);
+	_answer_manager.AddAnswer(index, _current_question_index, answer, (_end - _start) * 1000 / CLOCKS_PER_SEC);
 	TODO(分值定义尚未定义。);
 	// 2. 下一道题。
-	if (_current_question_index < _psi_scale->GetQuestionCount() - 1)
+	//unsigned int index = _answer_manager.GetAnswerIndex(_user.GetUid(), _psi_scale->GetName(), _start_time, false);
+	if ((_current_question_index < _psi_scale->GetQuestionCount() - 1) && (!_answer_manager.IsAnswered(index, _current_question_index + 1)))
 	{
 		ShowQuestion(_current_question_index + 1);
 	}
 	else
 	{
-		int unanswer_question = _answer_manager.CheckForUnansweredQuestion(*_psi_scale);
+		int unanswer_question = _answer_manager.CheckForUnansweredQuestion(index);
 		if (unanswer_question == -1)
 		{
 			if (AfxMessageBox(_T("您已经完成了该问卷，点击“确认”按钮返回。"), MB_OKCANCEL) ==
 				IDOK)
 			{
-				SYSTEMTIME sys;
-				GetLocalTime(&sys);
-				CString date;
-				CString time;
-				date.Format(_T("%4d-%02d-%02d"), sys.wYear, sys.wMonth, sys.wDay);
-				time.Format(_T("%02d:%02d"), sys.wHour, sys.wMinute);
-			//	_answer_manager.SetScaleTime(_psi_scale->GetName(), date, time);
-				_answer_manager.FinishScale(_psi_scale->GetName());
+				unsigned int index = _answer_manager.GetAnswerIndex(_user->GetUid(), _psi_scale->GetName(), _start_time, false);
+				_answer_manager.SetScaleFinished(index, true);
+		
 
 				::SendMessage(_notify_wnd, WM_SCALE_FINISHED, 0, 0);
 
@@ -444,10 +437,9 @@ void CPsycologyTestDlg::AdjustSize(int last_button)
 
 	MoveButtonUp(*GetDlgItem(ID_PREV), button_rect.bottom + 15);
 	MoveButtonUp(*GetDlgItem(ID_NEXT), button_rect.bottom + 15);
-	MoveButtonUp(*GetDlgItem(ID_FIRST), button_rect.bottom + 15);
-	MoveButtonUp(*GetDlgItem(ID_LAST), button_rect.bottom + 15);
-
-
+	MoveButtonUp(*GetDlgItem(IDC_BUTTON_PAUSE), button_rect.bottom + 15);
+	MoveButtonUp(*GetDlgItem(IDC_BUTTON_STOP), button_rect.bottom + 15);
+	
 	GetClientRect(&clientrect);  // client area of the dialog
 	GetWindowRect(&dlgrect);	  // rectangle of the dialog window
 
@@ -493,8 +485,14 @@ void CPsycologyTestDlg::OnTimer(UINT_PTR nIDEvent)
 	{
 		++_timer;
 		_timer_text.Format(_T("用时:%2d分%2d秒"), _timer / 60, _timer % 60);
+		UpdateData(FALSE);
 	}
-	UpdateData(FALSE);
+
+	if (2 == nIDEvent)
+	{
+		_answer_manager.Save(_user->GetWorkingFolder() + _T("\\") + _user->GetUid() + _T(".xml"), _user->GetUid());
+	}
+	
 
 	CDialogEx::OnTimer(nIDEvent);
 }
@@ -505,3 +503,50 @@ void CPsycologyTestDlg::OnStnClickedTimer()
 	// TODO: Add your control notification handler code here
 }
 
+
+
+void CPsycologyTestDlg::OnBnClickedButtonPrologue()
+{
+	AfxMessageBox(_psi_scale->GetPrologue());
+}
+
+
+void CPsycologyTestDlg::OnBnClickedButtonPause()
+{
+	_is_pause = !_is_pause;
+
+	if (_is_pause)
+	{
+		(CButton*)GetDlgItem(ID_NEXT)->EnableWindow(FALSE);
+		(CButton*)GetDlgItem(ID_PREV)->EnableWindow(FALSE);
+		(CButton*)GetDlgItem(IDC_BUTTON_1)->EnableWindow(FALSE);
+		(CButton*)GetDlgItem(IDC_BUTTON_2)->EnableWindow(FALSE);
+		(CButton*)GetDlgItem(IDC_BUTTON_3)->EnableWindow(FALSE);
+		(CButton*)GetDlgItem(IDC_BUTTON_4)->EnableWindow(FALSE);
+		(CButton*)GetDlgItem(IDC_BUTTON_5)->EnableWindow(FALSE);
+		(CButton*)GetDlgItem(IDC_BUTTON_6)->EnableWindow(FALSE);
+		(CButton*)GetDlgItem(IDC_BUTTON_7)->EnableWindow(FALSE);
+		KillTimer(1);
+	}
+	else
+	{
+		_start = clock();
+		(CButton*)GetDlgItem(ID_NEXT)->EnableWindow(TRUE);
+		(CButton*)GetDlgItem(ID_PREV)->EnableWindow(TRUE);
+		(CButton*)GetDlgItem(IDC_BUTTON_1)->EnableWindow(TRUE);
+		(CButton*)GetDlgItem(IDC_BUTTON_2)->EnableWindow(TRUE);
+		(CButton*)GetDlgItem(IDC_BUTTON_3)->EnableWindow(TRUE);
+		(CButton*)GetDlgItem(IDC_BUTTON_4)->EnableWindow(TRUE);
+		(CButton*)GetDlgItem(IDC_BUTTON_5)->EnableWindow(TRUE);
+		(CButton*)GetDlgItem(IDC_BUTTON_6)->EnableWindow(TRUE);
+		(CButton*)GetDlgItem(IDC_BUTTON_7)->EnableWindow(TRUE);
+		SetTimer(1, 1000, NULL);
+	}
+}
+
+void CPsycologyTestDlg::OnBnClickedButtonStop()
+{
+	KillTimer(1);
+
+	EndDialog(0);
+}

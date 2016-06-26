@@ -11,6 +11,7 @@
 #include <algorithm>
 #include "..\PsiCommon\User.h"
 #include "PersonalInfoDialog.h"
+#include "../Utilities/macros.h"
 
 using namespace std;
 
@@ -22,10 +23,12 @@ bool IsShort(const CString& s1, const CString& s2)
 
 IMPLEMENT_DYNAMIC(CScaleOverviewDialog, CDialogEx)
 
-CScaleOverviewDialog::CScaleOverviewDialog(CUser& user, 
+CScaleOverviewDialog::CScaleOverviewDialog(shared_ptr<CUser> user, 
+	bool is_first_time, 
 	CWnd* pParent /*=NULL*/)
 	: CDialogEx(IDD_DIALOG_OVERVIEW, pParent),
 	_user(user),
+	_is_new_user(is_first_time),
 	_working_folder(_T(""))
 {
 }
@@ -57,10 +60,21 @@ END_MESSAGE_MAP()
 
 void CScaleOverviewDialog::GetTestInfoAndSetListInfo(std::vector<CString>& test_infos)
 {
-	_answer_manager.Load(_user.GetWorkingFolder() + _T("\\") + _user.GetUid() + _T(".xml"), _user);
-	std::for_each(test_infos.begin(), test_infos.end(), [&, this](CString item) {
+	_answer_manager.Load(_user->GetWorkingFolder() + _T("\\") + _user->GetUid() + _T(".xml"));
+	for (auto item : test_infos)
+	{
 		CString temp = item.Right(item.GetLength() - item.ReverseFind(_T('.')) - 1);
-		_scale_list.InsertScale(item, _answer_manager.ScaleFinished(temp)); });
+		auto index = _answer_manager.GetIndexByScale(temp);
+		TODO(这里还没有考虑一张量表做多次的情况);
+		if (index.empty())
+		{
+			_scale_list.InsertScale(item, false);
+		}
+		else
+		{
+			_scale_list.InsertScale(item, _answer_manager.ScaleFinished(index[0]));
+		}
+	}
 }
 
 
@@ -99,6 +113,12 @@ BOOL CScaleOverviewDialog::OnInitDialog()
 	__super::OnInitDialog();
 
 	_working_folder_edit.EnableFolderBrowseButton();
+
+	if (_is_new_user)
+	{
+		_answer_manager.Save(_user->GetWorkingFolder() + _T("\\") + _user->GetUid() + _T(".xml"), _user->GetUid());
+	}
+
 	_scale_list.Init();
 
 	CRegKey regkey;
@@ -114,11 +134,13 @@ BOOL CScaleOverviewDialog::OnInitDialog()
 			}
 		}
 	}
+
 	return TRUE;
 }
 
 void CScaleOverviewDialog::OnOK()
 {
+	// Disable default exit from dialog.
 	// __super::OnOK();
 }
 
@@ -126,7 +148,7 @@ void CScaleOverviewDialog::OnCancel()
 {
 	if (AfxMessageBox(_T("确认退出？"), MB_OKCANCEL) == IDOK)
 	{
-		_answer_manager.Save(_user.GetWorkingFolder() + _T("\\") + _user.GetUid() + _T(".xml"), _user);
+		_answer_manager.Save(_user->GetWorkingFolder() + _T("\\") + _user->GetUid() + _T(".xml"), _user->GetUid());
 		__super::OnCancel();
 	}
 }
@@ -161,11 +183,11 @@ void CScaleOverviewDialog::OnBnClickedStart()
 		ShowWindow(SW_HIDE);
 		if (AfxMessageBox(_scale->GetPrologue(), MB_OKCANCEL) == IDOK)
 		{
-			CPsycologyTestDlg dlg(_scale, _answer_manager, m_hWnd);
+			CPsycologyTestDlg dlg(_scale, _answer_manager, _user, m_hWnd);
 			dlg.DoModal();
 		}
 
-		_answer_manager.Save(_user.GetWorkingFolder() + _T("\\") + _user.GetUid() + _T(".xml"), _user);
+		_answer_manager.Save(_user->GetWorkingFolder() + _T("\\") + _user->GetUid() + _T(".xml"), _user->GetUid());
 		ShowWindow(SW_SHOW);
 	}
 }
@@ -195,10 +217,12 @@ void CScaleOverviewDialog::OnLvnItemchangedListScales(NMHDR *pNMHDR, LRESULT *pR
 void CScaleOverviewDialog::OnBnClickedModifyPersonalInfo()
 {
 	CPersonalInfoDialog Info_dlg;
-	Info_dlg.SetInfo(_user.GetInfo());
+	Info_dlg.SetInfo(_user->GetInfo());
 
 	if (Info_dlg.DoModal() == IDOK)
 	{
-		_user.SetInfo(Info_dlg.GetInfo());
+		_user->SetInfo(Info_dlg.GetInfo());
 	}
+
+	_answer_manager.Save(_user->GetWorkingFolder() + _T("\\") + _user->GetUid() + _T(".xml"), _user->GetUid());
 }

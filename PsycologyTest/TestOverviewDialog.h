@@ -16,7 +16,7 @@ class CScaleOverviewDialog : public CDialogEx
 	DECLARE_DYNAMIC(CScaleOverviewDialog)
 
 public:
-	CScaleOverviewDialog(CUser& user, CWnd* pParent = NULL);   // standard constructor
+	CScaleOverviewDialog(std::shared_ptr<CUser> user, bool is_first_time = false, CWnd* pParent = NULL);   // standard constructor
 	virtual ~CScaleOverviewDialog();
 
 // Dialog Data
@@ -31,6 +31,7 @@ protected:
 private:
 	void GetTestInfoAndSetListInfo(std::vector<CString>& test_infos);
 	CMFCEditBrowseCtrl _working_folder_edit;
+	bool _is_new_user;
 public:
 	CString _working_folder;
 	afx_msg void OnEnChangeEditWorkingFolder();
@@ -43,8 +44,8 @@ public:
 
 	CScaleList _scale_list;
 	std::shared_ptr<CPsiScale> _scale;
-	CUser& _user;
-	CAnswerManagerOld _answer_manager;
+	std::shared_ptr<CUser> _user;
+	CAnswerManager _answer_manager;
 	afx_msg void OnBnClickedStart();
 	afx_msg void OnLvnItemchangedListScales(NMHDR *pNMHDR, LRESULT *pResult);
 	CButton _start;

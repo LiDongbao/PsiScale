@@ -17,20 +17,18 @@ namespace XMLNameSpace
 	extern "C" const TCHAR* XML_USER_MOBILE;
 	extern "C" const TCHAR* XML_USER_EMAIL;
 
-
-	extern "C"  const TCHAR* XML_TEST;
-	extern "C"  const TCHAR* XML_TEST_SCALE;
-	extern "C"  const TCHAR* XML_TEST_PARTICIPANT_UID;
-	extern "C"  const TCHAR* XML_TEST_NAME;
-	extern "C"  const TCHAR* XML_TEST_FINISHED;
-	extern "C"  const TCHAR* XML_TEST_FINISHED_DATE;
-	extern "C"  const TCHAR* XML_TEST_FINISHED_TIME;
-	extern "C"  const TCHAR* XML_TEST_ANSWERS;
-	extern "C"  const TCHAR* XML_TEST_ITEM;
-	extern "C"  const TCHAR* XML_TEST_ID;
-	extern "C"  const TCHAR* XML_TEST_ANSWER;
-	extern "C"  const TCHAR* XML_TEST_TIME;
-	extern "C"  const TCHAR* XML_TEST_SUBSCALES;
-	extern "C"  const TCHAR* XML_TEST_SUBSCALE;
-	extern "C"  const TCHAR* XML_TEST_SCORE;
+	extern "C" const TCHAR* XML_TEST;
+	extern "C" const TCHAR* XML_TEST_SCALE;
+	extern "C" const TCHAR* XML_TEST_PARTICIPANT_UID;
+	extern "C" const TCHAR* XML_TEST_NAME;
+	extern "C" const TCHAR* XML_TEST_FINISHED;
+	extern "C" const TCHAR* XML_TEST_START_TIME;
+	extern "C" const TCHAR* XML_TEST_ANSWERS;
+	extern "C" const TCHAR* XML_TEST_ITEM;
+	extern "C" const TCHAR* XML_TEST_ID;
+	extern "C" const TCHAR* XML_TEST_ANSWER;
+	extern "C" const TCHAR* XML_TEST_TIME;
+	extern "C" const TCHAR* XML_TEST_SUBSCALES;
+	extern "C" const TCHAR* XML_TEST_SUBSCALE;
+	extern "C" const TCHAR* XML_TEST_SCORE;
 }
