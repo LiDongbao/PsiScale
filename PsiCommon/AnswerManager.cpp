@@ -139,27 +139,27 @@ bool CAnswerManager::Load(const CString& test_info_path)
 		return false;
 	}
 
-	auto temp_user = xml.GetElement(XML_USER_INFO);
-	if (temp_user == nullptr)
+	auto user_item = xml.GetElement(XML_USER_INFO);
+	if (user_item == nullptr)
 		return false;
 
 	// user->SetUid(temp_user->GetAttrib(XML_USER_UID));
-	auto user = CUserManager::GetInstance().GetUser(temp_user->GetAttrib(XML_USER_UID));
+	auto user = CUserManager::GetInstance().GetUser(user_item->GetAttrib(XML_USER_UID));
 	if (!user)
 	{
-		user = CUserManager::GetInstance().CreateUser(temp_user->GetAttrib(XML_USER_USERID),
-			temp_user->GetAttrib(XML_USER_PASSWORD));
+		user = CUserManager::GetInstance().CreateUser(user_item->GetAttrib(XML_USER_USERID),
+			user_item->GetAttrib(XML_USER_PASSWORD));
 	}
 
 	PersonalInfo info;
-	info.name = temp_user->GetAttrib(XML_USER_NAME);
-	info.name_pinyin = temp_user->GetAttrib(XML_USER_PINYIN);
-	info.nationality = temp_user->GetAttrib(XML_USER_NATIONALITY);
-	info.birth_date = temp_user->GetOleDateTimeAttrib(XML_USER_BIRTHDATE);
-	info.sex = Sex(temp_user->GetIntegerAttrib(XML_USER_SEX));
-	info.weight = temp_user->GetIntegerAttrib(XML_USER_WEIGHT);
-	info.mobile = temp_user->GetAttrib(XML_USER_MOBILE);
-	info.email = temp_user->GetAttrib(XML_USER_EMAIL);
+	info.name = user_item->GetAttrib(XML_USER_NAME);
+	info.name_pinyin = user_item->GetAttrib(XML_USER_PINYIN);
+	info.nationality = user_item->GetAttrib(XML_USER_NATIONALITY);
+	info.birth_date = user_item->GetOleDateTimeAttrib(XML_USER_BIRTHDATE);
+	info.sex = Sex(user_item->GetIntegerAttrib(XML_USER_SEX));
+	info.weight = user_item->GetIntegerAttrib(XML_USER_WEIGHT);
+	info.mobile = user_item->GetAttrib(XML_USER_MOBILE);
+	info.email = user_item->GetAttrib(XML_USER_EMAIL);
 	user->SetInfo(info);
 
 	auto scales = xml.GetChildElements();
@@ -254,22 +254,18 @@ void CAnswerManager::SaveScaleItem(Utilities::CXmlElement* scale_xml, unsigned i
 		item->SetIntegerAttrib(XML_TEST_TIME, answers[i].reaction_time);
 	}
 
-	TODO(¼Æ·Ö)
-	// 	auto subscale_iter = _group_scores.find(scale_name);
-	// 	if (subscale_iter != _group_scores.end())
-	// 	{
-	// 		auto subscales_xml = scale_xml->AddElement(XML_TEST_SUBSCALES);
-	// 		for (auto iter = subscale_iter->second.begin(); iter != subscale_iter->second.end(); ++iter)
-	// 		{
-	// 			auto sub_score = GetTotalScore(scale_name, iter->first);
-	// 
-	// 			auto item = subscales_xml->AddElement(XML_TEST_SUBSCALE);
-	// 			item->SetAttrib(XML_TEST_NAME, iter->first);
-	// 			item->SetIntegerAttrib(XML_TEST_SCORE, sub_score);
-	// 		}
-	// 	}
-	// 
-	// 	return true;
+	auto group_scores = GetScore(_answer_table[index].scale_name, answers);
+
+	if (!group_scores.empty())
+	{
+		auto subscales_xml = scale_xml->AddElement(XML_TEST_SUBSCALES);
+		for (auto group : group_scores)
+		{
+			auto item = subscales_xml->AddElement(XML_TEST_SUBSCALE);
+			item->SetAttrib(XML_TEST_NAME, group.first.c_str());
+			item->SetFloatAttrib(XML_TEST_SCORE, group.second);
+		}
+	}
 }
 
 bool CAnswerManager::LoadAll(CString folder_path)

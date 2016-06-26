@@ -8,6 +8,7 @@
 #include "LogonDialog.h"
 #include "PersonalInfoDialog.h"
 #include "..\PsiCommon\User.h"
+#include "..\PsiCommon\Scorer.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -83,7 +84,10 @@ BOOL CPsycologyTestApp::InitInstance()
 					continue;
 				}
 			}
-			CScaleOverviewDialog overview_dialog(logon_dlg.GetUser());
+			
+			auto folder = logon_dlg.GetUser()->GetWorkingFolder();
+			CScorer::GetInstance().Init(folder + _T("\\..\\.."));
+			CScaleOverviewDialog overview_dialog(logon_dlg.GetUser(), logon_dlg.IsFirstTime());
 			overview_dialog.DoModal();
 		}
 		else if (nResponse == IDCANCEL)

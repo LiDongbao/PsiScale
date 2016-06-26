@@ -16,7 +16,7 @@ class CScaleOverviewDialog : public CDialogEx
 	DECLARE_DYNAMIC(CScaleOverviewDialog)
 
 public:
-	CScaleOverviewDialog(std::shared_ptr<CUser> user, CWnd* pParent = NULL);   // standard constructor
+	CScaleOverviewDialog(std::shared_ptr<CUser> user, bool is_first_time = false, CWnd* pParent = NULL);   // standard constructor
 	virtual ~CScaleOverviewDialog();
 
 // Dialog Data
@@ -31,6 +31,7 @@ protected:
 private:
 	void GetTestInfoAndSetListInfo(std::vector<CString>& test_infos);
 	CMFCEditBrowseCtrl _working_folder_edit;
+	bool _is_new_user;
 public:
 	CString _working_folder;
 	afx_msg void OnEnChangeEditWorkingFolder();

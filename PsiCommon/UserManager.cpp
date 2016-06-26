@@ -75,7 +75,9 @@ bool CUserManager::UserExists(const CString& name, const CString& password)
 std::shared_ptr<CUser> CUserManager::GetUser(const CString& user_id, 
 	const CString& password)
 {
-	auto iter = _users.find(user_id);
+	auto uid = _user_name_to_uid.find(user_id);
+	
+	auto iter = _users.find(uid->second);
 	if (iter != _users.end())
 	{
 		assert(iter->second);

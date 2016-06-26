@@ -24,9 +24,11 @@ bool IsShort(const CString& s1, const CString& s2)
 IMPLEMENT_DYNAMIC(CScaleOverviewDialog, CDialogEx)
 
 CScaleOverviewDialog::CScaleOverviewDialog(shared_ptr<CUser> user, 
+	bool is_first_time, 
 	CWnd* pParent /*=NULL*/)
 	: CDialogEx(IDD_DIALOG_OVERVIEW, pParent),
 	_user(user),
+	_is_new_user(is_first_time),
 	_working_folder(_T(""))
 {
 }
@@ -112,7 +114,10 @@ BOOL CScaleOverviewDialog::OnInitDialog()
 
 	_working_folder_edit.EnableFolderBrowseButton();
 
-	_answer_manager.Save(_user->GetWorkingFolder() + _T("\\") + _user->GetUid() + _T(".xml"), _user->GetUid());
+	if (_is_new_user)
+	{
+		_answer_manager.Save(_user->GetWorkingFolder() + _T("\\") + _user->GetUid() + _T(".xml"), _user->GetUid());
+	}
 
 	_scale_list.Init();
 

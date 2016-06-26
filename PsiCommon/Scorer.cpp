@@ -33,9 +33,10 @@ bool CScorer::Init(const wchar_t * score_folder)
 
 	FileSystem::ForEachFile(score_folder, L"*.score", false, [&](CString file_path) {
 		wstring scale_name = FileSystem::GetFileNameFromPath(file_path);
+		auto pt = scale_name.find_first_of(_T("."));
 		shared_ptr<CScoreMatrix> score_matrix(new CScoreMatrix);
 		score_matrix->Load(file_path);
-		_all_score_matrix.insert(make_pair(scale_name, score_matrix));
+		_all_score_matrix.insert(make_pair(scale_name.substr(pt + 1), score_matrix));
 	});
 
 	_initialized = true;
@@ -64,6 +65,7 @@ bool CScoreMatrix::Load(const wchar_t * path)
 	_groups.resize(group_count);
 
 	char line_buffer[256];
+	file.getline(line_buffer, 256);	//ÍÌµô×îºóµÄ\n
 	file.getline(line_buffer, 256);
 
 	USES_CONVERSION;
