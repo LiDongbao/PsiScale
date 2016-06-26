@@ -13,7 +13,6 @@ public:
 	std::shared_ptr<CUser> CreateUser(const CString& name, const CString& password);
 	std::shared_ptr<CUser> GetUser(const CString& name, const CString& password);
 	std::shared_ptr<CUser> GetUser(const wchar_t * uid);
-	bool AddUser(std::shared_ptr<CUser> user);
 	bool LoadLogonInfo();
 	bool SaveLogonInfo();
 
@@ -22,6 +21,7 @@ public:
 
 private:
 	CUserManager();
+	bool AddUser(std::shared_ptr<CUser> user);
 
 	bool UserExists(const CString& name, const CString& password);
 	const CString GetWorkingFolder() const;

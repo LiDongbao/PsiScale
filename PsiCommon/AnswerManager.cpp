@@ -139,26 +139,28 @@ bool CAnswerManager::Load(const CString& test_info_path)
 		return false;
 	}
 
-	auto user = shared_ptr<CUser>(new CUser);
-
 	auto temp_user = xml.GetElement(XML_USER_INFO);
-	if (temp_user != nullptr)
+	if (temp_user == nullptr)
+		return false;
+
+	// user->SetUid(temp_user->GetAttrib(XML_USER_UID));
+	auto user = CUserManager::GetInstance().GetUser(temp_user->GetAttrib(XML_USER_UID));
+	if (!user)
 	{
-		user->SetUserId(temp_user->GetAttrib(XML_USER_USERID));
-		user->SetPassword(temp_user->GetAttrib(XML_USER_PASSWORD));
-		user->SetUid(temp_user->GetAttrib(XML_USER_UID));
-		PersonalInfo info;
-		info.name = temp_user->GetAttrib(XML_USER_NAME);
-		info.name_pinyin = temp_user->GetAttrib(XML_USER_PINYIN);
-		info.nationality = temp_user->GetAttrib(XML_USER_NATIONALITY);
-		info.birth_date = temp_user->GetOleDateTimeAttrib(XML_USER_BIRTHDATE);
-		info.sex = Sex(temp_user->GetIntegerAttrib(XML_USER_SEX));
-		info.weight = temp_user->GetIntegerAttrib(XML_USER_WEIGHT);
-		info.mobile = temp_user->GetAttrib(XML_USER_MOBILE);
-		info.email = temp_user->GetAttrib(XML_USER_EMAIL);
-		user->SetInfo(info);
+		user = CUserManager::GetInstance().CreateUser(temp_user->GetAttrib(XML_USER_USERID),
+			temp_user->GetAttrib(XML_USER_PASSWORD));
 	}
-	CUserManager::GetInstance().AddUser(user);
+
+	PersonalInfo info;
+	info.name = temp_user->GetAttrib(XML_USER_NAME);
+	info.name_pinyin = temp_user->GetAttrib(XML_USER_PINYIN);
+	info.nationality = temp_user->GetAttrib(XML_USER_NATIONALITY);
+	info.birth_date = temp_user->GetOleDateTimeAttrib(XML_USER_BIRTHDATE);
+	info.sex = Sex(temp_user->GetIntegerAttrib(XML_USER_SEX));
+	info.weight = temp_user->GetIntegerAttrib(XML_USER_WEIGHT);
+	info.mobile = temp_user->GetAttrib(XML_USER_MOBILE);
+	info.email = temp_user->GetAttrib(XML_USER_EMAIL);
+	user->SetInfo(info);
 
 	auto scales = xml.GetChildElements();
 	for (unsigned int i = 0; i < scales.size(); ++i)  
