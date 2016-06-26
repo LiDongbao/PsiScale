@@ -98,7 +98,7 @@ bool CUserManager::AddUser(std::shared_ptr<CUser> user)
 	if (!user)
 		return false;
 
-	_users.insert(make_pair(user->GetUid(), user));
+	_users.insert(make_pair(user->GetUserId(), user));
 	_user_name_to_uid.insert(make_pair(user->GetUserId(), user->GetUid()));
 	_users[user->GetUid()] = user;
 
