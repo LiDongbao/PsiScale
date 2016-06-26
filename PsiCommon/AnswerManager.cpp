@@ -252,22 +252,18 @@ void CAnswerManager::SaveScaleItem(Utilities::CXmlElement* scale_xml, unsigned i
 		item->SetIntegerAttrib(XML_TEST_TIME, answers[i].reaction_time);
 	}
 
-	TODO(¼Æ·Ö)
-	// 	auto subscale_iter = _group_scores.find(scale_name);
-	// 	if (subscale_iter != _group_scores.end())
-	// 	{
-	// 		auto subscales_xml = scale_xml->AddElement(XML_TEST_SUBSCALES);
-	// 		for (auto iter = subscale_iter->second.begin(); iter != subscale_iter->second.end(); ++iter)
-	// 		{
-	// 			auto sub_score = GetTotalScore(scale_name, iter->first);
-	// 
-	// 			auto item = subscales_xml->AddElement(XML_TEST_SUBSCALE);
-	// 			item->SetAttrib(XML_TEST_NAME, iter->first);
-	// 			item->SetIntegerAttrib(XML_TEST_SCORE, sub_score);
-	// 		}
-	// 	}
-	// 
-	// 	return true;
+	auto group_scores = GetScore(_answer_table[index].scale_name, answers);
+
+	if (!group_scores.empty())
+	{
+		auto subscales_xml = scale_xml->AddElement(XML_TEST_SUBSCALES);
+		for (auto group : group_scores)
+		{
+			auto item = subscales_xml->AddElement(XML_TEST_SUBSCALE);
+			item->SetAttrib(XML_TEST_NAME, group.first.c_str());
+			item->SetFloatAttrib(XML_TEST_SCORE, group.second);
+		}
+	}
 }
 
 bool CAnswerManager::LoadAll(CString folder_path)
