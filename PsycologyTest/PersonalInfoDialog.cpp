@@ -21,6 +21,9 @@ CPersonalInfoDialog::CPersonalInfoDialog(CWnd* pParent /*=NULL*/)
 	, weight(0)
 	, mobile(_T(""))
 	, email(_T(""))
+	, mental(FALSE)
+	, sight(FALSE)
+	, others(_T(""))
 {
 
 }
@@ -41,6 +44,9 @@ void CPersonalInfoDialog::DoDataExchange(CDataExchange* pDX)
 	DDX_Text(pDX, IDC_EDIT_WEIGHT, weight);
 	DDX_Text(pDX, IDC_EDIT_MOBILE, mobile);
 	DDX_Text(pDX, IDC_EDIT_EMAIL, email);
+	DDX_Check(pDX, IDC_CHECK_MENTAL, mental);
+	DDX_Check(pDX, IDC_CHECK_SIGHT, sight);
+	DDX_Text(pDX, IDC_EDIT_OTHERS, others);
 }
 
 
@@ -65,6 +71,9 @@ void CPersonalInfoDialog::SetInfo(const PersonalInfo& info)
 	weight = info.weight;
 	mobile = info.mobile;
 	email = info.email;
+	mental = info.mental;
+	sight = info.sight;
+	others = info.others;
 }
 
 
@@ -79,6 +88,9 @@ PersonalInfo CPersonalInfoDialog::GetInfo() const
 	info.weight = weight;
 	info.mobile = mobile;
 	info.email = email;
+	info.mental = mental;
+	info.sight = sight;
+	info.others = others;
 	return info;
 }
 
