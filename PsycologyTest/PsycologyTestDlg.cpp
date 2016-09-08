@@ -93,7 +93,7 @@ CPsycologyTestDlg::CPsycologyTestDlg(shared_ptr<CPsiScale> scale,
 	, _timer_text(_T(""))
 	, _timer(0)
 	, _user(user)
-	, _is_pause(false)
+	, _is_paused(false)
 {
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
 }
@@ -170,7 +170,7 @@ BOOL CPsycologyTestDlg::OnInitDialog()
 	auto index = _answer_manager.GetAnswerIndex(_user->GetUid(), _psi_scale->GetName(), _start_time, true);
 	if (index == -1)
 	{
-		index = _answer_manager.AddScaleAnswer(_user->GetUid(), _psi_scale->GetName(), _start_time, _psi_scale->GetQuestionCount());
+		index = _answer_manager.AllocateForAnswers(_user->GetUid(), _psi_scale->GetName(), _start_time, _psi_scale->GetQuestionCount());
 	}
 	auto un_answered_question =_answer_manager.CheckForUnansweredQuestion(index);
 	ShowQuestion((un_answered_question == -1) ? _psi_scale->GetQuestionCount() - 1 : un_answered_question);
@@ -471,7 +471,6 @@ void CPsycologyTestDlg::MoveButtonUp(CWnd& button,
 
 void CPsycologyTestDlg::OnClose()
 {
-	// TODO: Add your message handler code here and/or call default
 	KillTimer(1);
 
 	CDialogEx::OnClose();
@@ -480,7 +479,6 @@ void CPsycologyTestDlg::OnClose()
 
 void CPsycologyTestDlg::OnTimer(UINT_PTR nIDEvent)
 {
-	// TODO: Add your message handler code here and/or call default
 	if (1 == nIDEvent)
 	{
 		++_timer;
@@ -490,56 +488,46 @@ void CPsycologyTestDlg::OnTimer(UINT_PTR nIDEvent)
 
 	if (2 == nIDEvent)
 	{
-		_answer_manager.Save(_user->GetWorkingFolder() + _T("\\") + _user->GetUid() + _T(".xml"), _user->GetUid());
+		_answer_manager.Save(_user->GetWorkingFolder() + _T("\\") + _user->GetUid() + _T(".xml"), 
+							 _user->GetUid());
 	}
-	
 
 	CDialogEx::OnTimer(nIDEvent);
 }
-
 
 void CPsycologyTestDlg::OnStnClickedTimer()
 {
 	// TODO: Add your control notification handler code here
 }
 
-
-
 void CPsycologyTestDlg::OnBnClickedButtonPrologue()
 {
 	AfxMessageBox(_psi_scale->GetPrologue());
 }
 
-
 void CPsycologyTestDlg::OnBnClickedButtonPause()
 {
-	_is_pause = !_is_pause;
+	_is_paused = !_is_paused;
 
-	if (_is_pause)
+	auto enable = _is_paused ? FALSE : TRUE;
+	(CButton*)GetDlgItem(ID_NEXT)->EnableWindow(enable);
+	(CButton*)GetDlgItem(ID_PREV)->EnableWindow(enable);
+	(CButton*)GetDlgItem(IDC_BUTTON_1)->EnableWindow(enable);
+	(CButton*)GetDlgItem(IDC_BUTTON_2)->EnableWindow(enable);
+	(CButton*)GetDlgItem(IDC_BUTTON_3)->EnableWindow(enable);
+	(CButton*)GetDlgItem(IDC_BUTTON_4)->EnableWindow(enable);
+	(CButton*)GetDlgItem(IDC_BUTTON_5)->EnableWindow(enable);
+	(CButton*)GetDlgItem(IDC_BUTTON_6)->EnableWindow(enable);
+	(CButton*)GetDlgItem(IDC_BUTTON_7)->EnableWindow(enable);
+
+	if (_is_paused)
 	{
-		(CButton*)GetDlgItem(ID_NEXT)->EnableWindow(FALSE);
-		(CButton*)GetDlgItem(ID_PREV)->EnableWindow(FALSE);
-		(CButton*)GetDlgItem(IDC_BUTTON_1)->EnableWindow(FALSE);
-		(CButton*)GetDlgItem(IDC_BUTTON_2)->EnableWindow(FALSE);
-		(CButton*)GetDlgItem(IDC_BUTTON_3)->EnableWindow(FALSE);
-		(CButton*)GetDlgItem(IDC_BUTTON_4)->EnableWindow(FALSE);
-		(CButton*)GetDlgItem(IDC_BUTTON_5)->EnableWindow(FALSE);
-		(CButton*)GetDlgItem(IDC_BUTTON_6)->EnableWindow(FALSE);
-		(CButton*)GetDlgItem(IDC_BUTTON_7)->EnableWindow(FALSE);
+
 		KillTimer(1);
 	}
 	else
 	{
 		_start = clock();
-		(CButton*)GetDlgItem(ID_NEXT)->EnableWindow(TRUE);
-		(CButton*)GetDlgItem(ID_PREV)->EnableWindow(TRUE);
-		(CButton*)GetDlgItem(IDC_BUTTON_1)->EnableWindow(TRUE);
-		(CButton*)GetDlgItem(IDC_BUTTON_2)->EnableWindow(TRUE);
-		(CButton*)GetDlgItem(IDC_BUTTON_3)->EnableWindow(TRUE);
-		(CButton*)GetDlgItem(IDC_BUTTON_4)->EnableWindow(TRUE);
-		(CButton*)GetDlgItem(IDC_BUTTON_5)->EnableWindow(TRUE);
-		(CButton*)GetDlgItem(IDC_BUTTON_6)->EnableWindow(TRUE);
-		(CButton*)GetDlgItem(IDC_BUTTON_7)->EnableWindow(TRUE);
 		SetTimer(1, 1000, NULL);
 	}
 }
