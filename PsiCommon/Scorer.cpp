@@ -1,3 +1,4 @@
+#pragma once
 #include "stdafx.h"
 #include "Scorer.h"
 #include <fstream>
@@ -7,10 +8,6 @@
 
 using namespace std;
 
-CScorer CScorer::s_scorer;
-
-
-
 CScorer::CScorer() : 
 	_initialized(false)
 {
@@ -19,15 +16,6 @@ CScorer::CScorer() :
 
 CScorer::~CScorer()
 {
-}
-
-CScorer& CScorer::GetInstance(CString path)
-{
-	if (!s_scorer._initialized)
-	{
-		s_scorer.Init(path);
-	}
-	return s_scorer;
 }
 
 bool CScorer::Init(const wchar_t * score_folder)

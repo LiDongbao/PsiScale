@@ -86,7 +86,6 @@ BOOL CPsycologyTestApp::InitInstance()
 			}
 			
 			auto folder = logon_dlg.GetUser()->GetWorkingFolder();
-			CScorer::GetInstance().Init(folder + _T("\\..\\.."));
 			CScaleOverviewDialog overview_dialog(logon_dlg.GetUser(), logon_dlg.IsFirstTime());
 			overview_dialog.DoModal();
 		}
