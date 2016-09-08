@@ -4,6 +4,7 @@
 #include <vector>
 #include <memory>
 #include "UserManager.h"
+#include "Scorer.h"
 
 class CPsiScale;
 namespace Utilities
@@ -38,8 +39,8 @@ struct ScaleAnswers
 struct ScaleTime
 {
 	ScaleTime(const CString& d, const CString& t): date(d), time(t) {}
-	CString date;	//2016-01-01
-	CString time;	//12:01
+	CString date;	//格式是: 2016-01-01
+	CString time;	//格式是: 12:01
 };
 
 class CAnswerManager
@@ -70,11 +71,12 @@ public:
 	bool LoadAll(CString folder_path);
 
 	std::map<std::wstring, double> GetScore(const wchar_t * scale_name, const std::vector<AnswerInfo>& answers);
-	
 
 protected:
 	std::map<std::tuple<CString, CString, COleDateTime>, unsigned int> _answer_table_index;
 	
 	std::vector<ScaleAnswers> _answer_table;
 	std::vector<bool> _answer_table_finished;
+
+	CScorer _score;
 };

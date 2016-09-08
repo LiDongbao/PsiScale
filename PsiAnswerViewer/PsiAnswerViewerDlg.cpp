@@ -17,6 +17,7 @@
 #include "..\Utilities\xml.h"
 #include "..\PsiCommon\xml_name_space.h"
 #include "Resource.h"
+#include "..\PsiCommon\Scorer.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -262,13 +263,6 @@ void CPsiAnswerViewerDlg::UpdateAnswerScaleHeader()
 		_answer_table.InsertColumn(i + num_info, str, LVCFMT_LEFT, 60, -1);
 	}
 
-	//for (unsigned int i = 0; i < _scale->GetGroupCount(); ++i)
-	//{
-	//	CString str;
-	//	str.Format(_T("Group.%d"), i + 1);
-	//	_answer_table.InsertColumn(i + num_info + _scale->GetQuestionCount(), str, LVCFMT_LEFT, 120, -1);
-	//}
-
 	//_answer_table.InsertColumn(7 + _scale->GetQuestionCount() + _scale->GetGroupCount(), _T("Total"), LVCFMT_LEFT, 120, -1);
 
 	for (unsigned int i = 0; i < _scale->GetQuestionCount(); ++i)
@@ -278,6 +272,13 @@ void CPsiAnswerViewerDlg::UpdateAnswerScaleHeader()
 		_answer_table.InsertColumn(i + num_info + _scale->GetQuestionCount(), str, LVCFMT_LEFT, 60, -1);
 	}
 
+	for (unsigned int i = 0; i < _scale->GetGroupCount(); ++i)
+	{
+		CString str;
+		str = _scale->GetGroup(i);
+		//str.Format(_T("Group.%d"), i + 1);
+		_answer_table.InsertColumn(i + num_info + _scale->GetQuestionCount() * 2, str, LVCFMT_LEFT, 120, -1);
+	}
 }
 
 bool CPsiAnswerViewerDlg::InsertAnswer(ScaleAnswers& scale_answers)
@@ -297,12 +298,15 @@ bool CPsiAnswerViewerDlg::InsertAnswer(ScaleAnswers& scale_answers)
 		_answer_table.SetItemText(_row, num_info + i, str);
 	}
 
-	//for (unsigned int i = 0; i < _scale->GetGroupCount(); ++i)
-	//{
-	//	CString str;
-	//	str.Format(_T("%d"), answer_manager.);
-	//	_answer_table.InsertColumn(i + num_info + _scale->GetQuestionCount(), str, LVCFMT_LEFT, 120, -1);
-	//}
+	// 计算每组的分数
+	auto scores = _answer_manager->GetScore(scale_answers.scale_name, scale_answers.answer_info);
+	for (unsigned int i = 0; i < _scale->GetGroupCount(); ++i)
+	{
+		CString str;
+		auto temp = scores.find(_scale->GetGroup(i).GetString());
+		str.Format(_T("%.0f"), temp->second);
+		_answer_table.SetItemText(_row, num_info +_scale->GetQuestionCount() * 2 + i, str);	
+	}
 
 	//CString str;
 	//str.Format(_T("%d"), answer_manager.GetTotalScore(_scale->GetName(), L""));
