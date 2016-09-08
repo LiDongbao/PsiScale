@@ -14,6 +14,9 @@ const TCHAR* XMLNameSpace::XML_USER_SEX = _T("Sex");
 const TCHAR* XMLNameSpace::XML_USER_WEIGHT = _T("Weight");
 const TCHAR* XMLNameSpace::XML_USER_MOBILE = _T("Mobile");
 const TCHAR* XMLNameSpace::XML_USER_EMAIL = _T("Email");
+const TCHAR* XMLNameSpace::XML_USER_SIGHT = _T("Sight");
+const TCHAR* XMLNameSpace::XML_USER_MENTAL = _T("Mental");
+const TCHAR* XMLNameSpace::XML_USER_OTHERS = _T("Others");
 
 const TCHAR* XMLNameSpace::XML_TEST = _T("Test");
 const TCHAR* XMLNameSpace::XML_TEST_SCALE = _T("Scale");
