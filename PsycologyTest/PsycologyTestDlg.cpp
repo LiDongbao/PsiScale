@@ -345,7 +345,7 @@ void CPsycologyTestDlg::ProcessAnswer(unsigned int answer)
 	// 1. 记录
 	unsigned int index = _answer_manager.GetAnswerIndex(_user->GetUid(), _psi_scale->GetName(), _start_time, false);
 	_answer_manager.AddAnswer(index, _current_question_index, answer, (_end - _start) * 1000 / CLOCKS_PER_SEC);
-	TODO(分值定义尚未定义。);
+
 	// 2. 下一道题。
 	//unsigned int index = _answer_manager.GetAnswerIndex(_user.GetUid(), _psi_scale->GetName(), _start_time, false);
 	if ((_current_question_index < _psi_scale->GetQuestionCount() - 1) && (!_answer_manager.IsAnswered(index, _current_question_index + 1)))

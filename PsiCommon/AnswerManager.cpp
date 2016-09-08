@@ -149,6 +149,9 @@ bool CAnswerManager::Load(const CString& test_info_path)
 	info.weight = user_item->GetIntegerAttrib(XML_USER_WEIGHT);
 	info.mobile = user_item->GetAttrib(XML_USER_MOBILE);
 	info.email = user_item->GetAttrib(XML_USER_EMAIL);
+	info.mental = user_item->GetIntegerAttrib(XML_USER_MENTAL);
+	info.sight = user_item->GetIntegerAttrib(XML_USER_SIGHT);
+	info.others = user_item->GetAttrib(XML_USER_OTHERS);
 	user->SetInfo(info);
 
 	auto scales = xml.GetChildElements();
@@ -190,8 +193,6 @@ void CAnswerManager::LoadScaleItem(Utilities::CXmlElement* scale_xml, OUT ScaleA
 			scale_answer.answer_info[id - 1].reaction_time = item->GetIntegerAttrib(XML_TEST_TIME);
 		}
 	}
-
-	TODO(计分还没处理);
 }
 
 bool CAnswerManager::Save(const CString& test_info_path, const TCHAR* user_uid)
@@ -201,6 +202,7 @@ bool CAnswerManager::Save(const CString& test_info_path, const TCHAR* user_uid)
 	 auto user = CUserManager::GetInstance().GetUser(user_uid);
 	 if (!user)
 		 return false;
+
 
 	 // 在答案中保存用户信息
 	 auto user_info_xml = xml.AddElement(XML_USER_INFO);
@@ -215,6 +217,9 @@ bool CAnswerManager::Save(const CString& test_info_path, const TCHAR* user_uid)
 	 user_info_xml->SetIntegerAttrib(XML_USER_WEIGHT, user->GetInfo().weight);
 	 user_info_xml->SetAttrib(XML_USER_MOBILE, user->GetInfo().mobile);
 	 user_info_xml->SetAttrib(XML_USER_EMAIL, user->GetInfo().email);
+	 user_info_xml->SetIntegerAttrib(XML_USER_MENTAL, user->GetInfo().mental);
+	 user_info_xml->SetIntegerAttrib(XML_USER_SIGHT, user->GetInfo().sight);
+	 user_info_xml->SetAttrib(XML_USER_OTHERS, user->GetInfo().others);
 	 
 	 vector<int> saved_index = GetIndexByUser(user->GetUid());
 
