@@ -21,8 +21,12 @@ CScorer::~CScorer()
 {
 }
 
-CScorer& CScorer::GetInstance()
+CScorer& CScorer::GetInstance(CString path)
 {
+	if (!s_scorer._initialized)
+	{
+		s_scorer.Init(path);
+	}
 	return s_scorer;
 }
 
