@@ -18,6 +18,9 @@ struct PersonalInfo
 	unsigned int weight;
 	CString mobile;
 	CString email;
+	BOOL mental;
+	BOOL sight;
+	CString others;
 };
 
 class CUser

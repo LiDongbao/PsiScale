@@ -16,6 +16,9 @@ namespace XMLNameSpace
 	extern "C" const TCHAR* XML_USER_WEIGHT;
 	extern "C" const TCHAR* XML_USER_MOBILE;
 	extern "C" const TCHAR* XML_USER_EMAIL;
+	extern "C" const TCHAR* XML_USER_MENTAL;
+	extern "C" const TCHAR* XML_USER_SIGHT;
+	extern "C" const TCHAR* XML_USER_OTHERS;
 
 	extern "C" const TCHAR* XML_TEST;
 	extern "C" const TCHAR* XML_TEST_SCALE;

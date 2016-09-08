@@ -1,6 +1,7 @@
 #pragma once
 #include "..\PsiCommon\User.h"
 #include "ATLComTime.h"
+#include "afxwin.h"
 
 
 class CPersonalInfoDialog : public CDialogEx
@@ -36,4 +37,8 @@ public:
 	afx_msg void OnEnKillfocusEditMobile();
 	afx_msg void OnEnKillfocusEditEmail();
 	afx_msg void OnEnKillfocusEditWeight();
+
+	BOOL mental;
+	BOOL sight;
+	CString others;
 };
