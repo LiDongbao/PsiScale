@@ -20,7 +20,7 @@ class CScorer
 {
 public:
 	~CScorer();
-	static CScorer& GetInstance();
+	static CScorer& GetInstance(CString path = _T(""));
 	bool Init(const wchar_t * score_folder);
 	CScoreMatrix * GetScoreMatrix(const wchar_t * scale_name);
 private:
