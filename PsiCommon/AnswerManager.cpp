@@ -214,6 +214,7 @@ bool CAnswerManager::Save(const CString& test_info_path, const TCHAR* user_uid)
 	 if (!user)
 		 return false;
 
+	 _score.Init(test_info_path + _T("\\..\\..\\.."));	//创建score
 
 	 // 在答案中保存用户信息
 	 auto user_info_xml = xml.AddElement(XML_USER_INFO);
@@ -282,6 +283,8 @@ bool CAnswerManager::LoadAll(CString folder_path)
 			CString filename = FileSystem::GetFileNameFromPath(file);
 			Load(folder_path + _T("\\") + filename + _T(".xml"));
 		});
+
+		_score.Init(folder_path + _T("\\..\\.."));
 		return true;
 	}
 	else
@@ -290,11 +293,11 @@ bool CAnswerManager::LoadAll(CString folder_path)
 	}
 }
 
-std::map<std::wstring, double> CAnswerManager::GetScore(const wchar_t * scale_name, 
+std::map<std::wstring, double> CAnswerManager::GetScore(const wchar_t * scale_name,
 	const std::vector<AnswerInfo>& answers)
 {
 	std::map<std::wstring, double> result;
-	auto score_matrix = CScorer::GetInstance().GetScoreMatrix(scale_name);
+	auto score_matrix = _score.GetScoreMatrix(scale_name);
 	if (score_matrix == nullptr)
 		return result;
 
@@ -308,7 +311,7 @@ std::map<std::wstring, double> CAnswerManager::GetScore(const wchar_t * scale_na
 	{
 		for (unsigned int group_index = 0; group_index < groups.size(); ++group_index)
 		{
-			result[groups[group_index]] += score_matrix->GetWeight(question_index, 
+			result[groups[group_index]] += score_matrix->GetWeight(question_index,
 				answers[question_index].answer, group_index);
 		}
 	}

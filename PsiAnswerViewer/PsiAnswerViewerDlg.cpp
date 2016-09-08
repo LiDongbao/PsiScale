@@ -215,7 +215,6 @@ HCURSOR CPsiAnswerViewerDlg::OnQueryDragIcon()
 
 bool CPsiAnswerViewerDlg::InitialScaleList()
 {
-	CScorer::GetInstance(_working_folder);
 	return true;
 }
 
