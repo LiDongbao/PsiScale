@@ -401,6 +401,9 @@ bool CPsiAnswerViewerDlg::UpdateScaleTableHeaderForSubjects()
 	_answer_table.InsertColumn(8, _T("体重"), LVCFMT_CENTER, 60, -1);
 	_answer_table.InsertColumn(9, _T("电话"), LVCFMT_CENTER, 150, -1);
 	_answer_table.InsertColumn(10, _T("电邮"), LVCFMT_CENTER, 150, -1);
+	_answer_table.InsertColumn(11, _T("有无神经系统疾病史或精神病史"), LVCFMT_CENTER, 250, -1);
+	_answer_table.InsertColumn(12, _T("视力或矫正视力是否正常"), LVCFMT_CENTER, 250, -1);
+	_answer_table.InsertColumn(13, _T("其他"), LVCFMT_CENTER, 300, -1);
 	DWORD dwStyle = _answer_table.GetExtendedStyle(); //获取当前扩展样式
 	dwStyle |= LVS_EX_FULLROWSELECT; //选中某行使整行高亮（report风格时）
 	dwStyle |= LVS_EX_GRIDLINES; //网格线（report风格时）
@@ -448,6 +451,10 @@ bool CPsiAnswerViewerDlg::UpdateSubjectsTable()
 
 		_answer_table.SetItemText(_row, 9, iter->second->GetInfo().mobile);
 		_answer_table.SetItemText(_row, 10, iter->second->GetInfo().email);
+
+		_answer_table.SetItemText(_row, 11, iter->second->GetInfo().mental ? _T("有") : _T("无"));
+		_answer_table.SetItemText(_row, 12, iter->second->GetInfo().sight ? _T("有") : _T("无"));
+		_answer_table.SetItemText(_row, 13, iter->second->GetInfo().others);
 
 		++_row;
 	}
