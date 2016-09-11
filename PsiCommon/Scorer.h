@@ -73,13 +73,11 @@ protected:
 class CScorer
 {
 public:
+	CScorer();
 	~CScorer();
-	static CScorer& GetInstance();
 	bool Init(const wchar_t * score_folder);
 	CScoreMatrix * GetScoreMatrix(const wchar_t * scale_name);
 private:
-	CScorer();
-	static CScorer s_scorer;
 	bool _initialized;
 	
 	std::map<std::wstring, std::shared_ptr<CScoreMatrix>> _all_score_matrix;

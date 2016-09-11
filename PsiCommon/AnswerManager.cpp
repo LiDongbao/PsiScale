@@ -12,32 +12,20 @@
 using namespace XMLNameSpace;
 using namespace std;
 
-int CAnswerManager::GetAnswerIndex(const TCHAR* user_uid, 
-								   const TCHAR* scale, 
-								   COleDateTime start_time,
-								   bool create_if_not_exist /*= true*/)
+int CAnswerManager::GetAnswerIndex(const TCHAR* user_uid, const TCHAR* scale, COleDateTime start_time, bool create_if_not_exist /*= true*/)
 {
-	auto key = std::make_tuple(user_uid, scale, start_time);
-	auto iter = _answer_table_index.find(key);
-	if (iter != _answer_table_index.end()) 
-	{
+	auto iter = _answer_table_index.find(std::make_tuple(user_uid, scale, start_time));
+	if (iter != _answer_table_index.end()) {
 		return iter->second;
 	}
-	else if (create_if_not_exist)
-	{
-		_answer_table.push_back(ScaleAnswers(user_uid, scale, start_time));
-		_answer_table_index[key] = _answer_table.size() - 1;
 
-		return _answer_table.size() - 1;
-	}
-	else
-	{
-		return -1;
-	}
+	return -1;
 }
 
-int CAnswerManager::AllocateForAnswers(const TCHAR* user_uid, const TCHAR* scale, COleDateTime start_time, unsigned length)
+int CAnswerManager::AddScaleAnswer(const TCHAR* user_uid, const TCHAR* scale, COleDateTime start_time, unsigned length)
 {
+	_answer_table.push_back(ScaleAnswers(user_uid, scale, start_time, length));
+	_answer_table_finished.push_back(false);
 	_answer_table_index.insert(std::make_pair(std::make_tuple(user_uid, scale, start_time),
 		_answer_table.size() - 1));
 	return _answer_table.size() - 1;
@@ -62,16 +50,39 @@ void CAnswerManager::AddAnswer(unsigned index, unsigned int question_index, unsi
 
 int CAnswerManager::CheckForUnansweredQuestion(unsigned index)
 {
-	assert(index < _answer_table.size());
+	if (-1 == index)
+	{
+		return 0;
+	}
 
-	return _answer_table[index].GetFirstUnansweredQuenstion();
+	auto answer_info = _answer_table[index].answer_info;
+	int question_index = 0;
+	for (auto iter = answer_info.begin(); iter != answer_info.end(); ++iter, ++question_index)
+	{
+		if (-1 == iter->answer)
+		{
+			return question_index;
+		}
+	}
+	return -1;
 }
 
 bool CAnswerManager::ScaleFinished(unsigned index)
 {
-	assert(index < _answer_table.size());
+	if (-1 == index)
+	{
+		return false;
+	}
 
-	return _answer_table[index].IsFinished();
+	return _answer_table_finished[index];
+}
+
+void CAnswerManager::SetScaleFinished(unsigned int index, bool state)
+{
+	if (index != -1 && index < _answer_table_finished.size())
+	{
+		_answer_table_finished[index] = state;
+	}
 }
 
 const ScaleAnswers& CAnswerManager::GetScaleAnswers(unsigned int index)
@@ -203,6 +214,7 @@ bool CAnswerManager::Save(const CString& test_info_path, const TCHAR* user_uid)
 	 if (!user)
 		 return false;
 
+	 _score.Init(test_info_path + _T("\\..\\..\\.."));	//创建score
 
 	 // 在答案中保存用户信息
 	 auto user_info_xml = xml.AddElement(XML_USER_INFO);
@@ -271,6 +283,8 @@ bool CAnswerManager::LoadAll(CString folder_path)
 			CString filename = FileSystem::GetFileNameFromPath(file);
 			Load(folder_path + _T("\\") + filename + _T(".xml"));
 		});
+
+		_score.Init(folder_path + _T("\\..\\.."));
 		return true;
 	}
 	else
@@ -279,11 +293,11 @@ bool CAnswerManager::LoadAll(CString folder_path)
 	}
 }
 
-std::map<std::wstring, double> CAnswerManager::GetScore(const wchar_t * scale_name, 
+std::map<std::wstring, double> CAnswerManager::GetScore(const wchar_t * scale_name,
 	const std::vector<AnswerInfo>& answers)
 {
 	std::map<std::wstring, double> result;
-	auto score_matrix = CScorer::GetInstance().GetScoreMatrix(scale_name);
+	auto score_matrix = _score.GetScoreMatrix(scale_name);
 	if (score_matrix == nullptr)
 		return result;
 
@@ -297,43 +311,10 @@ std::map<std::wstring, double> CAnswerManager::GetScore(const wchar_t * scale_na
 	{
 		for (unsigned int group_index = 0; group_index < groups.size(); ++group_index)
 		{
-			result[groups[group_index]] += score_matrix->GetWeight(question_index, 
+			result[groups[group_index]] += score_matrix->GetWeight(question_index,
 				answers[question_index].answer, group_index);
 		}
 	}
 
 	return result;
-}
-
-ScaleAnswers & CAnswerManager::GetAnswers(const TCHAR * user_uid, const TCHAR * scale, COleDateTime start_time)
-{
-	auto index = GetAnswerIndex(user_uid, scale, start_time, true);
-	assert(index < _answer_table.size());
-
-	return _answer_table[index];
-}
-
-
-int ScaleAnswers::GetFirstUnansweredQuenstion() const
-{
-	int question_index = 0;
-	for (int i = 0; i < answer_info.size(); ++i)
-	{
-		if (-1 == answer_info[i].answer)
-		{
-			return i;
-		}
-	}
-
-	return -1;
-}
-
-bool ScaleAnswers::IsFinished() const
-{
-	return GetFirstUnansweredQuenstion() == -1;
-}
-
-void ScaleAnswers::Resize(size_t size)
-{
-	answer_info.resize(size);
 }
