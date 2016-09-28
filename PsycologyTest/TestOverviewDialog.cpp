@@ -156,9 +156,22 @@ void CScaleOverviewDialog::OnCancel()
 
 void CScaleOverviewDialog::OnBnClickedStart()
 {
+	
 	POSITION position = _scale_list.GetFirstSelectedItemPosition();
 	int index = _scale_list.GetNextSelectedItem(position);
 	
+	CString state;
+	state = _scale_list.GetItemText(index, 1);
+	bool re_do = false;
+
+	if (state == _T("完成"))
+	{
+		if (AfxMessageBox(_T("该量表已做过, 是否重做?"), MB_OKCANCEL) == IDCANCEL)
+			return;
+		else
+			re_do = true;
+	}
+
 	CString file_path = _working_folder + _T("\\");
 	file_path += _scale_list.GetItemText(index, 0) + _T(".scale");
 
@@ -183,7 +196,7 @@ void CScaleOverviewDialog::OnBnClickedStart()
 		ShowWindow(SW_HIDE);
 		if (AfxMessageBox(_scale->GetPrologue(), MB_OKCANCEL) == IDOK)
 		{
-			CPsycologyTestDlg dlg(_scale, _answer_manager, _user, m_hWnd);
+			CPsycologyTestDlg dlg(_scale, _answer_manager, _user, re_do, m_hWnd);
 			dlg.DoModal();
 		}
 
@@ -202,13 +215,13 @@ void CScaleOverviewDialog::OnLvnItemchangedListScales(NMHDR *pNMHDR, LRESULT *pR
 {
 	LPNMLISTVIEW pNMLV = reinterpret_cast<LPNMLISTVIEW>(pNMHDR);
 
-	POSITION position = _scale_list.GetFirstSelectedItemPosition();
-	int index = _scale_list.GetNextSelectedItem(position);
+	//POSITION position = _scale_list.GetFirstSelectedItemPosition();
+	//int index = _scale_list.GetNextSelectedItem(position);
 
-	CString state;
-	state = _scale_list.GetItemText(index, 1);
+	//CString state;
+	//state = _scale_list.GetItemText(index, 1);
 
-	_start.EnableWindow(state != _T("完成"));
+	//_start.EnableWindow(state != _T("完成"));
 
 	*pResult = 0;
 }

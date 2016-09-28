@@ -20,9 +20,12 @@ class CPsycologyTestDlg : public CDialogEx
 	
 // Construction
 public:
-	CPsycologyTestDlg(std::shared_ptr<CPsiScale> scale, CAnswerManager& answer_manager, 
-		std::shared_ptr<CUser> user,
-		HWND notify_wnd, CWnd* pParent = NULL);	// standard constructor
+	CPsycologyTestDlg(std::shared_ptr<CPsiScale> scale, 
+						CAnswerManager& answer_manager, 
+						std::shared_ptr<CUser> user,
+						bool re_do,
+						HWND notify_wnd, 
+						CWnd* pParent = NULL);	// standard constructor
 // Dialog Data
 #ifdef AFX_DESIGN_TIME
 	enum { IDD = IDD_PSYCOLOGYTEST_DIALOG };
@@ -83,6 +86,7 @@ public:
 	CString _question_number;
 	HWND _notify_wnd;
 
+	bool _re_do;
 	COleDateTime _start_time;
 	std::shared_ptr<CUser> _user;
 	afx_msg void OnClose();

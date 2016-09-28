@@ -82,6 +82,7 @@ END_MESSAGE_MAP()
 CPsycologyTestDlg::CPsycologyTestDlg(shared_ptr<CPsiScale> scale,
 	CAnswerManager& answer_manager,
 	shared_ptr<CUser> user,
+	bool re_do,
 	HWND notify_wnd, 
 	CWnd* pParent /*=NULL*/)
 	: CDialogEx(IDD_PSYCOLOGYTEST_DIALOG, pParent),
@@ -94,6 +95,7 @@ CPsycologyTestDlg::CPsycologyTestDlg(shared_ptr<CPsiScale> scale,
 	, _timer(0)
 	, _user(user)
 	, _is_pause(false)
+	, _re_do(re_do)
 {
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
 }
@@ -141,7 +143,10 @@ BOOL CPsycologyTestDlg::OnInitDialog()
 	ASSERT((IDM_ABOUTBOX & 0xFFF0) == IDM_ABOUTBOX);
 	ASSERT(IDM_ABOUTBOX < 0xF000);
 
-	_start_time = _answer_manager.FindTimeByUserScale(_user->GetUid(), _psi_scale->GetName());
+	if (_re_do)
+		_start_time = COleDateTime::GetCurrentTime();
+	else
+		_start_time = _answer_manager.FindTimeByUserScale(_user->GetUid(), _psi_scale->GetName());
 	
 	CMenu* pSysMenu = GetSystemMenu(FALSE);
 	if (pSysMenu != NULL)
