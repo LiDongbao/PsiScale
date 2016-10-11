@@ -9,6 +9,7 @@
 *.7z
 *.zip
 *.rar
+*.score
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs

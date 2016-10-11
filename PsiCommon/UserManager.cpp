@@ -6,7 +6,7 @@
 #include "..\Utilities\FileSystem.h"
 #include "..\PsiCommon\xml_name_space.h"
 #include <algorithm>
-
+#include <cassert>
 
 //const TCHAR* TESTS = _T("Tests");
 //const TCHAR* TABLE = _T("Table");

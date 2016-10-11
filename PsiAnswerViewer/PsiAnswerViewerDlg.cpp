@@ -327,7 +327,7 @@ bool CPsiAnswerViewerDlg::InsertInfo(CUser& user)
 	CString row;
 	row.Format(L"%d", _row + 1);
 	_answer_table.InsertItem(_row, row.GetString());
-	_answer_table.SetItemText(_row, 1, user.GetInfo().birth_date.Format(_T("%Y-%M")));
+	_answer_table.SetItemText(_row, 1, user.GetInfo().birth_date.Format(_T("%Y-%M-%D")));
 
 	CString sex;
 	switch (Sex(user.GetInfo().sex))

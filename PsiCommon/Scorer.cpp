@@ -24,7 +24,7 @@ bool CScorer::Init(const wchar_t * score_folder)
 		return true;
 
 	FileSystem::ForEachFile(score_folder, L"*.score", false, [&](CString file_path) {
-		wstring scale_name = FileSystem::GetFileNameFromPath(file_path);
+		wstring scale_name = FileSystem::GetFileNameFromPath(file_path).GetString();
 		auto pt = scale_name.find_first_of(_T("."));
 		shared_ptr<CScoreMatrix> score_matrix(new CScoreMatrix);
 		score_matrix->Load(file_path);
@@ -37,7 +37,7 @@ bool CScorer::Init(const wchar_t * score_folder)
 
 CScoreMatrix * CScorer::GetScoreMatrix(const wchar_t * scale_name)
 {
-	assert(_initialized);
+	ASSERT(_initialized);
 
 	auto iter = _all_score_matrix.find(scale_name);
 	return (iter == _all_score_matrix.end()) ? nullptr : iter->second.get();
