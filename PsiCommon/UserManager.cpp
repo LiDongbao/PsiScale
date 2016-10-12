@@ -21,9 +21,32 @@ CUserManager CUserManager::s_instance;
 CUserManager::CUserManager() :
 	_initialized(false)
 {
-	_logon_info_path = FileSystem::GetStartPath() + _T("\\..\\Scales\\TestUsers\\UserInfo.xml");
-	
-	//\\ = start_parth.Left(start_parth.ReverseFind(_T('\\'))) ;
+	CRegKey regkey;
+	if (regkey.Open(HKEY_CURRENT_USER, _T("Software\\SKMR\\PsiScale"), KEY_READ) == ERROR_SUCCESS)
+	{
+		static TCHAR buffer[512];
+		ULONG count = 512;
+		if (regkey.QueryStringValue(_T("WorkingFolder"), buffer, &count) == ERROR_SUCCESS)
+		{
+			if (!FileSystem::FileExists(buffer))
+				if (!FileSystem::CreateFolderTree(buffer))
+					AfxMessageBox(L"无法创建文件目录！", MB_ICONSTOP);
+			_logon_info_path = buffer;
+		}
+		regkey.Close();
+	}
+	else
+	{
+		_logon_info_path = L"C:\\SKMR\\PsiScale\\Scales";
+		if (regkey.Create(HKEY_CURRENT_USER, _T("Software\\SKMR\\PsiScale")) == ERROR_SUCCESS)
+		{
+			regkey.SetStringValue(_T("WorkingFolder"), _logon_info_path);
+			regkey.Close();
+		}
+	}
+
+	_logon_info_path = _logon_info_path + _T("\\..\\Scales\\TestUsers\\UserInfo.xml");
+
 }
 
 

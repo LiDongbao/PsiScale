@@ -145,7 +145,7 @@ BOOL CPsiAnswerViewerDlg::OnInitDialog()
 	{
 		static TCHAR buffer[512];
 		ULONG count = 512;
-		if (regkey.QueryStringValue(_T("TestFolder"), buffer, &count) == ERROR_SUCCESS)
+		if (regkey.QueryStringValue(_T("WorkingFolder"), buffer, &count) == ERROR_SUCCESS)
 		{
 			if (FileSystem::FileExists(buffer))
 			{
@@ -592,7 +592,7 @@ void CPsiAnswerViewerDlg::OnBnClickedButtonCopy()
 	
 	if (!Utilities::OS::SetClipboardText(str.GetString()))
 	{
-		AfxMessageBox(_T("Copy Failed"));
+		AfxMessageBox(L"Copy Failed");
 	}
 
 }

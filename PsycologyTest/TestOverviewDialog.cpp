@@ -102,7 +102,7 @@ void CScaleOverviewDialog::OnEnChangeEditWorkingFolder()
 		if (regkey.Open(HKEY_CURRENT_USER, _T("Software\\SKMR\\PsiScale"), KEY_WRITE) == ERROR_SUCCESS ||
 			regkey.Create(HKEY_CURRENT_USER, _T("Software\\SKMR\\PsiScale")) == ERROR_SUCCESS)
 		{
-			regkey.SetStringValue(_T("TestFolder"), _working_folder);
+			regkey.SetStringValue(_T("WorkingFolder"), _working_folder);
 			regkey.Close();
 		}
 	}
@@ -126,7 +126,7 @@ BOOL CScaleOverviewDialog::OnInitDialog()
 	{
 		static TCHAR buffer[512];
 		ULONG count = 512;
-		if (regkey.QueryStringValue(_T("TestFolder"), buffer, &count) == ERROR_SUCCESS)
+		if (regkey.QueryStringValue(_T("WorkingFolder"), buffer, &count) == ERROR_SUCCESS)
 		{
 			if (FileSystem::FileExists(buffer))
 			{
