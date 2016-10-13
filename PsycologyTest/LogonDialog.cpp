@@ -85,12 +85,14 @@ void CLogonDialog::OnBnClickedLogon()
 		}
 		else
 		{
-			auto user = CUserManager::GetInstance().CreateUser(_user_id, _password);
+			auto user = CUserManager::GetInstance().GetUser(_user_id, _password);
 			if (user)
 			{
-				AfxMessageBox(_T("不是第一次登陆，该用户名和密码已存在，若需重新生成账号，请修改用户名或密码。"));
+				AfxMessageBox(_T("不是第一次登陆，该用户名和密码已存在，若需重新生成账号，需要修改用户名或密码。"));
 				return;
 			}
+			else 
+				auto user = CUserManager::GetInstance().CreateUser(_user_id, _password);
 			RunScale(user);
 		}
 	}
