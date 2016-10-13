@@ -58,10 +58,7 @@ bool CUserManager::Init()
 {
 	CString folder_path = _logon_info_path.Left(_logon_info_path.ReverseFind(_T('\\')));
 	if (!FileSystem::FileExists(folder_path) && !FileSystem::CreateFolderTree(folder_path))
-	{
-		// log
 		return false;
-	}
 	
 	return LoadLogonInfo();
 }
