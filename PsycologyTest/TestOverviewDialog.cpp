@@ -65,7 +65,7 @@ void CScaleOverviewDialog::GetTestInfoAndSetListInfo(std::vector<CString>& test_
 	{
 		CString temp = item.Right(item.GetLength() - item.ReverseFind(_T('.')) - 1);
 		auto index = _answer_manager.GetIndexByScale(temp);
-		TODO(这里还没有考虑一张量表做多次的情况);
+		//TODO(这里还没有考虑一张量表做多次的情况);
 		if (index.empty())
 		{
 			_scale_list.InsertScale(item, false);
@@ -77,13 +77,11 @@ void CScaleOverviewDialog::GetTestInfoAndSetListInfo(std::vector<CString>& test_
 	}
 }
 
-
+/*
+*	when the _working_folder changes, trigger this method.
+*/
 void CScaleOverviewDialog::OnEnChangeEditWorkingFolder()
 {
-	// TODO:  If this is a RICHEDIT control, the control will not
-	// send this notification unless you override the CDialogEx::OnInitDialog()
-	// function and call CRichEditCtrl().SetEventMask()
-	// with the ENM_CHANGE flag ORed into the mask.
 
 	UpdateData();
 	if (FileSystem::FileExists(_working_folder))
@@ -114,13 +112,6 @@ BOOL CScaleOverviewDialog::OnInitDialog()
 
 	_working_folder_edit.EnableFolderBrowseButton();
 
-	if (_is_new_user)
-	{
-		_answer_manager.Save(_user->GetWorkingFolder() + _T("\\") + _user->GetUid() + _T(".xml"), _user->GetUid());
-	}
-
-	_scale_list.Init();
-
 	CRegKey regkey;
 	if (regkey.Open(HKEY_CURRENT_USER, _T("Software\\SKMR\\PsiScale"), KEY_READ) == ERROR_SUCCESS)
 	{
@@ -134,6 +125,13 @@ BOOL CScaleOverviewDialog::OnInitDialog()
 			}
 		}
 	}
+
+	if (_is_new_user)
+	{
+		_answer_manager.Save(_user->GetWorkingFolder() + _T("\\") + _user->GetUid() + _T(".xml"), _user->GetUid());
+	}
+
+	_scale_list.Init();
 
 	return TRUE;
 }
