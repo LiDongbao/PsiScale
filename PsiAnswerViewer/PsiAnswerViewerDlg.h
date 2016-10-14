@@ -37,7 +37,6 @@ protected:
 
 	DECLARE_EASYSIZE;
 
-	bool InitialScaleList();
 	bool InitialPersonCombo();
 	void UpdateAnswerScaleHeader();
 	bool InsertAnswer(ScaleAnswers& scale_answers);

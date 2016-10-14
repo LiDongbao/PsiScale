@@ -26,8 +26,9 @@ private:
 	bool UserExists(const CString& name, const CString& password);
 	const CString GetWorkingFolder() const;
 
-	std::map<CString, std::shared_ptr<CUser>> _users; ///< User UID to User
-	std::multimap<CString, CString> _user_name_to_uid;	
+	std::map<CString, std::shared_ptr<CUser>> _users;		//_users  :  map<Uid ,shared_ptr<CUser>>
+	std::multimap<CString, std::shared_ptr<CUser>>_userid_user; //_userid_user	:	map<Userid , shared_ptr<CUser>>
+	std::multimap<CString, CString> _user_id_to_uid;	
 	CString _logon_info_path;
 	bool _initialized;
 

@@ -66,7 +66,8 @@ bool CUserManager::Init()
 shared_ptr<CUser> CUserManager::CreateUser(const CString& user_id, 
 	const CString& password)
 {
-	if (UserExists(user_id, password))
+	auto isExist = UserExists(user_id, password);
+	if (isExist)
 	{
 		return shared_ptr<CUser>();
 	}
@@ -88,22 +89,28 @@ shared_ptr<CUser> CUserManager::CreateUser(const CString& user_id,
 
 bool CUserManager::UserExists(const CString& name, const CString& password)
 {
-	auto iter = _users.find(name);
-	return (iter != _users.end() && iter->second && iter->second->GetPassword() == password);
+	for (auto iter : _userid_user)
+	{
+		if (iter.first == name && iter.second && iter.second->GetPassword() == password)
+		{
+			return true;
+		}
+	}
+	return false;
 }
 
 std::shared_ptr<CUser> CUserManager::GetUser(const CString& user_id, 
 	const CString& password)
 {
-	auto uid = _user_name_to_uid.find(user_id);
-	
-	auto iter = _users.find(uid->second);
-	if (iter != _users.end())
+	for (auto it : _userid_user)
 	{
-		assert(iter->second);
-		if (iter->second->GetPassword() == password)
+		if (it.first == user_id)
 		{
-			return iter->second;
+			assert(it.second);
+			if (it.second->GetPassword() == password)
+			{
+				return it.second;
+			}
 		}
 	}
 	return shared_ptr<CUser>();
@@ -123,8 +130,9 @@ bool CUserManager::AddUser(std::shared_ptr<CUser> user)
 	if (GetUser(user->GetUid()))
 		return false;
 
+	_userid_user.insert(make_pair(user->GetUserId(), user));
 	_users.insert(make_pair(user->GetUid(), user));
-	_user_name_to_uid.insert(make_pair(user->GetUserId(), user->GetUid()));
+	_user_id_to_uid.insert(make_pair(user->GetUserId(), user->GetUid()));
 
 	return true;
 }
@@ -165,12 +173,13 @@ bool CUserManager::SaveLogonInfo()
 		auto user_info_element = users_info.AddElement(XML_USER_INFO);
 		user_info_element->SetAttrib(XML_USER_USERID, user.second->GetUserId());
 		user_info_element->SetAttrib(XML_USER_PASSWORD, user.second->GetPassword());
-		user_info_element->SetAttrib(XML_USER_UID, user.second->GetUid());
+		user_info_element->SetAttrib(XML_USER_UID, user.first);
 	}
 
 	return users_info.Save(_logon_info_path);
 }
 
+//静态对象，首先调用GetInstance()函数初始化静态对象。
 CUserManager& CUserManager::GetInstance()
 {
 	if (!s_instance._initialized)

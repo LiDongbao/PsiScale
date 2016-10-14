@@ -153,8 +153,7 @@ BOOL CPsiAnswerViewerDlg::OnInitDialog()
 			}
 		}
 	}
-									// TODO: Add extra initialization here
-	InitialScaleList();
+
 	TODO(被试信息路径是硬编码);
 	InitialPersonCombo();
 
@@ -213,10 +212,6 @@ HCURSOR CPsiAnswerViewerDlg::OnQueryDragIcon()
 	return static_cast<HCURSOR>(m_hIcon);
 }
 
-bool CPsiAnswerViewerDlg::InitialScaleList()
-{
-	return true;
-}
 
 bool CPsiAnswerViewerDlg::InitialPersonCombo()
 {
