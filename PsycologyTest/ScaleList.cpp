@@ -114,9 +114,9 @@ void CScaleList::Init()
 	LVCOLUMNW column;
 	column.mask = LVCF_WIDTH | LVCF_TEXT;
 	column.cxMin = 100;
-	column.cxDefault = 300;
+	column.cxDefault = 200;
 	column.pszText = _T("Á¿±í");
-	column.cx = 400;
+	column.cx = 300;
 	column.fmt = LVCFMT_LEFT;
 
 	InsertColumn(0, &column);
