@@ -69,7 +69,7 @@ protected:
 
 	clock_t _start;
 	clock_t _end;
-	bool _is_pause;
+	bool _is_paused;
 	
 public:
 	afx_msg void OnBnClickedButton1();
