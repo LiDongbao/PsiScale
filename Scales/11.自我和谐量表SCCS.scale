@@ -1,53 +1,52 @@
 <PsycologyTest Id="11" Name="自我和谐量表SCCS" SameChoices="1">
 <Choices>
-<Item Id="1">1 完全不符合</Item>
-<Item Id="2">2 比较不符合</Item>
-<Item Id="3">3 不确定</Item>
-<Item Id="4">4 比较符合</Item>
-<Item Id="5">5 完全符合</Item>
+<Item Id="1">完全不符合</Item>
+<Item Id="2">比较不符合</Item>
+<Item Id="3">不确定</Item>
+<Item Id="4">比较符合</Item>
+<Item Id="5">完全符合</Item>
 </Choices>
-<Prologue>下面是一些个人对自己看法的陈述，填答时，请您看清每句话的意思，然后选一个数字（“1”代表该句话玩完全不符合您的情况，“2”代表该句话比较不符合您的情况，“3”代表不确定，“4”代表比较符合您的情况，“5”代表完全符合您的情况）以代表该句话与您现在对自己看法相符合的程度，每个人对自己的看法都有其独特性，因此答案是没有对错的，您只要如实回答就行了。
-如果发现没有任何一个数值能恰当地反映您的见解，请选择与您的见解最接近者。</Prologue>
+<Prologue>下面是一些个人对自己的看法，填答时，请您看清每句话的意思，然后选择一个数字（“1”代表该句话完全不符合您的情况，“2”代表比较不符合您的情况，“3”代表不确定，“4”代表比较符合您的情况，“5”代表完全符合您的情况）以代表该句话与您现在对自己的看法相符合的程度，每个人对自己的看法都有其独特性，因此答案是没有对错的，您只要如实回答就行了。如果发现没有任何一个数值能恰当地反映你的见解，请选择与你的见解最接近者。</Prologue>
 <Groups>
 <Item>自我与经验的不和谐</Item>
 <Item>自我的灵活性</Item>
-<Item>自己的刻板性</Item>
+<Item>自我的刻板性</Item>
 </Groups>
 <Questions>
 <Item Id="1" ReverseScore="0" SubScale="自我与经验的不和谐">我周围的人往往觉得我对自己的看法有些矛盾</Item>
-<Item Id="2" ReverseScore="0" SubScale="自我的灵活性">有时我会对自己在某些地方的表现不满意</Item>
-<Item Id="3" ReverseScore="0" SubScale="自我的灵活性">每当遇到困难，我总是首先分析造成困难的原因</Item>
-<Item Id="4" ReverseScore="0" SubScale="自我与经验的不和谐">我很难恰当表达我对别人的情感反应 </Item>
-<Item Id="5" ReverseScore="0" SubScale="自我的灵活性">我对很多事情都有自己的观点，但我并不要求别人也与我一样</Item>
-<Item Id="6" ReverseScore="0" SubScale="自己的刻板性">我一旦形成对事物的看法，就不会再改变</Item>
+<Item Id="2" ReverseScore="1" SubScale="自我的灵活性">有时我会对自己在某些地方的表现不满意</Item>
+<Item Id="3" ReverseScore="1" SubScale="自我的灵活性">每当遇到困难，我总是首先分析造成困难的原因</Item>
+<Item Id="4" ReverseScore="0" SubScale="自我与经验的不和谐">我很难恰当表达我对别人的情感反应</Item>
+<Item Id="5" ReverseScore="1" SubScale="自我的灵活性">我对很多事情都有自己的观点，但我并不要求别人也与我一样</Item>
+<Item Id="6" ReverseScore="0" SubScale="自我的刻板性">我一旦形成对事物的看法，就不会再改变</Item>
 <Item Id="7" ReverseScore="0" SubScale="自我与经验的不和谐">我经常对自己的行为不满意</Item>
-<Item Id="8" ReverseScore="0" SubScale="自我的灵活性">尽管有时候做一些不愿意的事，但我基本上是按自己意愿办事的</Item>
-<Item Id="9" ReverseScore="0" SubScale="自己的刻板性">一件事好是好，不好是不好，没有什么可含糊的</Item>
+<Item Id="8" ReverseScore="1" SubScale="自我的灵活性">尽管有时候做一些不愿意的事，但我基本上是按自己意愿办事的</Item>
+<Item Id="9" ReverseScore="0" SubScale="自我的刻板性">一件事好是好，不好是不好，没有什么可含糊的</Item>
 <Item Id="10" ReverseScore="0" SubScale="自我与经验的不和谐">如果我在某件事上不顺利，我就往往会怀疑自己的能力</Item>
-<Item Id="11" ReverseScore="0" SubScale="自我的灵活性">我至少有几个知心朋友</Item>
+<Item Id="11" ReverseScore="1" SubScale="自我的灵活性">我至少有几个知心朋友</Item>
 <Item Id="12" ReverseScore="0" SubScale="自我与经验的不和谐">我觉得我所做的很多事情都是不该做的</Item>
-<Item Id="13" ReverseScore="0" SubScale="自己的刻板性">不论别人怎么说，我的观点决不改变</Item>
+<Item Id="13" ReverseScore="0" SubScale="自我的刻板性">不论别人怎么说，我的观点决不改变</Item>
 <Item Id="14" ReverseScore="0" SubScale="自我与经验的不和谐">别人常常会误解我对他们好意</Item>
 <Item Id="15" ReverseScore="0" SubScale="自我与经验的不和谐">很多情况下我不得不对自己的能力表示怀疑</Item>
-<Item Id="16" ReverseScore="0" SubScale="自我的灵活性">我朋友中有些是与我截然不同的人，这并不影响我们的关系</Item>
+<Item Id="16" ReverseScore="1" SubScale="自我的灵活性">我朋友中有些是与我截然不同的人，这并不影响我们的关系</Item>
 <Item Id="17" ReverseScore="0" SubScale="自我与经验的不和谐">与朋友交往过多容易暴露自己的隐私</Item>
-<Item Id="18" ReverseScore="0" SubScale="自我的灵活性">我很了解自己对周围人的情感</Item>
+<Item Id="18" ReverseScore="1" SubScale="自我的灵活性">我很了解自己对周围人的情感</Item>
 <Item Id="19" ReverseScore="0" SubScale="自我与经验的不和谐">我觉得自己目前的处境与我的要求相距太远</Item>
-<Item Id="20" ReverseScore="0" SubScale="自己的刻板性">我很少去想自己所做的事情是否应该</Item>
+<Item Id="20" ReverseScore="0" SubScale="自我的刻板性">我很少去想自己所做的事情是否应该</Item>
 <Item Id="21" ReverseScore="0" SubScale="自我与经验的不和谐">我所遇到的很多问题都无法自己解决</Item>
-<Item Id="22" ReverseScore="0" SubScale="自我的灵活性">我很清楚自己是什么样的人</Item>
+<Item Id="22" ReverseScore="1" SubScale="自我的灵活性">我很清楚自己是什么样的人</Item>
 <Item Id="23" ReverseScore="0" SubScale="自我与经验的不和谐">我很能自如地表达自己所要表达的意思</Item>
-<Item Id="24" ReverseScore="0" SubScale="自我的灵活性">如果有足够的证据，我也可以改变自己的观点</Item>
-<Item Id="25" ReverseScore="0" SubScale="自己的刻板性">我很少考虑自己是一个什么样的人</Item>
-<Item Id="26" ReverseScore="0" SubScale="自己的刻板性">把心理话告诉别人不仅得不到帮助，还可能招致麻烦</Item>
+<Item Id="24" ReverseScore="1" SubScale="自我的灵活性">如果有足够的证据，我也可以改变自己的观点</Item>
+<Item Id="25" ReverseScore="0" SubScale="自我的刻板性">我很少考虑自己是一个什么样的人</Item>
+<Item Id="26" ReverseScore="0" SubScale="自我的刻板性">把心理话告诉别人不仅得不到帮助，还可能招致麻烦</Item>
 <Item Id="27" ReverseScore="0" SubScale="自我与经验的不和谐">在遇到问题时，我总觉得别人都离我很远</Item>
 <Item Id="28" ReverseScore="0" SubScale="自我与经验的不和谐">我觉得很难发挥出自己应有的水平</Item>
 <Item Id="29" ReverseScore="0" SubScale="自我与经验的不和谐">我很担心自己的所作所为会引起别人的误解</Item>
-<Item Id="30" ReverseScore="0" SubScale="自我的灵活性">如果我发现自己某些方面表现不佳，总希望尽快弥补</Item>
+<Item Id="30" ReverseScore="1" SubScale="自我的灵活性">如果我发现自己某些方面表现不佳，总希望尽快弥补</Item>
 <Item Id="31" ReverseScore="0" SubScale="自我与经验的不和谐">每个人都在忙自己的事，很难与他们沟通</Item>
-<Item Id="32" ReverseScore="0" SubScale="自我的灵活性">我认为能力再强的人也可能遇上难题</Item>
+<Item Id="32" ReverseScore="1" SubScale="自我的灵活性">我认为能力再强的人也可能遇上难题</Item>
 <Item Id="33" ReverseScore="0" SubScale="自我与经验的不和谐">我经常感到自己是孤独无援的</Item>
-<Item Id="34" ReverseScore="0" SubScale="自己的刻板性">一旦遇到麻烦，无论怎么做都无济于事</Item>
-<Item Id="35" ReverseScore="0" SubScale="自我的灵活性">我总能清楚地了解自己的感受</Item>
+<Item Id="34" ReverseScore="0" SubScale="自我的刻板性">一旦遇到麻烦，无论怎么做都无济于事</Item>
+<Item Id="35" ReverseScore="1" SubScale="自我的灵活性">我总能清楚地了解自己的感受</Item>
 </Questions>
 </PsycologyTest>

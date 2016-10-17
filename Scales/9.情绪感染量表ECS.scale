@@ -17,15 +17,15 @@
 <Item Id="1" ReverseScore="0" SubScale="悲伤">和我一起说话的人如果伤心地哭了，我也会感到难过，眼睛湿润。</Item>
 <Item Id="2" ReverseScore="0" SubScale="快乐">在我情绪低落的时候，和快乐的人在一起会让我的心情好起来。</Item>
 <Item Id="3" ReverseScore="0" SubScale="快乐">别人对我热情地微笑，我能感受到温情并还以微笑。</Item>
-<Item Id="4" ReverseScore="0" SubScale="焦虑">当人们谈到他们亲人离开人世的事情时，我也会感到难过。</Item>
+<Item Id="4" ReverseScore="0" SubScale="悲伤">当人们谈到他们亲人离开人世的事情时，我也会感到难过。</Item>
 <Item Id="5" ReverseScore="0" SubScale="爱">注视爱人的眼睛时，我能体会到特别的浪漫。</Item>
 <Item Id="6" ReverseScore="0" SubScale="焦虑">在愤怒的人群旁边，我会感到焦躁不安。</Item>
 <Item Id="7" ReverseScore="0" SubScale="焦虑">看到新闻里受害人惊恐的表情我也会感到有些惊慌。</Item>
 <Item Id="8" ReverseScore="0" SubScale="爱">当爱人拥抱我的时候，我会感到陶醉。</Item>
 <Item Id="9" ReverseScore="0" SubScale="焦虑">不经意听到别人愤怒的争吵，我会变得有些紧张。</Item>
 <Item Id="10" ReverseScore="0" SubScale="快乐">和快乐的人在一起，我也会感到快乐。</Item>
-<Item Id="11" ReverseScore="0" SubScale="爱">当爱人碰触我的时候，我的身体会有积极的反应</Item>
-<Item Id="12" ReverseScore="0" SubScale="焦虑">当周围的人特别紧张的时候，我也会变得紧张起来</Item>
+<Item Id="11" ReverseScore="0" SubScale="爱">当爱人碰触我的时候，我的身体会有积极的反应。</Item>
+<Item Id="12" ReverseScore="0" SubScale="焦虑">当周围的人特别紧张的时候，我也会变得紧张起来。</Item>
 <Item Id="13" ReverseScore="0" SubScale="悲伤">伤感的电影剧情会让我伤心流泪。</Item>
 </Questions>
 </PsycologyTest>

@@ -1,73 +1,590 @@
 <Test>
 <UserInfo UserId="lidongbao" Password="123456" UID="lidongbao_20161014145419" Name="李冬宝" Pinyin="lidongbao" Nationality="汉" BirthData="2016-10-14 14:54:21" Sex="0" Weight="70" Mobile="15900611731" Email="1518425008@qq.com_______" Mental="0" Sight="0" Others="Test: 2016-10-14 14:54. Test if the test can get the right scale and the answer can be written rightly. "/>
-<Scale Name="亲社会倾向量表PTM" StartTime="2016-10-14 21:22:32" Finished="1">
+<Scale Name="三维人格问卷TPQ" StartTime="2016-10-17 11:17:12" Finished="1">
 <Answers>
-<Item Id="1" Answer="3" Time="2626"/>
-<Item Id="2" Answer="3" Time="12367"/>
-<Item Id="3" Answer="2" Time="2052"/>
-<Item Id="4" Answer="3" Time="425"/>
-<Item Id="5" Answer="3" Time="188"/>
-<Item Id="6" Answer="4" Time="1014"/>
-<Item Id="7" Answer="3" Time="472"/>
-<Item Id="8" Answer="4" Time="546"/>
-<Item Id="9" Answer="4" Time="323"/>
-<Item Id="10" Answer="4" Time="179"/>
-<Item Id="11" Answer="4" Time="303"/>
-<Item Id="12" Answer="4" Time="346"/>
-<Item Id="13" Answer="4" Time="188"/>
-<Item Id="14" Answer="4" Time="329"/>
-<Item Id="15" Answer="4" Time="156"/>
-<Item Id="16" Answer="4" Time="235"/>
-<Item Id="17" Answer="3" Time="622"/>
-<Item Id="18" Answer="3" Time="171"/>
-<Item Id="19" Answer="3" Time="172"/>
-<Item Id="20" Answer="3" Time="172"/>
-<Item Id="21" Answer="3" Time="139"/>
-<Item Id="22" Answer="3" Time="155"/>
-<Item Id="23" Answer="3" Time="164"/>
-<Item Id="24" Answer="3" Time="409"/>
-<Item Id="25" Answer="3" Time="203"/>
-<Item Id="26" Answer="3" Time="401"/>
+<Item Id="1" Answer="2" Time="848"/>
+<Item Id="2" Answer="2" Time="178"/>
+<Item Id="3" Answer="1" Time="265"/>
+<Item Id="4" Answer="2" Time="241"/>
+<Item Id="5" Answer="1" Time="233"/>
+<Item Id="6" Answer="2" Time="225"/>
+<Item Id="7" Answer="1" Time="251"/>
+<Item Id="8" Answer="2" Time="233"/>
+<Item Id="9" Answer="1" Time="266"/>
+<Item Id="10" Answer="1" Time="218"/>
+<Item Id="11" Answer="2" Time="265"/>
+<Item Id="12" Answer="1" Time="394"/>
+<Item Id="13" Answer="2" Time="261"/>
+<Item Id="14" Answer="1" Time="244"/>
+<Item Id="15" Answer="2" Time="253"/>
+<Item Id="16" Answer="1" Time="249"/>
+<Item Id="17" Answer="2" Time="241"/>
+<Item Id="18" Answer="1" Time="250"/>
+<Item Id="19" Answer="2" Time="257"/>
+<Item Id="20" Answer="1" Time="265"/>
+<Item Id="21" Answer="2" Time="241"/>
+<Item Id="22" Answer="1" Time="248"/>
+<Item Id="23" Answer="2" Time="273"/>
+<Item Id="24" Answer="1" Time="240"/>
+<Item Id="25" Answer="2" Time="185"/>
+<Item Id="26" Answer="2" Time="252"/>
+<Item Id="27" Answer="2" Time="176"/>
+<Item Id="28" Answer="1" Time="290"/>
+<Item Id="29" Answer="1" Time="177"/>
+<Item Id="30" Answer="2" Time="281"/>
+<Item Id="31" Answer="2" Time="156"/>
+<Item Id="32" Answer="1" Time="312"/>
+<Item Id="33" Answer="1" Time="193"/>
+<Item Id="34" Answer="1" Time="210"/>
+<Item Id="35" Answer="2" Time="314"/>
+<Item Id="36" Answer="2" Time="180"/>
+<Item Id="37" Answer="1" Time="420"/>
+<Item Id="38" Answer="1" Time="186"/>
+<Item Id="39" Answer="1" Time="139"/>
+<Item Id="40" Answer="2" Time="306"/>
+<Item Id="41" Answer="2" Time="195"/>
+<Item Id="42" Answer="2" Time="169"/>
+<Item Id="43" Answer="1" Time="306"/>
+<Item Id="44" Answer="1" Time="193"/>
+<Item Id="45" Answer="2" Time="314"/>
+<Item Id="46" Answer="2" Time="187"/>
+<Item Id="47" Answer="2" Time="272"/>
+<Item Id="48" Answer="2" Time="186"/>
+<Item Id="49" Answer="2" Time="226"/>
+<Item Id="50" Answer="2" Time="194"/>
+<Item Id="51" Answer="2" Time="175"/>
+<Item Id="52" Answer="2" Time="198"/>
+<Item Id="53" Answer="2" Time="188"/>
+<Item Id="54" Answer="2" Time="186"/>
+<Item Id="55" Answer="1" Time="311"/>
+<Item Id="56" Answer="1" Time="186"/>
+<Item Id="57" Answer="1" Time="250"/>
+<Item Id="58" Answer="2" Time="477"/>
+<Item Id="59" Answer="2" Time="180"/>
+<Item Id="60" Answer="2" Time="162"/>
+<Item Id="61" Answer="2" Time="185"/>
+<Item Id="62" Answer="2" Time="176"/>
+<Item Id="63" Answer="2" Time="156"/>
+<Item Id="64" Answer="2" Time="154"/>
+<Item Id="65" Answer="2" Time="314"/>
+<Item Id="66" Answer="2" Time="201"/>
+<Item Id="67" Answer="2" Time="131"/>
+<Item Id="68" Answer="2" Time="313"/>
+<Item Id="69" Answer="2" Time="200"/>
+<Item Id="70" Answer="2" Time="228"/>
+<Item Id="71" Answer="2" Time="136"/>
+<Item Id="72" Answer="2" Time="155"/>
+<Item Id="73" Answer="2" Time="168"/>
+<Item Id="74" Answer="2" Time="179"/>
+<Item Id="75" Answer="2" Time="194"/>
+<Item Id="76" Answer="2" Time="178"/>
+<Item Id="77" Answer="2" Time="188"/>
+<Item Id="78" Answer="2" Time="172"/>
+<Item Id="79" Answer="2" Time="154"/>
+<Item Id="80" Answer="2" Time="187"/>
+<Item Id="81" Answer="2" Time="155"/>
+<Item Id="82" Answer="2" Time="186"/>
+<Item Id="83" Answer="2" Time="163"/>
+<Item Id="84" Answer="2" Time="180"/>
+<Item Id="85" Answer="2" Time="139"/>
+<Item Id="86" Answer="2" Time="169"/>
+<Item Id="87" Answer="2" Time="169"/>
+<Item Id="88" Answer="2" Time="164"/>
+<Item Id="89" Answer="2" Time="172"/>
+<Item Id="90" Answer="2" Time="178"/>
+<Item Id="91" Answer="2" Time="156"/>
+<Item Id="92" Answer="2" Time="163"/>
+<Item Id="93" Answer="2" Time="179"/>
+<Item Id="94" Answer="2" Time="180"/>
+<Item Id="95" Answer="2" Time="153"/>
+<Item Id="96" Answer="2" Time="187"/>
+<Item Id="97" Answer="2" Time="322"/>
+<Item Id="98" Answer="2" Time="194"/>
+<Item Id="99" Answer="2" Time="178"/>
+<Item Id="100" Answer="2" Time="163"/>
 </Answers>
 <SubScales>
-<SubScale Name="鍏紑鐨?鍖垮悕鐨?鍒╀粬鐨?渚濅粠鐨?鎯呯华鐨?绱ф€ョ殑" Score="87"/>
+<SubScale Name="奖赏依赖性RD1" Score="1"/>
+<SubScale Name="奖赏依赖性RD2" Score="5"/>
+<SubScale Name="奖赏依赖性RD3" Score="6"/>
+<SubScale Name="奖赏依赖性RD4" Score="2"/>
+<SubScale Name="猎奇性NS1" Score="6"/>
+<SubScale Name="猎奇性NS2" Score="3"/>
+<SubScale Name="猎奇性NS3" Score="4"/>
+<SubScale Name="猎奇性NS4" Score="6"/>
+<SubScale Name="躲避伤害性HA1" Score="10"/>
+<SubScale Name="躲避伤害性HA2" Score="4"/>
+<SubScale Name="躲避伤害性HA3" Score="6"/>
+<SubScale Name="躲避伤害性HA4" Score="5"/>
 </SubScales>
 </Scale>
-<Scale Name="冲动性量表BIS" StartTime="2016-10-14 23:14:20" Finished="1">
+<Scale Name="亲社会倾向量表PTM" StartTime="2016-10-17 11:15:52" Finished="1">
 <Answers>
-<Item Id="1" Answer="3" Time="1054"/>
-<Item Id="2" Answer="3" Time="146"/>
-<Item Id="3" Answer="4" Time="325"/>
-<Item Id="4" Answer="4" Time="146"/>
-<Item Id="5" Answer="3" Time="350"/>
-<Item Id="6" Answer="3" Time="145"/>
-<Item Id="7" Answer="3" Time="265"/>
-<Item Id="8" Answer="3" Time="162"/>
-<Item Id="9" Answer="3" Time="262"/>
-<Item Id="10" Answer="3" Time="144"/>
-<Item Id="11" Answer="4" Time="221"/>
-<Item Id="12" Answer="4" Time="145"/>
-<Item Id="13" Answer="3" Time="323"/>
-<Item Id="14" Answer="3" Time="154"/>
-<Item Id="15" Answer="3" Time="144"/>
-<Item Id="16" Answer="3" Time="152"/>
-<Item Id="17" Answer="3" Time="145"/>
-<Item Id="18" Answer="3" Time="145"/>
-<Item Id="19" Answer="3" Time="140"/>
-<Item Id="20" Answer="3" Time="145"/>
-<Item Id="21" Answer="3" Time="132"/>
-<Item Id="22" Answer="3" Time="170"/>
-<Item Id="23" Answer="3" Time="126"/>
-<Item Id="24" Answer="3" Time="145"/>
-<Item Id="25" Answer="3" Time="141"/>
-<Item Id="26" Answer="3" Time="160"/>
-<Item Id="27" Answer="3" Time="187"/>
-<Item Id="28" Answer="3" Time="137"/>
-<Item Id="29" Answer="3" Time="139"/>
-<Item Id="30" Answer="3" Time="319"/>
+<Item Id="1" Answer="3" Time="970"/>
+<Item Id="2" Answer="3" Time="201"/>
+<Item Id="3" Answer="3" Time="407"/>
+<Item Id="4" Answer="3" Time="137"/>
+<Item Id="5" Answer="3" Time="180"/>
+<Item Id="6" Answer="3" Time="179"/>
+<Item Id="7" Answer="3" Time="156"/>
+<Item Id="8" Answer="3" Time="184"/>
+<Item Id="9" Answer="3" Time="153"/>
+<Item Id="10" Answer="3" Time="171"/>
+<Item Id="11" Answer="3" Time="177"/>
+<Item Id="12" Answer="3" Time="153"/>
+<Item Id="13" Answer="3" Time="195"/>
+<Item Id="14" Answer="3" Time="184"/>
+<Item Id="15" Answer="3" Time="147"/>
+<Item Id="16" Answer="3" Time="177"/>
+<Item Id="17" Answer="3" Time="232"/>
+<Item Id="18" Answer="3" Time="146"/>
+<Item Id="19" Answer="3" Time="170"/>
+<Item Id="20" Answer="3" Time="186"/>
+<Item Id="21" Answer="3" Time="154"/>
+<Item Id="22" Answer="3" Time="194"/>
+<Item Id="23" Answer="3" Time="177"/>
+<Item Id="24" Answer="3" Time="162"/>
+<Item Id="25" Answer="3" Time="162"/>
+<Item Id="26" Answer="3" Time="178"/>
 </Answers>
 <SubScales>
-<SubScale Name="杩愬姩鍐插姩鎬?璁ょ煡鍐插姩鎬?鏃犺鍒掑啿鍔ㄦ€?" Score="94"/>
+<SubScale Name="依从的" Score="15"/>
+<SubScale Name="公开的" Score="12"/>
+<SubScale Name="利他的" Score="12"/>
+<SubScale Name="匿名的" Score="15"/>
+<SubScale Name="情绪的" Score="15"/>
+<SubScale Name="紧急的" Score="9"/>
+</SubScales>
+</Scale>
+<Scale Name="共情量表IRI" StartTime="2016-10-17 11:16:18" Finished="1">
+<Answers>
+<Item Id="1" Answer="3" Time="804"/>
+<Item Id="2" Answer="3" Time="196"/>
+<Item Id="3" Answer="3" Time="177"/>
+<Item Id="4" Answer="3" Time="184"/>
+<Item Id="5" Answer="3" Time="161"/>
+<Item Id="6" Answer="3" Time="170"/>
+<Item Id="7" Answer="3" Time="159"/>
+<Item Id="8" Answer="3" Time="160"/>
+<Item Id="9" Answer="3" Time="157"/>
+<Item Id="10" Answer="3" Time="146"/>
+<Item Id="11" Answer="3" Time="173"/>
+<Item Id="12" Answer="3" Time="144"/>
+<Item Id="13" Answer="3" Time="158"/>
+<Item Id="14" Answer="3" Time="304"/>
+<Item Id="15" Answer="3" Time="179"/>
+<Item Id="16" Answer="3" Time="169"/>
+<Item Id="17" Answer="3" Time="177"/>
+<Item Id="18" Answer="3" Time="169"/>
+<Item Id="19" Answer="3" Time="184"/>
+<Item Id="20" Answer="3" Time="179"/>
+<Item Id="21" Answer="3" Time="150"/>
+<Item Id="22" Answer="3" Time="178"/>
+</Answers>
+<SubScales>
+<SubScale Name="个人痛苦" Score="10"/>
+<SubScale Name="共情性关心" Score="12"/>
+<SubScale Name="想象力" Score="12"/>
+<SubScale Name="观点采择" Score="10"/>
+</SubScales>
+</Scale>
+<Scale Name="冲动性量表BIS" StartTime="2016-10-17 11:16:08" Finished="1">
+<Answers>
+<Item Id="1" Answer="3" Time="710"/>
+<Item Id="2" Answer="3" Time="201"/>
+<Item Id="3" Answer="3" Time="169"/>
+<Item Id="4" Answer="3" Time="193"/>
+<Item Id="5" Answer="3" Time="182"/>
+<Item Id="6" Answer="3" Time="194"/>
+<Item Id="7" Answer="3" Time="152"/>
+<Item Id="8" Answer="3" Time="184"/>
+<Item Id="9" Answer="3" Time="187"/>
+<Item Id="10" Answer="3" Time="224"/>
+<Item Id="11" Answer="3" Time="186"/>
+<Item Id="12" Answer="3" Time="179"/>
+<Item Id="13" Answer="3" Time="161"/>
+<Item Id="14" Answer="3" Time="170"/>
+<Item Id="15" Answer="3" Time="189"/>
+<Item Id="16" Answer="3" Time="191"/>
+<Item Id="17" Answer="3" Time="178"/>
+<Item Id="18" Answer="3" Time="171"/>
+<Item Id="19" Answer="3" Time="162"/>
+<Item Id="20" Answer="3" Time="194"/>
+<Item Id="21" Answer="3" Time="178"/>
+<Item Id="22" Answer="3" Time="209"/>
+<Item Id="23" Answer="3" Time="184"/>
+<Item Id="24" Answer="3" Time="176"/>
+<Item Id="25" Answer="3" Time="171"/>
+<Item Id="26" Answer="3" Time="209"/>
+<Item Id="27" Answer="3" Time="194"/>
+<Item Id="28" Answer="3" Time="201"/>
+<Item Id="29" Answer="3" Time="194"/>
+<Item Id="30" Answer="3" Time="131"/>
+</Answers>
+<SubScales>
+<SubScale Name="无计划冲动性" Score="30"/>
+<SubScale Name="认知冲动性" Score="30"/>
+<SubScale Name="运动冲动性" Score="30"/>
+</SubScales>
+</Scale>
+<Scale Name="基本共情量表BES" StartTime="2016-10-17 11:18:03" Finished="1">
+<Answers>
+<Item Id="1" Answer="3" Time="771"/>
+<Item Id="2" Answer="3" Time="177"/>
+<Item Id="3" Answer="3" Time="162"/>
+<Item Id="4" Answer="3" Time="161"/>
+<Item Id="5" Answer="3" Time="131"/>
+<Item Id="6" Answer="3" Time="132"/>
+<Item Id="7" Answer="3" Time="155"/>
+<Item Id="8" Answer="3" Time="144"/>
+<Item Id="9" Answer="3" Time="296"/>
+<Item Id="10" Answer="3" Time="92"/>
+<Item Id="11" Answer="3" Time="147"/>
+<Item Id="12" Answer="3" Time="164"/>
+<Item Id="13" Answer="3" Time="121"/>
+<Item Id="14" Answer="3" Time="148"/>
+<Item Id="15" Answer="3" Time="494"/>
+<Item Id="16" Answer="3" Time="179"/>
+<Item Id="17" Answer="3" Time="171"/>
+<Item Id="18" Answer="3" Time="137"/>
+<Item Id="19" Answer="3" Time="171"/>
+<Item Id="20" Answer="3" Time="139"/>
+</Answers>
+<SubScales>
+<SubScale Name="情感共情" Score="33"/>
+<SubScale Name="认知共情" Score="27"/>
+</SubScales>
+</Scale>
+<Scale Name="大五人格量表" StartTime="2016-10-17 11:17:39" Finished="1">
+<Answers>
+<Item Id="1" Answer="3" Time="373"/>
+<Item Id="2" Answer="3" Time="225"/>
+<Item Id="3" Answer="3" Time="178"/>
+<Item Id="4" Answer="3" Time="216"/>
+<Item Id="5" Answer="3" Time="352"/>
+<Item Id="6" Answer="3" Time="160"/>
+<Item Id="7" Answer="3" Time="154"/>
+<Item Id="8" Answer="3" Time="171"/>
+<Item Id="9" Answer="3" Time="155"/>
+<Item Id="10" Answer="3" Time="736"/>
+<Item Id="11" Answer="3" Time="154"/>
+<Item Id="12" Answer="3" Time="110"/>
+<Item Id="13" Answer="3" Time="130"/>
+<Item Id="14" Answer="3" Time="155"/>
+<Item Id="15" Answer="3" Time="85"/>
+<Item Id="16" Answer="3" Time="153"/>
+<Item Id="17" Answer="3" Time="140"/>
+<Item Id="18" Answer="3" Time="146"/>
+<Item Id="19" Answer="3" Time="116"/>
+<Item Id="20" Answer="3" Time="155"/>
+<Item Id="21" Answer="3" Time="155"/>
+<Item Id="22" Answer="3" Time="104"/>
+<Item Id="23" Answer="3" Time="140"/>
+<Item Id="24" Answer="3" Time="132"/>
+<Item Id="25" Answer="3" Time="146"/>
+<Item Id="26" Answer="3" Time="139"/>
+<Item Id="27" Answer="3" Time="140"/>
+<Item Id="28" Answer="3" Time="120"/>
+<Item Id="29" Answer="3" Time="139"/>
+<Item Id="30" Answer="3" Time="146"/>
+<Item Id="31" Answer="3" Time="123"/>
+<Item Id="32" Answer="3" Time="131"/>
+<Item Id="33" Answer="3" Time="131"/>
+<Item Id="34" Answer="3" Time="147"/>
+<Item Id="35" Answer="3" Time="154"/>
+<Item Id="36" Answer="3" Time="136"/>
+<Item Id="37" Answer="3" Time="170"/>
+<Item Id="38" Answer="3" Time="138"/>
+<Item Id="39" Answer="3" Time="153"/>
+<Item Id="40" Answer="3" Time="118"/>
+<Item Id="41" Answer="3" Time="147"/>
+<Item Id="42" Answer="3" Time="111"/>
+<Item Id="43" Answer="3" Time="139"/>
+<Item Id="44" Answer="3" Time="139"/>
+<Item Id="45" Answer="3" Time="146"/>
+<Item Id="46" Answer="3" Time="118"/>
+<Item Id="47" Answer="3" Time="139"/>
+<Item Id="48" Answer="3" Time="140"/>
+<Item Id="49" Answer="3" Time="139"/>
+<Item Id="50" Answer="3" Time="146"/>
+<Item Id="51" Answer="3" Time="148"/>
+<Item Id="52" Answer="3" Time="127"/>
+<Item Id="53" Answer="3" Time="145"/>
+<Item Id="54" Answer="3" Time="147"/>
+<Item Id="55" Answer="3" Time="146"/>
+<Item Id="56" Answer="3" Time="118"/>
+<Item Id="57" Answer="3" Time="134"/>
+<Item Id="58" Answer="3" Time="144"/>
+<Item Id="59" Answer="3" Time="131"/>
+<Item Id="60" Answer="3" Time="144"/>
+</Answers>
+<SubScales>
+<SubScale Name="严谨性" Score="36"/>
+<SubScale Name="外向性" Score="36"/>
+<SubScale Name="开放性" Score="36"/>
+<SubScale Name="神经质" Score="36"/>
+<SubScale Name="顺同性" Score="36"/>
+</SubScales>
+</Scale>
+<Scale Name="情绪感染量表ECS" StartTime="2016-10-17 14:13:24" Finished="1">
+<Answers>
+<Item Id="1" Answer="3" Time="900"/>
+<Item Id="2" Answer="4" Time="437"/>
+<Item Id="3" Answer="5" Time="311"/>
+<Item Id="4" Answer="5" Time="152"/>
+<Item Id="5" Answer="5" Time="154"/>
+<Item Id="6" Answer="5" Time="162"/>
+<Item Id="7" Answer="5" Time="154"/>
+<Item Id="8" Answer="5" Time="171"/>
+<Item Id="9" Answer="5" Time="302"/>
+<Item Id="10" Answer="5" Time="147"/>
+<Item Id="11" Answer="5" Time="121"/>
+<Item Id="12" Answer="5" Time="162"/>
+<Item Id="13" Answer="5" Time="138"/>
+</Answers>
+<SubScales>
+<SubScale Name="快乐" Score="14"/>
+<SubScale Name="悲伤" Score="13"/>
+<SubScale Name="焦虑" Score="20"/>
+<SubScale Name="爱" Score="15"/>
+</SubScales>
+</Scale>
+<Scale Name="攻击性量表BPAQ" StartTime="2016-10-17 11:17:54" Finished="1">
+<Answers>
+<Item Id="1" Answer="3" Time="576"/>
+<Item Id="2" Answer="3" Time="179"/>
+<Item Id="3" Answer="3" Time="169"/>
+<Item Id="4" Answer="3" Time="142"/>
+<Item Id="5" Answer="3" Time="144"/>
+<Item Id="6" Answer="3" Time="146"/>
+<Item Id="7" Answer="3" Time="154"/>
+<Item Id="8" Answer="3" Time="139"/>
+<Item Id="9" Answer="3" Time="132"/>
+<Item Id="10" Answer="3" Time="140"/>
+<Item Id="11" Answer="3" Time="147"/>
+<Item Id="12" Answer="3" Time="139"/>
+<Item Id="13" Answer="3" Time="156"/>
+<Item Id="14" Answer="3" Time="115"/>
+<Item Id="15" Answer="3" Time="148"/>
+<Item Id="16" Answer="3" Time="258"/>
+<Item Id="17" Answer="3" Time="162"/>
+<Item Id="18" Answer="3" Time="137"/>
+<Item Id="19" Answer="3" Time="142"/>
+<Item Id="20" Answer="3" Time="131"/>
+<Item Id="21" Answer="3" Time="274"/>
+<Item Id="22" Answer="3" Time="169"/>
+</Answers>
+<SubScales>
+<SubScale Name="冲动" Score="18"/>
+<SubScale Name="敌意" Score="24"/>
+<SubScale Name="易怒性" Score="9"/>
+<SubScale Name="身体攻击" Score="15"/>
+</SubScales>
+</Scale>
+<Scale Name="社会价值取向量表SVO" StartTime="2016-10-17 11:16:01" Finished="1">
+<Answers>
+<Item Id="1" Answer="2" Time="1187"/>
+<Item Id="2" Answer="2" Time="178"/>
+<Item Id="3" Answer="2" Time="153"/>
+<Item Id="4" Answer="2" Time="155"/>
+<Item Id="5" Answer="3" Time="285"/>
+<Item Id="6" Answer="3" Time="138"/>
+<Item Id="7" Answer="2" Time="305"/>
+<Item Id="8" Answer="2" Time="178"/>
+<Item Id="9" Answer="2" Time="190"/>
+</Answers>
+<SubScales>
+<SubScale Name="Total" Score="9"/>
+</SubScales>
+</Scale>
+<Scale Name="自尊量表SES" StartTime="2016-10-17 11:16:35" Finished="1">
+<Answers>
+<Item Id="1" Answer="3" Time="853"/>
+<Item Id="2" Answer="3" Time="178"/>
+<Item Id="3" Answer="2" Time="443"/>
+<Item Id="4" Answer="2" Time="156"/>
+<Item Id="5" Answer="3" Time="305"/>
+<Item Id="6" Answer="3" Time="159"/>
+<Item Id="7" Answer="3" Time="134"/>
+<Item Id="8" Answer="2" Time="358"/>
+<Item Id="9" Answer="2" Time="172"/>
+<Item Id="10" Answer="3" Time="311"/>
+</Answers>
+<SubScales>
+<SubScale Name="Total" Score="27"/>
+</SubScales>
+</Scale>
+<Scale Name="自我和谐量表SCCS" StartTime="2016-10-17 14:09:18" Finished="1">
+<Answers>
+<Item Id="1" Answer="3" Time="785"/>
+<Item Id="2" Answer="4" Time="305"/>
+<Item Id="3" Answer="4" Time="199"/>
+<Item Id="4" Answer="5" Time="468"/>
+<Item Id="5" Answer="5" Time="232"/>
+<Item Id="6" Answer="5" Time="160"/>
+<Item Id="7" Answer="5" Time="185"/>
+<Item Id="8" Answer="5" Time="151"/>
+<Item Id="9" Answer="5" Time="139"/>
+<Item Id="10" Answer="5" Time="144"/>
+<Item Id="11" Answer="5" Time="163"/>
+<Item Id="12" Answer="5" Time="162"/>
+<Item Id="13" Answer="5" Time="169"/>
+<Item Id="14" Answer="5" Time="155"/>
+<Item Id="15" Answer="5" Time="155"/>
+<Item Id="16" Answer="5" Time="143"/>
+<Item Id="17" Answer="5" Time="153"/>
+<Item Id="18" Answer="5" Time="141"/>
+<Item Id="19" Answer="5" Time="319"/>
+<Item Id="20" Answer="5" Time="164"/>
+<Item Id="21" Answer="5" Time="168"/>
+<Item Id="22" Answer="5" Time="178"/>
+<Item Id="23" Answer="5" Time="185"/>
+<Item Id="24" Answer="5" Time="173"/>
+<Item Id="25" Answer="5" Time="154"/>
+<Item Id="26" Answer="5" Time="161"/>
+<Item Id="27" Answer="5" Time="187"/>
+<Item Id="28" Answer="5" Time="197"/>
+<Item Id="29" Answer="5" Time="178"/>
+<Item Id="30" Answer="5" Time="169"/>
+<Item Id="31" Answer="5" Time="177"/>
+<Item Id="32" Answer="5" Time="120"/>
+<Item Id="33" Answer="5" Time="154"/>
+<Item Id="34" Answer="5" Time="159"/>
+<Item Id="35" Answer="5" Time="149"/>
+</Answers>
+<SubScales>
+<SubScale Name="自我与经验的不和谐" Score="78"/>
+<SubScale Name="自我的刻板性" Score="35"/>
+<SubScale Name="自我的灵活性" Score="14"/>
+</SubScales>
+</Scale>
+<Scale Name="自我意识量表SCS" StartTime="2016-10-17 11:16:56" Finished="1">
+<Answers>
+<Item Id="1" Answer="4" Time="788"/>
+<Item Id="2" Answer="4" Time="219"/>
+<Item Id="3" Answer="3" Time="286"/>
+<Item Id="4" Answer="3" Time="187"/>
+<Item Id="5" Answer="3" Time="192"/>
+<Item Id="6" Answer="3" Time="187"/>
+<Item Id="7" Answer="3" Time="164"/>
+<Item Id="8" Answer="3" Time="176"/>
+<Item Id="9" Answer="3" Time="187"/>
+<Item Id="10" Answer="3" Time="171"/>
+<Item Id="11" Answer="3" Time="176"/>
+<Item Id="12" Answer="3" Time="163"/>
+<Item Id="13" Answer="3" Time="186"/>
+<Item Id="14" Answer="3" Time="175"/>
+<Item Id="15" Answer="3" Time="193"/>
+<Item Id="16" Answer="3" Time="209"/>
+<Item Id="17" Answer="3" Time="155"/>
+</Answers>
+<SubScales>
+<SubScale Name="公众自我" Score="15"/>
+<SubScale Name="内在自我" Score="21"/>
+</SubScales>
+</Scale>
+<Scale Name="贝克抑郁量表BDI" StartTime="2016-10-17 11:15:30" Finished="1">
+<Answers>
+<Item Id="1" Answer="2" Time="628"/>
+<Item Id="2" Answer="3" Time="269"/>
+<Item Id="3" Answer="3" Time="160"/>
+<Item Id="4" Answer="3" Time="154"/>
+<Item Id="5" Answer="3" Time="160"/>
+<Item Id="6" Answer="3" Time="161"/>
+<Item Id="7" Answer="3" Time="304"/>
+<Item Id="8" Answer="3" Time="166"/>
+<Item Id="9" Answer="3" Time="154"/>
+<Item Id="10" Answer="3" Time="162"/>
+<Item Id="11" Answer="3" Time="161"/>
+<Item Id="12" Answer="3" Time="160"/>
+<Item Id="13" Answer="3" Time="155"/>
+<Item Id="14" Answer="3" Time="145"/>
+<Item Id="15" Answer="3" Time="176"/>
+<Item Id="16" Answer="3" Time="153"/>
+<Item Id="17" Answer="3" Time="194"/>
+<Item Id="18" Answer="3" Time="145"/>
+<Item Id="19" Answer="3" Time="170"/>
+<Item Id="20" Answer="3" Time="163"/>
+<Item Id="21" Answer="3" Time="167"/>
+</Answers>
+<SubScales>
+<SubScale Name="Total" Score="41"/>
+</SubScales>
+</Scale>
+<Scale Name="贝克焦虑量表BAI" StartTime="2016-10-17 11:15:20" Finished="1">
+<Answers>
+<Item Id="1" Answer="3" Time="819"/>
+<Item Id="2" Answer="3" Time="305"/>
+<Item Id="3" Answer="3" Time="170"/>
+<Item Id="4" Answer="3" Time="176"/>
+<Item Id="5" Answer="3" Time="163"/>
+<Item Id="6" Answer="3" Time="153"/>
+<Item Id="7" Answer="3" Time="163"/>
+<Item Id="8" Answer="3" Time="359"/>
+<Item Id="9" Answer="3" Time="178"/>
+<Item Id="10" Answer="3" Time="147"/>
+<Item Id="11" Answer="3" Time="343"/>
+<Item Id="12" Answer="3" Time="179"/>
+<Item Id="13" Answer="3" Time="154"/>
+<Item Id="14" Answer="3" Time="145"/>
+<Item Id="15" Answer="3" Time="171"/>
+<Item Id="16" Answer="3" Time="171"/>
+<Item Id="17" Answer="3" Time="160"/>
+<Item Id="18" Answer="3" Time="160"/>
+<Item Id="19" Answer="3" Time="171"/>
+<Item Id="20" Answer="3" Time="171"/>
+<Item Id="21" Answer="3" Time="155"/>
+</Answers>
+<SubScales>
+<SubScale Name="Total" Score="63"/>
+</SubScales>
+</Scale>
+<Scale Name="负向社会评价恐惧量表FNE" StartTime="2016-10-17 11:17:04" Finished="1">
+<Answers>
+<Item Id="1" Answer="3" Time="567"/>
+<Item Id="2" Answer="3" Time="297"/>
+<Item Id="3" Answer="3" Time="177"/>
+<Item Id="4" Answer="3" Time="184"/>
+<Item Id="5" Answer="3" Time="188"/>
+<Item Id="6" Answer="3" Time="191"/>
+<Item Id="7" Answer="3" Time="187"/>
+<Item Id="8" Answer="3" Time="171"/>
+<Item Id="9" Answer="3" Time="185"/>
+<Item Id="10" Answer="3" Time="203"/>
+<Item Id="11" Answer="3" Time="175"/>
+<Item Id="12" Answer="3" Time="195"/>
+</Answers>
+<SubScales>
+<SubScale Name="Total" Score="36"/>
+</SubScales>
+</Scale>
+<Scale Name="马氏量表版本1" StartTime="2016-10-17 11:15:38" Finished="1">
+<Answers>
+<Item Id="1" Answer="3" Time="438"/>
+<Item Id="2" Answer="3" Time="198"/>
+<Item Id="3" Answer="3" Time="170"/>
+<Item Id="4" Answer="4" Time="501"/>
+<Item Id="5" Answer="4" Time="169"/>
+<Item Id="6" Answer="4" Time="167"/>
+<Item Id="7" Answer="4" Time="186"/>
+<Item Id="8" Answer="4" Time="154"/>
+<Item Id="9" Answer="4" Time="162"/>
+<Item Id="10" Answer="4" Time="175"/>
+<Item Id="11" Answer="4" Time="185"/>
+<Item Id="12" Answer="4" Time="132"/>
+<Item Id="13" Answer="4" Time="162"/>
+<Item Id="14" Answer="4" Time="160"/>
+<Item Id="15" Answer="4" Time="146"/>
+<Item Id="16" Answer="4" Time="202"/>
+<Item Id="17" Answer="4" Time="176"/>
+<Item Id="18" Answer="4" Time="151"/>
+<Item Id="19" Answer="4" Time="186"/>
+<Item Id="20" Answer="4" Time="153"/>
+</Answers>
+<SubScales>
+<SubScale Name="对人性的看法" Score="36"/>
+<SubScale Name="抽象或一般性的道德" Score="8"/>
+<SubScale Name="社交技巧的本质" Score="35"/>
 </SubScales>
 </Scale>
 </Test>
