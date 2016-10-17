@@ -9,33 +9,33 @@
 <Prologue>这是一份询问关于您情感表达方面的问卷。本问卷一共22条目，请您在阅读完每条条目后考虑自己有多少程度符合该条目的描述，并在该条目后选择你觉得符合自己程度的一个数字。
 由于时期或者情境的不同您的回答也会有所不同，所以请针对平常状态下的您的情况进行答题。本问卷不存在正确答案，答题时请轻松答题，不要在意对错而过度思考。</Prologue>
 <Groups>
-<Item>敌意分量表</Item>
-<Item>身体攻击分量表</Item>
-<Item>冲动分量表</Item>
-<Item>易怒性分量表</Item>
+<Item>敌意</Item>
+<Item>身体攻击</Item>
+<Item>冲动</Item>
+<Item>易怒性</Item>
 </Groups>
 <Questions>
-<Item Id="1" ReverseScore="0" SubScale="敌意分量表">不知为何有时我看待事情很消极</Item>
-<Item Id="2" ReverseScore="0" SubScale="敌意分量表">有时我会觉得别人在背后嘲笑我</Item>
-<Item Id="3" ReverseScore="0" SubScale="敌意分量表">有时我会觉得我的人生不公平</Item>
-<Item Id="4" ReverseScore="0" SubScale="敌意分量表">别人似乎总是很走运</Item>
-<Item Id="5" ReverseScore="0" SubScale="敌意分量表">有时候我会非常嫉妒别人</Item>
-<Item Id="6" ReverseScore="0" SubScale="敌意分量表">我知道那些所谓的朋友会在背后议论我</Item>
-<Item Id="7" ReverseScore="0" SubScale="敌意分量表">当别人对我特别好的时候，我会觉得他们另有所图</Item>
-<Item Id="8" ReverseScore="0" SubScale="敌意分量表">我经常与别人意见不合</Item>
-<Item Id="9" ReverseScore="0" SubScale="身体攻击分量表">受到挑衅的话我可能会揍对方</Item>
-<Item Id="10" ReverseScore="0" SubScale="身体攻击分量表">在有必要的时候我会采取暴力来维护我的权利</Item>
-<Item Id="11" ReverseScore="0" SubScale="身体攻击分量表">与一般人相比，我更容易与人发生肢体冲突</Item>
-<Item Id="12" ReverseScore="0" SubScale="身体攻击分量表">有些人逼人太甚，我会跟他们打起来</Item>
-<Item Id="13" ReverseScore="0" SubScale="身体攻击分量表">我曾威胁过我认识的人</Item>
-<Item Id="14" ReverseScore="0" SubScale="冲动分量表">当别人与我意见不合时，我会忍不住和他们争论</Item>
-<Item Id="15" ReverseScore="0" SubScale="冲动分量表">当与朋友意见不合时我会直说</Item>
-<Item Id="16" ReverseScore="0" SubScale="冲动分量表">我的怒气来得快去得也快</Item>
-<Item Id="17" ReverseScore="0" SubScale="冲动分量表">我的一些朋友认为我的性子比较急</Item>
-<Item Id="18" ReverseScore="0" SubScale="冲动分量表">如果别人打我，我会还手</Item>
-<Item Id="19" ReverseScore="0" SubScale="冲动分量表">朋友们都觉得我有点爱争论</Item>
-<Item Id="20" ReverseScore="0" SubScale="易怒性分量表">有时我会无缘无故地发火</Item>
-<Item Id="21" ReverseScore="0" SubScale="易怒性分量表">我很难控制自己的脾气</Item>
-<Item Id="22" ReverseScore="0" SubScale="易怒性分量表">有时，我感觉自己像一个随时要爆炸的火药桶</Item>
+<Item Id="1" ReverseScore="0" SubScale="敌意">不知为何有时我看待事情很消极</Item>
+<Item Id="2" ReverseScore="0" SubScale="敌意">有时我会觉得别人在背后嘲笑我</Item>
+<Item Id="3" ReverseScore="0" SubScale="敌意">有时我会觉得我的人生不公平</Item>
+<Item Id="4" ReverseScore="0" SubScale="敌意">别人似乎总是很走运</Item>
+<Item Id="5" ReverseScore="0" SubScale="敌意">有时候我会非常嫉妒别人</Item>
+<Item Id="6" ReverseScore="0" SubScale="敌意">我知道那些所谓的朋友会在背后议论我</Item>
+<Item Id="7" ReverseScore="0" SubScale="敌意">当别人对我特别好的时候，我会觉得他们另有所图</Item>
+<Item Id="8" ReverseScore="0" SubScale="敌意">我经常与别人意见不合</Item>
+<Item Id="9" ReverseScore="0" SubScale="身体攻击">受到挑衅的话我可能会揍对方</Item>
+<Item Id="10" ReverseScore="0" SubScale="身体攻击">在有必要的时候我会采取暴力来维护我的权利</Item>
+<Item Id="11" ReverseScore="0" SubScale="身体攻击">与一般人相比，我更容易与人发生肢体冲突</Item>
+<Item Id="12" ReverseScore="0" SubScale="身体攻击">有些人逼人太甚，我会跟他们打起来</Item>
+<Item Id="13" ReverseScore="0" SubScale="身体攻击">我曾威胁过我认识的人</Item>
+<Item Id="14" ReverseScore="0" SubScale="冲动">当别人与我意见不合时，我会忍不住和他们争论</Item>
+<Item Id="15" ReverseScore="0" SubScale="冲动">当与朋友意见不合时我会直说</Item>
+<Item Id="16" ReverseScore="0" SubScale="冲动">我的怒气来得快去得也快</Item>
+<Item Id="17" ReverseScore="0" SubScale="冲动">我的一些朋友认为我的性子比较急</Item>
+<Item Id="18" ReverseScore="0" SubScale="冲动">如果别人打我，我会还手</Item>
+<Item Id="19" ReverseScore="0" SubScale="冲动">朋友们都觉得我有点爱争论</Item>
+<Item Id="20" ReverseScore="0" SubScale="易怒性">有时我会无缘无故地发火</Item>
+<Item Id="21" ReverseScore="0" SubScale="易怒性">我很难控制自己的脾气</Item>
+<Item Id="22" ReverseScore="0" SubScale="易怒性">有时，我感觉自己像一个随时要爆炸的火药桶</Item>
 </Questions>
 </PsycologyTest>

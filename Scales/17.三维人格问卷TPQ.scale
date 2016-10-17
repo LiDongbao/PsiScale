@@ -7,119 +7,119 @@
 请回答每一条目，即使你还没有完全想好你的答案，也请你不要放弃回答。
 请注意这里不存在正确或错误的回答—只说明你自己的见解和感受而已</Prologue>
 <Groups>
-<Item>猎奇性分量表NS1</Item>
-<Item>猎奇性分量表NS2</Item>
-<Item>猎奇性分量表NS3</Item>
-<Item>猎奇性分量表NS4</Item>
-<Item>躲避伤害性分量表HA1</Item>
-<Item>躲避伤害性分量表HA2</Item>
-<Item>躲避伤害性分量表HA3</Item>
-<Item>躲避伤害性分量表HA4</Item>
-<Item>奖赏依赖性分量表RD1</Item>
-<Item>奖赏依赖性分量表RD2</Item>
-<Item>奖赏依赖性分量表RD3</Item>
-<Item>奖赏依赖性分量表RD4</Item>
+<Item>猎奇性NS1</Item>
+<Item>猎奇性NS2</Item>
+<Item>猎奇性NS3</Item>
+<Item>猎奇性NS4</Item>
+<Item>躲避伤害性HA1</Item>
+<Item>躲避伤害性HA2</Item>
+<Item>躲避伤害性HA3</Item>
+<Item>躲避伤害性HA4</Item>
+<Item>奖赏依赖性RD1</Item>
+<Item>奖赏依赖性RD2</Item>
+<Item>奖赏依赖性RD3</Item>
+<Item>奖赏依赖性RD4</Item>
 </Groups>
 <Questions>
-<Item Id="1" ReverseScore="1" SubScale="躲避伤害性分量表HA1">通常我会相信凡事都会有好的结果，甚至在令大多数人担忧的处境下我也会这样认为。</Item>
-<Item Id="2" ReverseScore="0" SubScale="猎奇性分量表NS1">我经常参与嬉戏打闹或兴奋刺激的新鲜事，尽管大多数人认为这是浪费时间。</Item>
-<Item Id="3" ReverseScore="0" SubScale="奖赏依赖性分量表RD3">我喜欢同朋友公开谈论我的经历和感受，而不愿闷在心理。</Item>
-<Item Id="4" ReverseScore="0" SubScale="猎奇性分量表NS1">当周围没有什么新鲜事发生时，我常会去寻求令人刺激和兴奋的事情。</Item>
-<Item Id="5" ReverseScore="0" SubScale="躲避伤害性分量表HA1">通常我比大多数人更担心今后会出事。 </Item>
-<Item Id="6" ReverseScore="0" SubScale="奖赏依赖性分量表RD3">我不介意同刚认识的人或略为熟悉的人谈论我的私人问题。</Item>
-<Item Id="7" ReverseScore="0" SubScale="奖赏依赖性分量表RD3">我常常喜欢交往温存亲密的朋友。</Item>
-<Item Id="8" ReverseScore="1" SubScale="躲避伤害性分量表HA1">我几乎总是悠闲自在，无忧无虑，甚至别人都担惊受怕时我也如此。</Item>
-<Item Id="9" ReverseScore="1" SubScale="猎奇性分量表NS1">通常我需要有符合客观实际的充分理由才会改变我一向的办事习惯。</Item>
-<Item Id="10" ReverseScore="0" SubScale="躲避伤害性分量表HA1">我常因突然想到可能会出什么差错而不得不停止手头的工作。</Item>
-<Item Id="11" ReverseScore="1" SubScale="猎奇性分量表NS1">我极不情愿改变我的办事习惯，尽管别人告诉我可采用更好的方法去做某些事情时我也依然如此。</Item>
-<Item Id="12" ReverseScore="1" SubScale="奖赏依赖性分量表RD3">我很少对朋友谈出我的内心体验，因此，他们觉得难以了解我的真实感受。</Item>
-<Item Id="13" ReverseScore="0" SubScale="猎奇性分量表NS4">我喜欢让人们想做什么就做什么，而不要有严格的规章制度。</Item>
-<Item Id="14" ReverseScore="0" SubScale="躲避伤害性分量表HA1">我常因心烦意乱而停止手头的工作，甚至有朋友告诉我一切都会进展顺利时我也如此。</Item>
-<Item Id="15" ReverseScore="1" SubScale="奖赏依赖性分量表RD3">我总是情愿单独一人呆着，最好别来打扰我。	</Item>
-<Item Id="16" ReverseScore="1" SubScale="猎奇性分量表NS4">无论什么时候我都希望人们有条不紊地照章办事。</Item>
-<Item Id="17" ReverseScore="0" SubScale="奖赏依赖性分量表RD4">我常按自己的习惯办事情，而不顾及他愉的意愿。</Item>
-<Item Id="18" ReverseScore="0" SubScale="躲避伤害性分量表HA2">当我必须做那些不熟悉的新工作时，我常会感到紧张不安。</Item>
-<Item Id="19" ReverseScore="0" SubScale="躲避伤害性分量表HA2">我经常在陌生环境中感到紧张不安，甚至别人根本不认为有什么值得烦恼时也是如此。</Item>
-<Item Id="20" ReverseScore="0" SubScale="奖赏依赖性分量表RD4">我总是不情愿按别人的想法办事，所以人们认为我总是自行其是。</Item>
-<Item Id="21" ReverseScore="1" SubScale="猎奇性分量表NS4">对大多数人认为并不重要的事情，我也经常坚持按严谨有序的方式去做。</Item>
-<Item Id="22" ReverseScore="0" SubScale="猎奇性分量表NS4">我办事经常凭当时的感觉，而对过去积累的经验并不多加考虑。</Item>
-<Item Id="23" ReverseScore="0" SubScale="躲避伤害性分量表HA2">我经常在陌生场合感到紧张不安，甚至别人并未感觉到有任何危险时也如此。</Item>
-<Item Id="24" ReverseScore="0" SubScale="猎奇性分量表NS4">只要我认为有可能摆脱责任，我会常常违反规章制度办事。</Item>
-<Item Id="25" ReverseScore="0" SubScale="奖赏依赖性分量表RD4">我不在乎别人是否喜欢我或是否喜欢我做事的方法。</Item>
-<Item Id="26" ReverseScore="1" SubScale="躲避伤害性分量表HA2">在大多数人感受到危及人体安全的场合，我通常能保持镇静和稳重。</Item>
-<Item Id="27" ReverseScore="0" SubScale="奖赏依赖性分量表RD1">我认为对别人的同情和理解比讲求实际更为重要。</Item>
-<Item Id="28" ReverseScore="0" SubScale="猎奇性分量表NS4">我比大多数人更容易发脾气。	</Item>
-<Item Id="29" ReverseScore="1" SubScale="躲避伤害性分量表HA2">我坚信自己能够轻而易举地去做大多数人认为危险的事情（如：驾驶摩托车奔驰在潮湿或覆冰的道路上）。</Item>
-<Item Id="30" ReverseScore="0" SubScale="猎奇性分量表NS2">当得知意外的消息时，我常作出极其强烈的反应，甚至说出令自己后悔的话或做出使自己痛心的事。</Item>
-<Item Id="31" ReverseScore="0" SubScale="奖赏依赖性分量表RD1">人们感到容易得到我的帮助，同情和善意的理解。</Item>
-<Item Id="32" ReverseScore="1" SubScale="猎奇性分量表NS3">比起大多数人来，我的确是太保守和拘谨了。	</Item>
-<Item Id="33" ReverseScore="0" SubScale="躲避伤害性分量表HA3">当不得已要与一群陌生人见面时，我显得比大多数人更羞怯。</Item>
-<Item Id="34" ReverseScore="0" SubScale="奖赏依赖性分量表RD1">我会被孩子伤感的哭诉深深地打动（例如：当请求帮助瘸腿孩子时）。</Item>
-<Item Id="35" ReverseScore="1" SubScale="猎奇性分量表NS4">我几乎从未因兴奋而失去控制。</Item>
-<Item Id="36" ReverseScore="0" SubScale="奖赏依赖性分量表RD4">众所周知，我是一个非常实际而非感情用事的人。</Item>
-<Item Id="37" ReverseScore="0" SubScale="躲避伤害性分量表HA3">由于与不认识的人在一起我总是缺乏信心，因此，我经常避免见陌生人。</Item>
-<Item Id="38" ReverseScore="0" SubScale="躲避伤害性分量表HA3">我常回避那些有可能遇见陌生人的社交场合，尽管我确信他们一定是友善时我也如此。</Item>
-<Item Id="39" ReverseScore="0" SubScale="奖赏依赖性分量表RD2">由于我做事总是竭尽全力，这样我常把自己置于比多数人更为艰难的境地。</Item>
-<Item Id="40" ReverseScore="1" SubScale="猎奇性分量表NS1">比起大多数人来，我对新观念和新事物不那么容易激动。</Item>
-<Item Id="41" ReverseScore="0" SubScale="奖赏依赖性分量表RD2">我经常迫使自己做力所不及的事情而把自己弄得精疲力竭。</Item>
-<Item Id="42" ReverseScore="1" SubScale="躲避伤害性分量表HA3">也许我会从容开朗地面对一群陌生人，哪怕我知道他们并不友善。</Item>
-<Item Id="43" ReverseScore="0" SubScale="猎奇性分量表NS1">由于我的注意力经常转换，因此，我很难长时间保持同一种兴趣不变。</Item>
-<Item Id="44" ReverseScore="1" SubScale="躲避伤害性分量表HA3">我认为我会充满自信和从从容容地面对陌生人，甚至在得知他们愤恨我时，我也能如此。	</Item>
-<Item Id="45" ReverseScore="1" SubScale="奖赏依赖性分量表RD2">也许我能取得比现在更大的成就，但我不明白，如要为此付出更大的努力有什么意义。	</Item>
-<Item Id="46" ReverseScore="1" SubScale="猎奇性分量表NS2">在我作出某一决定之前，我习惯于长时间地反复思考。</Item>
-<Item Id="47" ReverseScore="1" SubScale="躲避伤害性分量表HA2">通常我情愿干有一定危险的事情（例如：骑摩托车飞速穿越陡峭的山坡 或急速拐弯。	</Item>
-<Item Id="48" ReverseScore="0" SubScale="猎奇性分量表NS2">我办事常凭本能、预感或直觉而不经过细致的思索。</Item>
-<Item Id="49" ReverseScore="0" SubScale="猎奇性分量表NS2">我想尽可能少干工作，甚至当别人期望我多干一些工作时也如此。</Item>
-<Item Id="50" ReverseScore="0" SubScale="猎奇性分量表NS2">我经常因为产生了错误的预感或第一印象而不得不改变我的决定。</Item>
-<Item Id="51" ReverseScore="1" SubScale="躲避伤害性分量表HA2">通常我情愿干有危险的事情（如：高空滑翔或跳伞），而不情愿几个小时安安静静地呆着或不动。</Item>
-<Item Id="52" ReverseScore="1" SubScale="奖赏依赖性分量表RD2">我对我自己所取得的成就已感到满意，不想做得更好些。</Item>
-<Item Id="53" ReverseScore="1" SubScale="奖赏依赖性分量表RD2">我认为如果没有成功的机会，继续工作下去是无意义的。</Item>
-<Item Id="54" ReverseScore="0" SubScale="躲避伤害性分量表HA4">比起大多数人来我精力不足且容易疲劳。</Item>
-<Item Id="55" ReverseScore="1" SubScale="猎奇性分量表NS2">在我作出决定之前，几乎总要通盘考虑事情的每一个细节。</Item>
-<Item Id="56" ReverseScore="1" SubScale="猎奇性分量表NS2">在我作出决定之前，几乎总要通盘考虑事情的每一个细节，甚至当别人要求我迅速作出决定时我也如此。</Item>
-<Item Id="57" ReverseScore="0" SubScale="躲避伤害性分量表HA4">由于我容易疲劳，我常常需要打盹或额外休息。</Item>
-<Item Id="58" ReverseScore="0" SubScale="奖赏依赖性分量表RD4">我不会特意取悦于他人。</Item>
-<Item Id="59" ReverseScore="1" SubScale="躲避伤害性分量表HA4">我比大多数人精力更加充沛，不易疲劳。</Item>
-<Item Id="60" ReverseScore="0" SubScale="猎奇性分量表NS4">我常常能够得到别人的信任，甚至在我吹牛或说假话时也会如此。</Item>
-<Item Id="61" ReverseScore="0" SubScale="猎奇性分量表NS2">当我希望从别人那里得到支持而未能如愿时，我会感到心烦意乱。</Item>
-<Item Id="62" ReverseScore="0" SubScale="猎奇性分量表NS4">夸大其词地讲有趣的故事和开玩笑就数我在行。</Item>
-<Item Id="63" ReverseScore="1" SubScale="躲避伤害性分量表HA4">我常整天“工作不停”，而事实上大可不必这样。</Item>
-<Item Id="64" ReverseScore="0" SubScale="奖赏依赖性分量表RD3">如果失去亲密的朋友，我常比大多数人更加苦恼。</Item>
-<Item Id="65" ReverseScore="1" SubScale="猎奇性分量表NS4">我坚持说真话，即使这样会伤害别人的感情。</Item>
-<Item Id="66" ReverseScore="1" SubScale="猎奇性分量表NS3">我比大多数人更善于存钱。</Item>
-<Item Id="67" ReverseScore="0" SubScale="奖赏依赖性分量表RD3">当友谊出现裂痕时，我几乎总会想方设法让友谊延续下去。</Item>
-<Item Id="68" ReverseScore="0" SubScale="躲避伤害性分量表HA4">我患小病或遭受打击后，比大多数人恢复得更慢。</Item>
-<Item Id="69" ReverseScore="0" SubScale="躲避伤害性分量表HA4">我需要更多休息，支持和反复保证才能从小病或打击中恢复过来。</Item>
-<Item Id="70" ReverseScore="0" SubScale="猎奇性分量表NS3">我常常随意花钱，直到花光现金或超支信用代款而欠债。</Item>
-<Item Id="71" ReverseScore="0" SubScale="猎奇性分量表NS2">我极少因为没有受到应得的尊敬而心烦意乱。</Item>
-<Item Id="72" ReverseScore="0" SubScale="猎奇性分量表NS3">我常因冲动而乱花钱，所以我很难将钱存起来，哪怕已按排了度假之类的特殊计划，我的钱也难以存留。</Item>
-<Item Id="73" ReverseScore="0" SubScale="躲避伤害性分量表HA4">由于太紧张、太疲惫或过于忧虑，所以我难于适应办事习惯的改变。</Item>
-<Item Id="74" ReverseScore="0" SubScale="奖赏依赖性分量表RD3">每当心烦意乱时，通常我情愿呆在朋友中间而不愿独处。</Item>
-<Item Id="75" ReverseScore="1" SubScale="躲避伤害性分量表HA4">我常具有过人的精力和自信心，即使在小病或遭受打击后也如此。</Item>
-<Item Id="76" ReverseScore="1" SubScale="猎奇性分量表NS3">有人认为我用钱太小气或太吝啬。</Item>
-<Item Id="77" ReverseScore="0" SubScale="奖赏依赖性分量表RD2">我常执着地反复干同一件事，直到长期努力均未获得成功。</Item>
-<Item Id="78" ReverseScore="1" SubScale="猎奇性分量表NS3">即使我有了一大笔储蓄，我也很难痛痛快快地为自己花钱。 </Item>
-<Item Id="79" ReverseScore="1" SubScale="奖赏依赖性分量表RD2">我极少让自己心烦意乱或受到挫折：如干某些事情未获得成功，我会轻松地投入到其它活动中去。</Item>
-<Item Id="80" ReverseScore="1" SubScale="躲避伤害性分量表HA4">我比大多数人更容易从小病和遭受的打击中恢复过来。</Item>
-<Item Id="81" ReverseScore="1" SubScale="猎奇性分量表NS2">我讨厌仅凭第一印象做出决定。</Item>
-<Item Id="82" ReverseScore="1" SubScale="躲避伤害性分量表HA1">我认为我将来一定会有很好的运气。</Item>
-<Item Id="83" ReverseScore="0" SubScale="奖赏依赖性分量表RD1">我常为精彩的演讲或优美的诗歌所感动。</Item>
-<Item Id="84" ReverseScore="1" SubScale="躲避伤害性分量表HA1">我能够很快从窘迫或羞辱的状态中恢复过来。</Item>
-<Item Id="85" ReverseScore="1" SubScale="猎奇性分量表NS1">我喜欢按老一套“行之有效”的方式行事。那比尝试“改良创新”的方法要好得多。</Item>
-<Item Id="86" ReverseScore="1" SubScale="奖赏依赖性分量表RD3">我喜欢把自己的私人问题闷在心里。</Item>
-<Item Id="87" ReverseScore="1" SubScale="猎奇性分量表NS3">我更喜欢把钱存起来，而不愿意把钱花在娱乐上。</Item>
-<Item Id="88" ReverseScore="1" SubScale="奖赏依赖性分量表RD3">即使是与朋友在一起，我也不愿意把钱花在娱乐上。</Item>
-<Item Id="89" ReverseScore="1" SubScale="躲避伤害性分量表HA3">几乎在所有的社交场合，我都非常自信和能够把握自己。</Item>
-<Item Id="90" ReverseScore="1" SubScale="奖赏依赖性分量表RD3">我总是喜欢呆在冷清而远离人群的地方。</Item>
-<Item Id="91" ReverseScore="1" SubScale="躲避伤害性分量表HA1">我从不为将来会发生什么可怕的事情而担忧。</Item>
-<Item Id="92" ReverseScore="0" SubScale="奖赏依赖性分量表RD2">我比大多数人更加努力地工作。</Item>
-<Item Id="93" ReverseScore="1" SubScale="猎奇性分量表NS1">与别人谈话时，我情愿多听而不愿多说。</Item>
-<Item Id="94" ReverseScore="0" SubScale="奖赏依赖性分量表RD1">我希望尽量使别人愉快。</Item>
-<Item Id="95" ReverseScore="1" SubScale="躲避伤害性分量表HA1">不论有多少暂时困难我都必须尽力克服，我常认为总会出现好的转机。</Item>
-<Item Id="96" ReverseScore="1" SubScale="猎奇性分量表NS1">我喜欢呆在家里，而不愿意去做旅游或到陌生地方去探险。</Item>
-<Item Id="97" ReverseScore="0" SubScale="奖赏依赖性分量表RD2">当别人早已经气馁时，我常能下定决心将工作持续下去。</Item>
-<Item Id="98" ReverseScore="1" SubScale="躲避伤害性分量表HA1">无论我想干什么，我总是有好运气。</Item>
-<Item Id="99" ReverseScore="1" SubScale="猎奇性分量表NS2">我喜欢密切关注我所做的每一件事的细微之处。</Item>
-<Item Id="100" ReverseScore="1" SubScale="躲避伤害性分量表HA3">与人交谈时，我很容易组织起自己的思维。</Item>
+<Item Id="1" ReverseScore="1" SubScale="躲避伤害性HA1">通常我会相信凡事都会有好的结果，甚至在令大多数人担忧的处境下我也会这样认为。</Item>
+<Item Id="2" ReverseScore="0" SubScale="猎奇性NS1">我经常参与嬉戏打闹或兴奋刺激的新鲜事，尽管大多数人认为这是浪费时间。</Item>
+<Item Id="3" ReverseScore="0" SubScale="奖赏依赖性RD3">我喜欢同朋友公开谈论我的经历和感受，而不愿闷在心理。</Item>
+<Item Id="4" ReverseScore="0" SubScale="猎奇性NS1">当周围没有什么新鲜事发生时，我常会去寻求令人刺激和兴奋的事情。</Item>
+<Item Id="5" ReverseScore="0" SubScale="躲避伤害性HA1">通常我比大多数人更担心今后会出事。 </Item>
+<Item Id="6" ReverseScore="0" SubScale="奖赏依赖性RD3">我不介意同刚认识的人或略为熟悉的人谈论我的私人问题。</Item>
+<Item Id="7" ReverseScore="0" SubScale="奖赏依赖性RD3">我常常喜欢交往温存亲密的朋友。</Item>
+<Item Id="8" ReverseScore="1" SubScale="躲避伤害性HA1">我几乎总是悠闲自在，无忧无虑，甚至别人都担惊受怕时我也如此。</Item>
+<Item Id="9" ReverseScore="1" SubScale="猎奇性NS1">通常我需要有符合客观实际的充分理由才会改变我一向的办事习惯。</Item>
+<Item Id="10" ReverseScore="0" SubScale="躲避伤害性HA1">我常因突然想到可能会出什么差错而不得不停止手头的工作。</Item>
+<Item Id="11" ReverseScore="1" SubScale="猎奇性NS1">我极不情愿改变我的办事习惯，尽管别人告诉我可采用更好的方法去做某些事情时我也依然如此。</Item>
+<Item Id="12" ReverseScore="1" SubScale="奖赏依赖性RD3">我很少对朋友谈出我的内心体验，因此，他们觉得难以了解我的真实感受。</Item>
+<Item Id="13" ReverseScore="0" SubScale="猎奇性NS4">我喜欢让人们想做什么就做什么，而不要有严格的规章制度。</Item>
+<Item Id="14" ReverseScore="0" SubScale="躲避伤害性HA1">我常因心烦意乱而停止手头的工作，甚至有朋友告诉我一切都会进展顺利时我也如此。</Item>
+<Item Id="15" ReverseScore="1" SubScale="奖赏依赖性RD3">我总是情愿单独一人呆着，最好别来打扰我。	</Item>
+<Item Id="16" ReverseScore="1" SubScale="猎奇性NS4">无论什么时候我都希望人们有条不紊地照章办事。</Item>
+<Item Id="17" ReverseScore="0" SubScale="奖赏依赖性RD4">我常按自己的习惯办事情，而不顾及他愉的意愿。</Item>
+<Item Id="18" ReverseScore="0" SubScale="躲避伤害性HA2">当我必须做那些不熟悉的新工作时，我常会感到紧张不安。</Item>
+<Item Id="19" ReverseScore="0" SubScale="躲避伤害性HA2">我经常在陌生环境中感到紧张不安，甚至别人根本不认为有什么值得烦恼时也是如此。</Item>
+<Item Id="20" ReverseScore="0" SubScale="奖赏依赖性RD4">我总是不情愿按别人的想法办事，所以人们认为我总是自行其是。</Item>
+<Item Id="21" ReverseScore="1" SubScale="猎奇性NS4">对大多数人认为并不重要的事情，我也经常坚持按严谨有序的方式去做。</Item>
+<Item Id="22" ReverseScore="0" SubScale="猎奇性NS4">我办事经常凭当时的感觉，而对过去积累的经验并不多加考虑。</Item>
+<Item Id="23" ReverseScore="0" SubScale="躲避伤害性HA2">我经常在陌生场合感到紧张不安，甚至别人并未感觉到有任何危险时也如此。</Item>
+<Item Id="24" ReverseScore="0" SubScale="猎奇性NS4">只要我认为有可能摆脱责任，我会常常违反规章制度办事。</Item>
+<Item Id="25" ReverseScore="0" SubScale="奖赏依赖性RD4">我不在乎别人是否喜欢我或是否喜欢我做事的方法。</Item>
+<Item Id="26" ReverseScore="1" SubScale="躲避伤害性HA2">在大多数人感受到危及人体安全的场合，我通常能保持镇静和稳重。</Item>
+<Item Id="27" ReverseScore="0" SubScale="奖赏依赖性RD1">我认为对别人的同情和理解比讲求实际更为重要。</Item>
+<Item Id="28" ReverseScore="0" SubScale="猎奇性NS4">我比大多数人更容易发脾气。	</Item>
+<Item Id="29" ReverseScore="1" SubScale="躲避伤害性HA2">我坚信自己能够轻而易举地去做大多数人认为危险的事情（如：驾驶摩托车奔驰在潮湿或覆冰的道路上）。</Item>
+<Item Id="30" ReverseScore="0" SubScale="猎奇性NS2">当得知意外的消息时，我常作出极其强烈的反应，甚至说出令自己后悔的话或做出使自己痛心的事。</Item>
+<Item Id="31" ReverseScore="0" SubScale="奖赏依赖性RD1">人们感到容易得到我的帮助，同情和善意的理解。</Item>
+<Item Id="32" ReverseScore="1" SubScale="猎奇性NS3">比起大多数人来，我的确是太保守和拘谨了。	</Item>
+<Item Id="33" ReverseScore="0" SubScale="躲避伤害性HA3">当不得已要与一群陌生人见面时，我显得比大多数人更羞怯。</Item>
+<Item Id="34" ReverseScore="0" SubScale="奖赏依赖性RD1">我会被孩子伤感的哭诉深深地打动（例如：当请求帮助瘸腿孩子时）。</Item>
+<Item Id="35" ReverseScore="1" SubScale="猎奇性NS4">我几乎从未因兴奋而失去控制。</Item>
+<Item Id="36" ReverseScore="0" SubScale="奖赏依赖性RD4">众所周知，我是一个非常实际而非感情用事的人。</Item>
+<Item Id="37" ReverseScore="0" SubScale="躲避伤害性HA3">由于与不认识的人在一起我总是缺乏信心，因此，我经常避免见陌生人。</Item>
+<Item Id="38" ReverseScore="0" SubScale="躲避伤害性HA3">我常回避那些有可能遇见陌生人的社交场合，尽管我确信他们一定是友善时我也如此。</Item>
+<Item Id="39" ReverseScore="0" SubScale="奖赏依赖性RD2">由于我做事总是竭尽全力，这样我常把自己置于比多数人更为艰难的境地。</Item>
+<Item Id="40" ReverseScore="1" SubScale="猎奇性NS1">比起大多数人来，我对新观念和新事物不那么容易激动。</Item>
+<Item Id="41" ReverseScore="0" SubScale="奖赏依赖性RD2">我经常迫使自己做力所不及的事情而把自己弄得精疲力竭。</Item>
+<Item Id="42" ReverseScore="1" SubScale="躲避伤害性HA3">也许我会从容开朗地面对一群陌生人，哪怕我知道他们并不友善。</Item>
+<Item Id="43" ReverseScore="0" SubScale="猎奇性NS1">由于我的注意力经常转换，因此，我很难长时间保持同一种兴趣不变。</Item>
+<Item Id="44" ReverseScore="1" SubScale="躲避伤害性HA3">我认为我会充满自信和从从容容地面对陌生人，甚至在得知他们愤恨我时，我也能如此。	</Item>
+<Item Id="45" ReverseScore="1" SubScale="奖赏依赖性RD2">也许我能取得比现在更大的成就，但我不明白，如要为此付出更大的努力有什么意义。	</Item>
+<Item Id="46" ReverseScore="1" SubScale="猎奇性NS2">在我作出某一决定之前，我习惯于长时间地反复思考。</Item>
+<Item Id="47" ReverseScore="1" SubScale="躲避伤害性HA2">通常我情愿干有一定危险的事情（例如：骑摩托车飞速穿越陡峭的山坡 或急速拐弯。	</Item>
+<Item Id="48" ReverseScore="0" SubScale="猎奇性NS2">我办事常凭本能、预感或直觉而不经过细致的思索。</Item>
+<Item Id="49" ReverseScore="0" SubScale="猎奇性NS2">我想尽可能少干工作，甚至当别人期望我多干一些工作时也如此。</Item>
+<Item Id="50" ReverseScore="0" SubScale="猎奇性NS2">我经常因为产生了错误的预感或第一印象而不得不改变我的决定。</Item>
+<Item Id="51" ReverseScore="1" SubScale="躲避伤害性HA2">通常我情愿干有危险的事情（如：高空滑翔或跳伞），而不情愿几个小时安安静静地呆着或不动。</Item>
+<Item Id="52" ReverseScore="1" SubScale="奖赏依赖性RD2">我对我自己所取得的成就已感到满意，不想做得更好些。</Item>
+<Item Id="53" ReverseScore="1" SubScale="奖赏依赖性RD2">我认为如果没有成功的机会，继续工作下去是无意义的。</Item>
+<Item Id="54" ReverseScore="0" SubScale="躲避伤害性HA4">比起大多数人来我精力不足且容易疲劳。</Item>
+<Item Id="55" ReverseScore="1" SubScale="猎奇性NS2">在我作出决定之前，几乎总要通盘考虑事情的每一个细节。</Item>
+<Item Id="56" ReverseScore="1" SubScale="猎奇性NS2">在我作出决定之前，几乎总要通盘考虑事情的每一个细节，甚至当别人要求我迅速作出决定时我也如此。</Item>
+<Item Id="57" ReverseScore="0" SubScale="躲避伤害性HA4">由于我容易疲劳，我常常需要打盹或额外休息。</Item>
+<Item Id="58" ReverseScore="0" SubScale="奖赏依赖性RD4">我不会特意取悦于他人。</Item>
+<Item Id="59" ReverseScore="1" SubScale="躲避伤害性HA4">我比大多数人精力更加充沛，不易疲劳。</Item>
+<Item Id="60" ReverseScore="0" SubScale="猎奇性NS4">我常常能够得到别人的信任，甚至在我吹牛或说假话时也会如此。</Item>
+<Item Id="61" ReverseScore="0" SubScale="猎奇性NS2">当我希望从别人那里得到支持而未能如愿时，我会感到心烦意乱。</Item>
+<Item Id="62" ReverseScore="0" SubScale="猎奇性NS4">夸大其词地讲有趣的故事和开玩笑就数我在行。</Item>
+<Item Id="63" ReverseScore="1" SubScale="躲避伤害性HA4">我常整天“工作不停”，而事实上大可不必这样。</Item>
+<Item Id="64" ReverseScore="0" SubScale="奖赏依赖性RD3">如果失去亲密的朋友，我常比大多数人更加苦恼。</Item>
+<Item Id="65" ReverseScore="1" SubScale="猎奇性NS4">我坚持说真话，即使这样会伤害别人的感情。</Item>
+<Item Id="66" ReverseScore="1" SubScale="猎奇性NS3">我比大多数人更善于存钱。</Item>
+<Item Id="67" ReverseScore="0" SubScale="奖赏依赖性RD3">当友谊出现裂痕时，我几乎总会想方设法让友谊延续下去。</Item>
+<Item Id="68" ReverseScore="0" SubScale="躲避伤害性HA4">我患小病或遭受打击后，比大多数人恢复得更慢。</Item>
+<Item Id="69" ReverseScore="0" SubScale="躲避伤害性HA4">我需要更多休息，支持和反复保证才能从小病或打击中恢复过来。</Item>
+<Item Id="70" ReverseScore="0" SubScale="猎奇性NS3">我常常随意花钱，直到花光现金或超支信用代款而欠债。</Item>
+<Item Id="71" ReverseScore="0" SubScale="猎奇性NS2">我极少因为没有受到应得的尊敬而心烦意乱。</Item>
+<Item Id="72" ReverseScore="0" SubScale="猎奇性NS3">我常因冲动而乱花钱，所以我很难将钱存起来，哪怕已按排了度假之类的特殊计划，我的钱也难以存留。</Item>
+<Item Id="73" ReverseScore="0" SubScale="躲避伤害性HA4">由于太紧张、太疲惫或过于忧虑，所以我难于适应办事习惯的改变。</Item>
+<Item Id="74" ReverseScore="0" SubScale="奖赏依赖性RD3">每当心烦意乱时，通常我情愿呆在朋友中间而不愿独处。</Item>
+<Item Id="75" ReverseScore="1" SubScale="躲避伤害性HA4">我常具有过人的精力和自信心，即使在小病或遭受打击后也如此。</Item>
+<Item Id="76" ReverseScore="1" SubScale="猎奇性NS3">有人认为我用钱太小气或太吝啬。</Item>
+<Item Id="77" ReverseScore="0" SubScale="奖赏依赖性RD2">我常执着地反复干同一件事，直到长期努力均未获得成功。</Item>
+<Item Id="78" ReverseScore="1" SubScale="猎奇性NS3">即使我有了一大笔储蓄，我也很难痛痛快快地为自己花钱。 </Item>
+<Item Id="79" ReverseScore="1" SubScale="奖赏依赖性RD2">我极少让自己心烦意乱或受到挫折：如干某些事情未获得成功，我会轻松地投入到其它活动中去。</Item>
+<Item Id="80" ReverseScore="1" SubScale="躲避伤害性HA4">我比大多数人更容易从小病和遭受的打击中恢复过来。</Item>
+<Item Id="81" ReverseScore="1" SubScale="猎奇性NS2">我讨厌仅凭第一印象做出决定。</Item>
+<Item Id="82" ReverseScore="1" SubScale="躲避伤害性HA1">我认为我将来一定会有很好的运气。</Item>
+<Item Id="83" ReverseScore="0" SubScale="奖赏依赖性RD1">我常为精彩的演讲或优美的诗歌所感动。</Item>
+<Item Id="84" ReverseScore="1" SubScale="躲避伤害性HA1">我能够很快从窘迫或羞辱的状态中恢复过来。</Item>
+<Item Id="85" ReverseScore="1" SubScale="猎奇性NS1">我喜欢按老一套“行之有效”的方式行事。那比尝试“改良创新”的方法要好得多。</Item>
+<Item Id="86" ReverseScore="1" SubScale="奖赏依赖性RD3">我喜欢把自己的私人问题闷在心里。</Item>
+<Item Id="87" ReverseScore="1" SubScale="猎奇性NS3">我更喜欢把钱存起来，而不愿意把钱花在娱乐上。</Item>
+<Item Id="88" ReverseScore="1" SubScale="奖赏依赖性RD3">即使是与朋友在一起，我也不愿意把钱花在娱乐上。</Item>
+<Item Id="89" ReverseScore="1" SubScale="躲避伤害性HA3">几乎在所有的社交场合，我都非常自信和能够把握自己。</Item>
+<Item Id="90" ReverseScore="1" SubScale="奖赏依赖性RD3">我总是喜欢呆在冷清而远离人群的地方。</Item>
+<Item Id="91" ReverseScore="1" SubScale="躲避伤害性HA1">我从不为将来会发生什么可怕的事情而担忧。</Item>
+<Item Id="92" ReverseScore="0" SubScale="奖赏依赖性RD2">我比大多数人更加努力地工作。</Item>
+<Item Id="93" ReverseScore="1" SubScale="猎奇性NS1">与别人谈话时，我情愿多听而不愿多说。</Item>
+<Item Id="94" ReverseScore="0" SubScale="奖赏依赖性RD1">我希望尽量使别人愉快。</Item>
+<Item Id="95" ReverseScore="1" SubScale="躲避伤害性HA1">不论有多少暂时困难我都必须尽力克服，我常认为总会出现好的转机。</Item>
+<Item Id="96" ReverseScore="1" SubScale="猎奇性NS1">我喜欢呆在家里，而不愿意去做旅游或到陌生地方去探险。</Item>
+<Item Id="97" ReverseScore="0" SubScale="奖赏依赖性RD2">当别人早已经气馁时，我常能下定决心将工作持续下去。</Item>
+<Item Id="98" ReverseScore="1" SubScale="躲避伤害性HA1">无论我想干什么，我总是有好运气。</Item>
+<Item Id="99" ReverseScore="1" SubScale="猎奇性NS2">我喜欢密切关注我所做的每一件事的细微之处。</Item>
+<Item Id="100" ReverseScore="1" SubScale="躲避伤害性HA3">与人交谈时，我很容易组织起自己的思维。</Item>
 </Questions>
 </PsycologyTest>

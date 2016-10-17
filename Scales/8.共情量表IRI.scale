@@ -6,37 +6,36 @@
 <Item Id="4">4 比较符合</Item>
 <Item Id="5">5 非常符合</Item>
 </Choices>
-<Prologue>对于下面每个项目，你需要在1、2、3、4 或者5中做出选择，以评价该项目的描述与你自己的符合程度。当你做出选择后，请在相应的评价下打“√”。在判断前请认真阅读每个项目，尽量诚实的作答。谢谢。
-请使用下面的评分方式：       （此描述与我一点也不符 1——2——3——4——5  此描述与我非常符合）
+<Prologue>对于下面每个项目，你需要在1、2、3、4 或者5中做出选择，以评价该项目的描述与你自己的符合程度。当你做出选择后，请在相应的评价下打“√”。在判断前请认真阅读每个项目，尽量诚实的作答。谢谢。请使用下面的评分方式：       （此描述与我一点也不符 1——2——3——4——5  此描述与我非常符合）
 </Prologue>
 <Groups>
-<Item>Perspective Taking, PT</Item>
-<Item>Fantasy FS</Item>
-<Item>Empathy Concern, EC</Item>
-<Item>Personal Distress, PD</Item>
+<Item>观点采择</Item>
+<Item>想象力</Item>
+<Item>共情性关心</Item>
+<Item>个人痛苦</Item>
 </Groups>
 <Questions>
-<Item Id="1" ReverseScore="0" SubScale="Empathy Concern, EC">1.对那些比我不幸的人，我经常有心软和关怀的感觉</Item>
-<Item Id="2" ReverseScore="1" SubScale="Empathy Concern, EC">2.有时候当其他人有困难或问题时，我并不为他们感到很难过</Item>
-<Item Id="3" ReverseScore="0" SubScale="Fantasy FS">3.我的确会投入小说人物中的感情世界</Item>
-<Item Id="4" ReverseScore="0" SubScale="Personal Distress, PD">4.在紧急状况中，我感到担忧、害怕而难以平静</Item>
-<Item Id="5" ReverseScore="1" SubScale="Fantasy FS">5.看电影或看戏时，我通常是旁观的，而且不常全心投入</Item>
-<Item Id="6" ReverseScore="0" SubScale="Perspective Taking, PT">6.在做决定前，我试着从争论中去看每个人的立场</Item>
-<Item Id="7" ReverseScore="0" SubScale="Empathy Concern, EC">7.当我看到有人被别人利用时，我有点感到想要保护他们</Item>
-<Item Id="8" ReverseScore="0" SubScale="Personal Distress, PD">8.当我处在一个情绪非常激动的情况中时，我往往会感到无依无靠，不知如何是好</Item>
-<Item Id="9" ReverseScore="0" SubScale="Perspective Taking, PT">9. 有时候我想象从我的朋友的观点来看事情的样子，以便更了解他们</Item>
-<Item Id="10" ReverseScore="1" SubScale="Fantasy FS">10.对我来说，全心地投入一本好书或一部好电影中，是很少有的事</Item>
-<Item Id="11" ReverseScore="1" SubScale="Empathy Concern, EC">11.其他人的不幸通常不会带给我很大的烦忧</Item>
-<Item Id="12" ReverseScore="0" SubScale="Fantasy FS">12.看完戏或电影之后，我会觉得自己好像是剧中的某一个角色</Item>
-<Item Id="13" ReverseScore="0" SubScale="Personal Distress, PD">13.处在紧张情绪的状况中，我会惊慌害怕</Item>
-<Item Id="14" ReverseScore="1" SubScale="Empathy Concern, EC">14.当我看到有人受到不公平的对待时，我有时并不感到非常同情他们</Item>
-<Item Id="15" ReverseScore="0" SubScale="Perspective Taking, PT">15.我相信每个问题都有两面观点，所以我常试着从这不同的观点来看问题</Item>
-<Item Id="16" ReverseScore="0" SubScale="Empathy Concern, EC">16.我认为自己是一个相当软心肠的人</Item>
-<Item Id="17" ReverseScore="0" SubScale="Fantasy FS">17.当我观赏一部好电影时，我很容易站在某个主角的立场去感受他的心情</Item>
-<Item Id="18" ReverseScore="0" SubScale="Personal Distress, PD">18.在紧急状况中，我紧张得几乎无法控制自己</Item>
-<Item Id="19" ReverseScore="0" SubScale="Perspective Taking, PT">19.当我对一个人生气时，我通常会试着去想一下他的立场</Item>
-<Item Id="20" ReverseScore="0" SubScale="Fantasy FS">20.当我阅读一篇引人的故事或小说时，我想象着：如果故事中的事件发生在我身上，我会感觉怎么样？</Item>
-<Item Id="21" ReverseScore="0" SubScale="Personal Distress, PD">21.当我看到有人发生意外而极需帮助的时候，我紧张得几乎精神崩溃</Item>
-<Item Id="22" ReverseScore="0" SubScale="Perspective Taking, PT">22.在批评别人前，我会试着想象：假如我处在他的情况，我的感受如何？</Item>
+<Item Id="1" ReverseScore="0" SubScale="共情性关心">1.对那些比我不幸的人，我经常有心软和关怀的感觉</Item>
+<Item Id="2" ReverseScore="1" SubScale="共情性关心">2.有时候当其他人有困难或问题时，我并不为他们感到很难过</Item>
+<Item Id="3" ReverseScore="0" SubScale="想象力">3.我的确会投入小说人物中的感情世界</Item>
+<Item Id="4" ReverseScore="0" SubScale="个人痛苦">4.在紧急状况中，我感到担忧、害怕而难以平静</Item>
+<Item Id="5" ReverseScore="1" SubScale="想象力">5.看电影或看戏时，我通常是旁观的，而且不常全心投入</Item>
+<Item Id="6" ReverseScore="0" SubScale="观点采择">6.在做决定前，我试着从争论中去看每个人的立场</Item>
+<Item Id="7" ReverseScore="0" SubScale="共情性关心">7.当我看到有人被别人利用时，我有点感到想要保护他们</Item>
+<Item Id="8" ReverseScore="0" SubScale="个人痛苦">8.当我处在一个情绪非常激动的情况中时，我往往会感到无依无靠，不知如何是好</Item>
+<Item Id="9" ReverseScore="0" SubScale="观点采择">9. 有时候我想象从我的朋友的观点来看事情的样子，以便更了解他们</Item>
+<Item Id="10" ReverseScore="1" SubScale="想象力">10.对我来说，全心地投入一本好书或一部好电影中，是很少有的事</Item>
+<Item Id="11" ReverseScore="1" SubScale="共情性关心">11.其他人的不幸通常不会带给我很大的烦忧</Item>
+<Item Id="12" ReverseScore="0" SubScale="想象力">12.看完戏或电影之后，我会觉得自己好像是剧中的某一个角色</Item>
+<Item Id="13" ReverseScore="0" SubScale="个人痛苦">13.处在紧张情绪的状况中，我会惊慌害怕</Item>
+<Item Id="14" ReverseScore="1" SubScale="共情性关心">14.当我看到有人受到不公平的对待时，我有时并不感到非常同情他们</Item>
+<Item Id="15" ReverseScore="0" SubScale="观点采择">15.我相信每个问题都有两面观点，所以我常试着从这不同的观点来看问题</Item>
+<Item Id="16" ReverseScore="0" SubScale="共情性关心">16.我认为自己是一个相当软心肠的人</Item>
+<Item Id="17" ReverseScore="0" SubScale="想象力">17.当我观赏一部好电影时，我很容易站在某个主角的立场去感受他的心情</Item>
+<Item Id="18" ReverseScore="0" SubScale="个人痛苦">18.在紧急状况中，我紧张得几乎无法控制自己</Item>
+<Item Id="19" ReverseScore="0" SubScale="观点采择">19.当我对一个人生气时，我通常会试着去想一下他的立场</Item>
+<Item Id="20" ReverseScore="0" SubScale="想象力">20.当我阅读一篇引人的故事或小说时，我想象着：如果故事中的事件发生在我身上，我会感觉怎么样？</Item>
+<Item Id="21" ReverseScore="0" SubScale="个人痛苦">21.当我看到有人发生意外而极需帮助的时候，我紧张得几乎精神崩溃</Item>
+<Item Id="22" ReverseScore="0" SubScale="观点采择">22.在批评别人前，我会试着想象：假如我处在他的情况，我的感受如何？</Item>
 </Questions>
 </PsycologyTest>

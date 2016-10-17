@@ -70,10 +70,10 @@ public:
 	void SaveScaleItem(Utilities::CXmlElement* scale_xml, unsigned index);
 	bool LoadAll(CString folder_path);
 
-	std::map<std::wstring, double> GetScore(const wchar_t * scale_name, const std::vector<AnswerInfo>& answers);
+	std::map<CString, double> GetScore(const wchar_t * scale_name, const std::vector<AnswerInfo>& answers);
 
 protected:
-	std::map<std::tuple<CString, CString, COleDateTime>, unsigned int> _answer_table_index;
+	std::map<std::tuple<CString, CString, COleDateTime>, unsigned int> _answer_table_index;	//map< tuple< user_id, scale_name, start_time>,unsigned int answer_index>
 	
 	std::vector<ScaleAnswers> _answer_table;
 	std::vector<bool> _answer_table_finished;

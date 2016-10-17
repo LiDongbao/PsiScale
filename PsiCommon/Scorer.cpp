@@ -28,7 +28,7 @@ bool CScorer::Init(const wchar_t * score_folder)
 		auto pt = scale_name.find_first_of(_T("."));
 		shared_ptr<CScoreMatrix> score_matrix(new CScoreMatrix);
 		score_matrix->Load(file_path);
-		_all_score_matrix.insert(make_pair(scale_name.substr(pt + 1), score_matrix));
+		_all_score_matrix.insert(make_pair(scale_name.substr(pt + 1).c_str(), score_matrix));
 	});
 
 	_initialized = true;
@@ -61,18 +61,18 @@ bool CScoreMatrix::Load(const wchar_t * path)
 	file.getline(line_buffer, 256);
 
 	USES_CONVERSION;
-	wstring line(A2CW(line_buffer));
+	std::wstring line(A2CW(line_buffer));
 	for (unsigned int i = 0; i < group_count; ++i)
 	{
 		auto start = line.find_first_not_of(L'\t');
 		auto stop = line.find(L'\t', start);
 		if (stop == wstring::npos) 
 		{
-			_groups[i] = line.substr(start);
+			_groups[i] = line.substr(start).c_str();
 		}
 		else
 		{
-			_groups[i] = line.substr(start, stop - start);
+			_groups[i] = line.substr(start, stop - start).c_str();
 			line = line.substr(stop + 1);
 		}
 	}
@@ -105,7 +105,7 @@ double CScoreMatrix::GetWeight(unsigned int question, unsigned int choice, unsig
 	return _matrix[question][choice - 1][group];
 }
 
-const std::vector<std::wstring>& CScoreMatrix::GetGroups() const
+const std::vector<CString>& CScoreMatrix::GetGroups() const
 {
 	return _groups;
 }

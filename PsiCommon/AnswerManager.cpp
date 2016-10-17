@@ -117,17 +117,15 @@ std::vector<int> CAnswerManager::GetIndexByUser(const TCHAR* user_uid)
 	return saved_index;
 }
 
+//通过量表名获得量表的index，但是不能只通过量表名来获得量表的index给CAnswerView，因为存在一张表被同一用户不同时间填写
 std::vector<int> CAnswerManager::GetIndexByScale(const TCHAR* scale)
 {
 	vector<int> saved_index;
 	for (auto iter = _answer_table_index.begin(); iter != _answer_table_index.end(); ++iter)
 	{
 		if (get<1>(iter->first) == scale)
-		{
 			saved_index.push_back(iter->second);
-		}
 	}
-
 	return saved_index;
 }
 
@@ -268,7 +266,7 @@ void CAnswerManager::SaveScaleItem(Utilities::CXmlElement* scale_xml, unsigned i
 		for (auto group : group_scores)
 		{
 			auto item = subscales_xml->AddElement(XML_TEST_SUBSCALE);
-			item->SetAttrib(XML_TEST_NAME, group.first.c_str());
+			item->SetAttrib(XML_TEST_NAME, group.first);
 			item->SetFloatAttrib(XML_TEST_SCORE, group.second);
 		}
 	}
@@ -293,10 +291,10 @@ bool CAnswerManager::LoadAll(CString folder_path)
 	}
 }
 
-std::map<std::wstring, double> CAnswerManager::GetScore(const wchar_t * scale_name,
+std::map<CString, double> CAnswerManager::GetScore(const wchar_t * scale_name,
 	const std::vector<AnswerInfo>& answers)
 {
-	std::map<std::wstring, double> result;
+	std::map<CString, double> result;
 	auto score_matrix = _score.GetScoreMatrix(scale_name);
 	if (score_matrix == nullptr)
 		return result;

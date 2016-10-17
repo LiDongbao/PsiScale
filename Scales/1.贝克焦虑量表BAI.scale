@@ -6,28 +6,30 @@
 <Item Id="4">重度，只能勉强忍受</Item>
 </Choices>
 <Prologue>下面是一份关于焦虑一般症状的表格，请您仔细阅读下列各项，指出最近一周内（包括当天），被各种症状烦扰的程度，并选择相应的选项</Prologue>
-<Groups/>
+<Groups>
+<Item>Total</Item>
+</Groups>
 <Questions>
-<Item Id="1" ReverseScore="0">麻木或刺痛</Item>
-<Item Id="2" ReverseScore="0">感到发热</Item>
-<Item Id="3" ReverseScore="0">腿部颤抖</Item>
-<Item Id="4" ReverseScore="0">不能放松</Item>
-<Item Id="5" ReverseScore="0">害怕发生不好的事情</Item>
-<Item Id="6" ReverseScore="0">头晕</Item>
-<Item Id="7" ReverseScore="0">心悸或心率加快</Item>
-<Item Id="8" ReverseScore="0">心神不定</Item>
-<Item Id="9" ReverseScore="0">惊吓</Item>
-<Item Id="10" ReverseScore="0">紧张</Item>
-<Item Id="11" ReverseScore="0">窒息感</Item>
-<Item Id="12" ReverseScore="0">手发抖</Item>
-<Item Id="13" ReverseScore="0">摇晃</Item>
-<Item Id="14" ReverseScore="0">害怕失控</Item>
-<Item Id="15" ReverseScore="0">呼吸困难</Item>
-<Item Id="16" ReverseScore="0">害怕快要死去</Item>
-<Item Id="17" ReverseScore="0">恐慌</Item>
-<Item Id="18" ReverseScore="0">消化不良或腹部不适</Item>
-<Item Id="19" ReverseScore="0">昏厥</Item>
-<Item Id="20" ReverseScore="0">脸发红</Item>
-<Item Id="21" ReverseScore="0">出汗（不是因为暑热冒汗）</Item>
+<Item Id="1" ReverseScore="0" SubScale="Total">麻木或刺痛</Item>
+<Item Id="2" ReverseScore="0" SubScale="Total">感到发热</Item>
+<Item Id="3" ReverseScore="0" SubScale="Total">腿部颤抖</Item>
+<Item Id="4" ReverseScore="0" SubScale="Total">不能放松</Item>
+<Item Id="5" ReverseScore="0" SubScale="Total">害怕发生不好的事情</Item>
+<Item Id="6" ReverseScore="0" SubScale="Total">头晕</Item>
+<Item Id="7" ReverseScore="0" SubScale="Total">心悸或心率加快</Item>
+<Item Id="8" ReverseScore="0" SubScale="Total">心神不定</Item>
+<Item Id="9" ReverseScore="0" SubScale="Total">惊吓</Item>
+<Item Id="10" ReverseScore="0" SubScale="Total">紧张</Item>
+<Item Id="11" ReverseScore="0" SubScale="Total">窒息感</Item>
+<Item Id="12" ReverseScore="0" SubScale="Total">手发抖</Item>
+<Item Id="13" ReverseScore="0" SubScale="Total">摇晃</Item>
+<Item Id="14" ReverseScore="0" SubScale="Total">害怕失控</Item>
+<Item Id="15" ReverseScore="0" SubScale="Total">呼吸困难</Item>
+<Item Id="16" ReverseScore="0" SubScale="Total">害怕快要死去</Item>
+<Item Id="17" ReverseScore="0" SubScale="Total">恐慌</Item>
+<Item Id="18" ReverseScore="0" SubScale="Total">消化不良或腹部不适</Item>
+<Item Id="19" ReverseScore="0" SubScale="Total">昏厥</Item>
+<Item Id="20" ReverseScore="0" SubScale="Total">脸发红</Item>
+<Item Id="21" ReverseScore="0" SubScale="Total">出汗（不是因为暑热冒汗）</Item>
 </Questions>
 </PsycologyTest>

@@ -37,6 +37,7 @@ bool CPsiScale::Load(const CString& file_path)
 	if (groups_element == nullptr)
 		return false;
 
+	//Get Groups and push back to the _groups.
 	auto& group_items = groups_element->GetChildElements();
 	for (auto item : group_items)
 	{

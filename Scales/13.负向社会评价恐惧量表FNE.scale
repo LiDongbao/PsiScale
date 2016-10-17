@@ -8,19 +8,21 @@
 </Choices>
 <Prologue>本问卷共有12 个题目，每个题目均有 1、2、3、4、5 五个等级，请在能准确描述你的反应程度的等级序号上打“√”。每题只能选择一个答案，请依次作答。
 时限：2分钟。</Prologue>
-<Groups/>
+<Groups>
+<Item>Total</Item>
+</Groups>
 <Questions>
-<Item Id="1" ReverseScore="0">我担心别人会怎样看我，尽管我知道这没什么要紧。</Item>
-<Item Id="2" ReverseScore="1">即使知道人们正在形成一个对我不利的印象，我也不在乎。</Item>
-<Item Id="3" ReverseScore="0">我经常害怕别人会注意到我的短处。</Item>
-<Item Id="4" ReverseScore="1">我几乎不操心我给别人留下了什么样的印象。</Item>
-<Item Id="5" ReverseScore="0">我害怕别人会不赞同我。</Item>
-<Item Id="6" ReverseScore="0">我害怕别人会发现我的错处。</Item>
-<Item Id="7" ReverseScore="1">我并不为别人对我的看法而烦心。</Item>
-<Item Id="8" ReverseScore="0">当我与别人谈话时，我担心他们会怎么看我。</Item>
-<Item Id="9" ReverseScore="0">我通常总是在担心我究竟给别人留下了什么印象。</Item>
-<Item Id="10" ReverseScore="1">如果我知道有人正在评价我，我一点也不在乎。</Item>
-<Item Id="11" ReverseScore="0">有时我想自己太在乎别人对我的看法了。</Item>
-<Item Id="12" ReverseScore="0">我常常担心我会说错话或做错事。</Item>
+<Item Id="1" ReverseScore=" SubScale="Total">我担心别人会怎样看我，尽管我知道这没什么要紧。</Item>
+<Item Id="2" ReverseScore=" SubScale="Total">即使知道人们正在形成一个对我不利的印象，我也不在乎。</Item>
+<Item Id="3" ReverseScore=" SubScale="Total">我经常害怕别人会注意到我的短处。</Item>
+<Item Id="4" ReverseScore=" SubScale="Total">我几乎不操心我给别人留下了什么样的印象。</Item>
+<Item Id="5" ReverseScore=" SubScale="Total">我害怕别人会不赞同我。</Item>
+<Item Id="6" ReverseScore=" SubScale="Total">我害怕别人会发现我的错处。</Item>
+<Item Id="7" ReverseScore=" SubScale="Total">我并不为别人对我的看法而烦心。</Item>
+<Item Id="8" ReverseScore=" SubScale="Total">当我与别人谈话时，我担心他们会怎么看我。</Item>
+<Item Id="9" ReverseScore=" SubScale="Total">我通常总是在担心我究竟给别人留下了什么印象。</Item>
+<Item Id="10" ReverseScore=" SubScale="Total">如果我知道有人正在评价我，我一点也不在乎。</Item>
+<Item Id="11" ReverseScore=" SubScale="Total">有时我想自己太在乎别人对我的看法了。</Item>
+<Item Id="12" ReverseScore=" SubScale="Total">我常常担心我会说错话或做错事。</Item>
 </Questions>
 </PsycologyTest>

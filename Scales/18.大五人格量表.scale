@@ -10,72 +10,72 @@
 如果该描述多数情况下不符合您或者您不太赞同，请选择“2”；如果该描述半正确半错误，您无法确定或介于中间，请选择“3”；
 如果该描述多半符合您或者您比较赞同，请选择“4”；如果该描述明显符合您或者您十分赞同，请选择“5”。</Prologue>
 <Groups>
-<Item>Neuroticism</Item>
-<Item>Extraversion</Item>
-<Item>Openness</Item>
-<Item>Agreeableness Facets</Item>
-<Item>Conscientiousness</Item>
+<Item>神经质</Item>
+<Item>外向性</Item>
+<Item>开放性</Item>
+<Item>顺同性</Item>
+<Item>严谨性</Item>
 </Groups>
 <Questions>
-<Item Id="1" ReverseScore="1" SubScale="Neuroticism">我不是一个容易忧虑的人。</Item>
-<Item Id="2" ReverseScore="0" SubScale="Extraversion">我喜欢周围有很多朋友。</Item>
-<Item Id="3" ReverseScore="0" SubScale="Neuroticism">我很喜欢沉浸于幻想和白日梦中，去探索、发展其中所有可能实现的东西。</Item>
-<Item Id="4" ReverseScore="0" SubScale="Openness">我尽量对每一个遇到的人彬彬有礼，非常客气。</Item>
-<Item Id="5" ReverseScore="0" SubScale="Conscientiousness">我让自己的物品经常保持整洁干净。</Item>
-<Item Id="6" ReverseScore="0" SubScale="Conscientiousness">有时候我感到愤怒，充满怨恨。</Item>
-<Item Id="7" ReverseScore="0" SubScale="Conscientiousness">我很容易笑。</Item>
-<Item Id="8" ReverseScore="0" SubScale="Conscientiousness">我很喜欢培养和发展新的爱好。</Item>
-<Item Id="9" ReverseScore="1" SubScale="Conscientiousness">有时候，我会采取威胁或奉承等不同手段，去说服别人按我的意愿去做事。</Item>
-<Item Id="10" ReverseScore="0" SubScale="Conscientiousness">我比较擅长为自己安排好做事进度，以便按时完成任务。</Item>
-<Item Id="11" ReverseScore="0" SubScale="Conscientiousness">当面对极大的压力时，有时我会感到好像就要垮了似得。</Item>
-<Item Id="12" ReverseScore="1" SubScale="Conscientiousness">我喜欢那些可以单独做事，不被别人打扰的工作。</Item>
-<Item Id="13" ReverseScore="0" SubScale="Conscientiousness">我对大自然和艺术中蕴涵的美十分着迷。</Item>
-<Item Id="14" ReverseScore="1" SubScale="Conscientiousness">有些人觉得我有些自我中心，不太考虑别人的感受。</Item>
-<Item Id="15" ReverseScore="1" SubScale="Conscientiousness">许多时候，事到临头，我才发现自己还没做好准备。</Item>
-<Item Id="16" ReverseScore="1" SubScale="Conscientiousness">我很少感觉孤独和忧郁。</Item>
-<Item Id="17" ReverseScore="0" SubScale="Conscientiousness">我很喜欢与别人聊天。</Item>
-<Item Id="18" ReverseScore="1" SubScale="Conscientiousness">我认为让学生接触有争议的学说或言论只会混淆和误导他们的思想。</Item>
-<Item Id="19" ReverseScore="1" SubScale="Conscientiousness">如果有人挑起争端，我随时准备好反击。</Item>
-<Item Id="20" ReverseScore="0" SubScale="Conscientiousness">我会尽量认真地完成一切分派给我的任务。</Item>
-<Item Id="21" ReverseScore="0" SubScale="Conscientiousness">我经常感到紧张而心神不定。</Item>
-<Item Id="22" ReverseScore="0" SubScale="Conscientiousness">我喜欢置身于激烈的活动之中。</Item>
-<Item Id="23" ReverseScore="1" SubScale="Conscientiousness">我对诗词基本上没有什么感觉。</Item>
-<Item Id="24" ReverseScore="1" SubScale="Conscientiousness">我觉得自己比大多数的人都优秀。</Item>
-<Item Id="25" ReverseScore="0" SubScale="Conscientiousness">我有一些明确的目标，并能以有条不紊的方式朝它迈进。</Item>
-<Item Id="26" ReverseScore="0" SubScale="Conscientiousness">有时我感到自己完全一文不值。</Item>
-<Item Id="27" ReverseScore="1" SubScale="Conscientiousness">我通常回避人多的场合。</Item>
-<Item Id="28" ReverseScore="1" SubScale="Conscientiousness">对我来说，让头脑无拘无束地想象是一件困难的事情。</Item>
-<Item Id="29" ReverseScore="0" SubScale="Conscientiousness">受到别人粗暴无礼的对待后，我会尽量原谅他们，让自己忘记这件事。</Item>
-<Item Id="30" ReverseScore="1" SubScale="Conscientiousness">开始着手学习或工作之前，我会浪费很多时间。</Item>
-<Item Id="31" ReverseScore="1" SubScale="Conscientiousness">我很少感到恐惧或焦虑。</Item>
-<Item Id="32" ReverseScore="0" SubScale="Conscientiousness">我常常感到自己精力旺盛，好象充满能量。</Item>
-<Item Id="33" ReverseScore="1" SubScale="Conscientiousness">我很少留意自己在不同环境下的情绪或感觉变化。</Item>
-<Item Id="34" ReverseScore="0" SubScale="Conscientiousness">我相信人性是善良的。</Item>
-<Item Id="35" ReverseScore="0" SubScale="Conscientiousness">我努力做事以达到自己的目标。</Item>
-<Item Id="36" ReverseScore="0" SubScale="Conscientiousness">别人对待我的方式常使我感到愤怒。</Item>
-<Item Id="37" ReverseScore="0" SubScale="Conscientiousness">我是一个乐天开朗的人。</Item>
-<Item Id="38" ReverseScore="0" SubScale="Conscientiousness">我经常体验到许多不同的感受或情绪。</Item>
-<Item Id="39" ReverseScore="1" SubScale="Conscientiousness">很多人觉得我对人有些冷淡，经常和别人保持一定距离。</Item>
-<Item Id="40" ReverseScore="0" SubScale="Conscientiousness">一旦做出承诺，我通常会贯彻到底。</Item>
-<Item Id="41" ReverseScore="0" SubScale="Conscientiousness">很多时候，当事情不顺利时，我会感到泄气，想要放弃。</Item>
-<Item Id="42" ReverseScore="1" SubScale="Conscientiousness">我不太喜欢和人聊天，很少从中获得太多乐趣。</Item>
-<Item Id="43" ReverseScore="0" SubScale="Conscientiousness">阅读一首诗或欣赏一件艺术品时，我有时会感到非常兴奋或喜悦。</Item>
-<Item Id="44" ReverseScore="1" SubScale="Conscientiousness">我是一个固执倔强的人。</Item>
-<Item Id="45" ReverseScore="1" SubScale="Conscientiousness">有时候，我并不是那么可靠和值得信赖。</Item>
-<Item Id="46" ReverseScore="1" SubScale="Conscientiousness">我很少感觉忧伤或沮丧。</Item>
-<Item Id="47" ReverseScore="0" SubScale="Conscientiousness">我的生活节奏很快。</Item>
-<Item Id="48" ReverseScore="1" SubScale="Conscientiousness">我对思考宇宙规律或人类生存状况没有什么兴趣。</Item>
-<Item Id="49" ReverseScore="0" SubScale="Conscientiousness">我尽量对他人做到体贴周到。</Item>
-<Item Id="50" ReverseScore="0" SubScale="Conscientiousness">我做事情总是善始善终，是一个很有做事能力的人。</Item>
-<Item Id="51" ReverseScore="0" SubScale="Conscientiousness">我经常感觉无助，希望有人能帮助我解决问题。</Item>
-<Item Id="52" ReverseScore="0" SubScale="Conscientiousness">我是一个十分积极活跃的人。</Item>
-<Item Id="53" ReverseScore="0" SubScale="Conscientiousness">我对许多事物都很好奇，充满求知欲。</Item>
-<Item Id="54" ReverseScore="1" SubScale="Conscientiousness">如果我不喜欢某一个人，我会让他知道。</Item>
-<Item Id="55" ReverseScore="1" SubScale="Conscientiousness">我好像总不能把事情安排得井井有条。</Item>
-<Item Id="56" ReverseScore="0" SubScale="Conscientiousness">有时我会感到十分羞愧，以至于只想躲起来，不见任何人。</Item>
-<Item Id="57" ReverseScore="1" SubScale="Conscientiousness">我宁愿自己独自做事，而不是领导指挥别人。</Item>
-<Item Id="58" ReverseScore="0" SubScale="Conscientiousness">我喜欢研究理论和抽象的问题。</Item>
-<Item Id="59" ReverseScore="1" SubScale="Conscientiousness">如果必要的话，我会利用别人来达到自己的目的。</Item>
-<Item Id="60" ReverseScore="0" SubScale="Conscientiousness">对于每件事，我都力求做到最好。</Item>
+<Item Id="1" ReverseScore="1" SubScale="神经质">我不是一个容易忧虑的人。</Item>
+<Item Id="2" ReverseScore="0" SubScale="外向性">我喜欢周围有很多朋友。</Item>
+<Item Id="3" ReverseScore="0" SubScale="开放性">我很喜欢沉浸于幻想和白日梦中，去探索、发展其中所有可能实现的东西。</Item>
+<Item Id="4" ReverseScore="0" SubScale="顺同性">我尽量对每一个遇到的人彬彬有礼，非常客气。</Item>
+<Item Id="5" ReverseScore="0" SubScale="严谨性">我让自己的物品经常保持整洁干净。</Item>
+<Item Id="6" ReverseScore="0" SubScale="神经质">有时候我感到愤怒，充满怨恨。</Item>
+<Item Id="7" ReverseScore="0" SubScale="外向性">我很容易笑。</Item>
+<Item Id="8" ReverseScore="0" SubScale="开放性">我很喜欢培养和发展新的爱好。</Item>
+<Item Id="9" ReverseScore="1" SubScale="顺同性">有时候，我会采取威胁或奉承等不同手段，去说服别人按我的意愿去做事。</Item>
+<Item Id="10" ReverseScore="0" SubScale="严谨性">我比较擅长为自己安排好做事进度，以便按时完成任务。</Item>
+<Item Id="11" ReverseScore="0" SubScale="神经质">当面对极大的压力时，有时我会感到好像就要垮了似得。</Item>
+<Item Id="12" ReverseScore="1" SubScale="外向性">我喜欢那些可以单独做事，不被别人打扰的工作。</Item>
+<Item Id="13" ReverseScore="0" SubScale="开放性">我对大自然和艺术中蕴涵的美十分着迷。</Item>
+<Item Id="14" ReverseScore="1" SubScale="顺同性">有些人觉得我有些自我中心，不太考虑别人的感受。</Item>
+<Item Id="15" ReverseScore="1" SubScale="严谨性">许多时候，事到临头，我才发现自己还没做好准备。</Item>
+<Item Id="16" ReverseScore="1" SubScale="神经质">我很少感觉孤独和忧郁。</Item>
+<Item Id="17" ReverseScore="0" SubScale="外向性">我很喜欢与别人聊天。</Item>
+<Item Id="18" ReverseScore="1" SubScale="开放性">我认为让学生接触有争议的学说或言论只会混淆和误导他们的思想。</Item>
+<Item Id="19" ReverseScore="1" SubScale="顺同性">如果有人挑起争端，我随时准备好反击。</Item>
+<Item Id="20" ReverseScore="0" SubScale="严谨性">我会尽量认真地完成一切分派给我的任务。</Item>
+<Item Id="21" ReverseScore="0" SubScale="神经质">我经常感到紧张而心神不定。</Item>
+<Item Id="22" ReverseScore="0" SubScale="外向性">我喜欢置身于激烈的活动之中。</Item>
+<Item Id="23" ReverseScore="1" SubScale="开放性">我对诗词基本上没有什么感觉。</Item>
+<Item Id="24" ReverseScore="1" SubScale="顺同性">我觉得自己比大多数的人都优秀。</Item>
+<Item Id="25" ReverseScore="0" SubScale="严谨性">我有一些明确的目标，并能以有条不紊的方式朝它迈进。</Item>
+<Item Id="26" ReverseScore="0" SubScale="神经质">有时我感到自己完全一文不值。</Item>
+<Item Id="27" ReverseScore="1" SubScale="外向性">我通常回避人多的场合。</Item>
+<Item Id="28" ReverseScore="1" SubScale="开放性">对我来说，让头脑无拘无束地想象是一件困难的事情。</Item>
+<Item Id="29" ReverseScore="0" SubScale="顺同性">受到别人粗暴无礼的对待后，我会尽量原谅他们，让自己忘记这件事。</Item>
+<Item Id="30" ReverseScore="1" SubScale="严谨性">开始着手学习或工作之前，我会浪费很多时间。</Item>
+<Item Id="31" ReverseScore="1" SubScale="神经质">我很少感到恐惧或焦虑。</Item>
+<Item Id="32" ReverseScore="0" SubScale="外向性">我常常感到自己精力旺盛，好象充满能量。</Item>
+<Item Id="33" ReverseScore="1" SubScale="开放性">我很少留意自己在不同环境下的情绪或感觉变化。</Item>
+<Item Id="34" ReverseScore="0" SubScale="顺同性">我相信人性是善良的。</Item>
+<Item Id="35" ReverseScore="0" SubScale="严谨性">我努力做事以达到自己的目标。</Item>
+<Item Id="36" ReverseScore="0" SubScale="神经质">别人对待我的方式常使我感到愤怒。</Item>
+<Item Id="37" ReverseScore="0" SubScale="外向性">我是一个乐天开朗的人。</Item>
+<Item Id="38" ReverseScore="0" SubScale="开放性">我经常体验到许多不同的感受或情绪。</Item>
+<Item Id="39" ReverseScore="1" SubScale="顺同性">很多人觉得我对人有些冷淡，经常和别人保持一定距离。</Item>
+<Item Id="40" ReverseScore="0" SubScale="严谨性">一旦做出承诺，我通常会贯彻到底。</Item>
+<Item Id="41" ReverseScore="0" SubScale="神经质">很多时候，当事情不顺利时，我会感到泄气，想要放弃。</Item>
+<Item Id="42" ReverseScore="1" SubScale="外向性">我不太喜欢和人聊天，很少从中获得太多乐趣。</Item>
+<Item Id="43" ReverseScore="0" SubScale="开放性">阅读一首诗或欣赏一件艺术品时，我有时会感到非常兴奋或喜悦。</Item>
+<Item Id="44" ReverseScore="1" SubScale="顺同性">我是一个固执倔强的人。</Item>
+<Item Id="45" ReverseScore="1" SubScale="严谨性">有时候，我并不是那么可靠和值得信赖。</Item>
+<Item Id="46" ReverseScore="1" SubScale="神经质">我很少感觉忧伤或沮丧。</Item>
+<Item Id="47" ReverseScore="0" SubScale="外向性">我的生活节奏很快。</Item>
+<Item Id="48" ReverseScore="1" SubScale="开放性">我对思考宇宙规律或人类生存状况没有什么兴趣。</Item>
+<Item Id="49" ReverseScore="0" SubScale="顺同性">我尽量对他人做到体贴周到。</Item>
+<Item Id="50" ReverseScore="0" SubScale="严谨性">我做事情总是善始善终，是一个很有做事能力的人。</Item>
+<Item Id="51" ReverseScore="0" SubScale="神经质">我经常感觉无助，希望有人能帮助我解决问题。</Item>
+<Item Id="52" ReverseScore="0" SubScale="外向性">我是一个十分积极活跃的人。</Item>
+<Item Id="53" ReverseScore="0" SubScale="开放性">我对许多事物都很好奇，充满求知欲。</Item>
+<Item Id="54" ReverseScore="1" SubScale="顺同性">如果我不喜欢某一个人，我会让他知道。</Item>
+<Item Id="55" ReverseScore="1" SubScale="严谨性">我好像总不能把事情安排得井井有条。</Item>
+<Item Id="56" ReverseScore="0" SubScale="神经质">有时我会感到十分羞愧，以至于只想躲起来，不见任何人。</Item>
+<Item Id="57" ReverseScore="1" SubScale="外向性">我宁愿自己独自做事，而不是领导指挥别人。</Item>
+<Item Id="58" ReverseScore="0" SubScale="开放性">我喜欢研究理论和抽象的问题。</Item>
+<Item Id="59" ReverseScore="1" SubScale="顺同性">如果必要的话，我会利用别人来达到自己的目的。</Item>
+<Item Id="60" ReverseScore="0" SubScale="严谨性">对于每件事，我都力求做到最好。</Item>
 </Questions>
 </PsycologyTest>

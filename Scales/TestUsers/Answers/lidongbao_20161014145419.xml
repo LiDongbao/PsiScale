@@ -1,0 +1,73 @@
+<Test>
+<UserInfo UserId="lidongbao" Password="123456" UID="lidongbao_20161014145419" Name="李冬宝" Pinyin="lidongbao" Nationality="汉" BirthData="2016-10-14 14:54:21" Sex="0" Weight="70" Mobile="15900611731" Email="1518425008@qq.com_______" Mental="0" Sight="0" Others="Test: 2016-10-14 14:54. Test if the test can get the right scale and the answer can be written rightly. "/>
+<Scale Name="亲社会倾向量表PTM" StartTime="2016-10-14 21:22:32" Finished="1">
+<Answers>
+<Item Id="1" Answer="3" Time="2626"/>
+<Item Id="2" Answer="3" Time="12367"/>
+<Item Id="3" Answer="2" Time="2052"/>
+<Item Id="4" Answer="3" Time="425"/>
+<Item Id="5" Answer="3" Time="188"/>
+<Item Id="6" Answer="4" Time="1014"/>
+<Item Id="7" Answer="3" Time="472"/>
+<Item Id="8" Answer="4" Time="546"/>
+<Item Id="9" Answer="4" Time="323"/>
+<Item Id="10" Answer="4" Time="179"/>
+<Item Id="11" Answer="4" Time="303"/>
+<Item Id="12" Answer="4" Time="346"/>
+<Item Id="13" Answer="4" Time="188"/>
+<Item Id="14" Answer="4" Time="329"/>
+<Item Id="15" Answer="4" Time="156"/>
+<Item Id="16" Answer="4" Time="235"/>
+<Item Id="17" Answer="3" Time="622"/>
+<Item Id="18" Answer="3" Time="171"/>
+<Item Id="19" Answer="3" Time="172"/>
+<Item Id="20" Answer="3" Time="172"/>
+<Item Id="21" Answer="3" Time="139"/>
+<Item Id="22" Answer="3" Time="155"/>
+<Item Id="23" Answer="3" Time="164"/>
+<Item Id="24" Answer="3" Time="409"/>
+<Item Id="25" Answer="3" Time="203"/>
+<Item Id="26" Answer="3" Time="401"/>
+</Answers>
+<SubScales>
+<SubScale Name="鍏紑鐨?鍖垮悕鐨?鍒╀粬鐨?渚濅粠鐨?鎯呯华鐨?绱ф€ョ殑" Score="87"/>
+</SubScales>
+</Scale>
+<Scale Name="冲动性量表BIS" StartTime="2016-10-14 23:14:20" Finished="1">
+<Answers>
+<Item Id="1" Answer="3" Time="1054"/>
+<Item Id="2" Answer="3" Time="146"/>
+<Item Id="3" Answer="4" Time="325"/>
+<Item Id="4" Answer="4" Time="146"/>
+<Item Id="5" Answer="3" Time="350"/>
+<Item Id="6" Answer="3" Time="145"/>
+<Item Id="7" Answer="3" Time="265"/>
+<Item Id="8" Answer="3" Time="162"/>
+<Item Id="9" Answer="3" Time="262"/>
+<Item Id="10" Answer="3" Time="144"/>
+<Item Id="11" Answer="4" Time="221"/>
+<Item Id="12" Answer="4" Time="145"/>
+<Item Id="13" Answer="3" Time="323"/>
+<Item Id="14" Answer="3" Time="154"/>
+<Item Id="15" Answer="3" Time="144"/>
+<Item Id="16" Answer="3" Time="152"/>
+<Item Id="17" Answer="3" Time="145"/>
+<Item Id="18" Answer="3" Time="145"/>
+<Item Id="19" Answer="3" Time="140"/>
+<Item Id="20" Answer="3" Time="145"/>
+<Item Id="21" Answer="3" Time="132"/>
+<Item Id="22" Answer="3" Time="170"/>
+<Item Id="23" Answer="3" Time="126"/>
+<Item Id="24" Answer="3" Time="145"/>
+<Item Id="25" Answer="3" Time="141"/>
+<Item Id="26" Answer="3" Time="160"/>
+<Item Id="27" Answer="3" Time="187"/>
+<Item Id="28" Answer="3" Time="137"/>
+<Item Id="29" Answer="3" Time="139"/>
+<Item Id="30" Answer="3" Time="319"/>
+</Answers>
+<SubScales>
+<SubScale Name="杩愬姩鍐插姩鎬?璁ょ煡鍐插姩鎬?鏃犺鍒掑啿鍔ㄦ€?" Score="94"/>
+</SubScales>
+</Scale>
+</Test>

@@ -8,40 +8,40 @@
 </Choices>
 <Prologue>通常情况下，人们思考问题的方式不同，采取的行动也不同。这部分的目的是了解您在一些情况下思考问题与行动的方式。下边有30个问题，请您从“不是”、“极少”、“有时’、“经常”、“总是”五个答案中选择一个最适合您情况的答案。答案不存在对与错，不要花太多时间思考每个问题。如果您不太清楚如何回答，请尽量估计。</Prologue>
 <Groups>
-<Item>Motor impulsiveness</Item>
-<Item>Cognitive impulsiveness</Item>
-<Item>No planning impulsiveness</Item>
+<Item>运动冲动性</Item>
+<Item>认知冲动性</Item>
+<Item>无计划冲动性</Item>
 </Groups>
 <Questions>
-<Item Id="1" ReverseScore="0" SubScale="No planning impulsiveness">1.我认真安排每件事</Item>
-<Item Id="2" ReverseScore="0" SubScale="Motor impulsiveness">2.我做事不加思考</Item>
-<Item Id="3" ReverseScore="0" SubScale="Cognitive impulsiveness">3.遇到问题时我能想出好办法</Item>
-<Item Id="4" ReverseScore="0" SubScale="No planning impulsiveness">4.我对未来有计划</Item>
-<Item Id="5" ReverseScore="0" SubScale="Motor impulsiveness">5.我不能很好地控制自己的行为</Item>
-<Item Id="6" ReverseScore="0" SubScale="Cognitive impulsiveness">6.必要时我能够长时间考虑一个问题</Item>
-<Item Id="7" ReverseScore="0" SubScale="No planning impulsiveness">7.我有规律地存钱或攒钱</Item>
-<Item Id="8" ReverseScore="0" SubScale="Motor impulsiveness">8.我难以控制自己的脾气</Item>
-<Item Id="9" ReverseScore="0" SubScale="Cognitive impulsiveness">9.我能从不同的角度考虑问题</Item>
-<Item Id="10" ReverseScore="0" SubScale="No planning impulsiveness">10.我对工作和获得收入有计划</Item>
-<Item Id="11" ReverseScore="0" SubScale="Motor impulsiveness">11.我说话不加思考</Item>
-<Item Id="12" ReverseScore="0" SubScale="Cognitive impulsiveness">12.遇到问题时我喜欢慢慢考虑</Item>
-<Item Id="13" ReverseScore="0" SubScale="No planning impulsiveness">13.我做事比较理智</Item>
-<Item Id="14" ReverseScore="0" SubScale="Motor impulsiveness">14.我激动时难以控制自己的行为</Item>
-<Item Id="15" ReverseScore="0" SubScale="Cognitive impulsiveness">15.遇到难题时我能耐心思考解决问题的办法</Item>
-<Item Id="16" ReverseScore="0" SubScale="No planning impulsiveness">16.我有规律地安排饮食起居</Item>
-<Item Id="17" ReverseScore="0" SubScale="Motor impulsiveness">17.我容易冲动行事</Item>
-<Item Id="18" ReverseScore="0" SubScale="Cognitive impulsiveness">18.做决定前，我喜欢仔细考虑得失</Item>
-<Item Id="19" ReverseScore="0" SubScale="No planning impulsiveness">19.我离开家之前把事情都安排好</Item>
-<Item Id="20" ReverseScore="0" SubScale="Motor impulsiveness">20.我不考虑后果而立即行动</Item>
-<Item Id="21" ReverseScore="0" SubScale="Cognitive impulsiveness">21.我冷静地思考问题</Item>
-<Item Id="22" ReverseScore="0" SubScale="No planning impulsiveness">22.我做事时能按计划完成</Item>
-<Item Id="23" ReverseScore="0" SubScale="Motor impulsiveness">23.我容易冲动性购物</Item>
-<Item Id="24" ReverseScore="0" SubScale="Cognitive impulsiveness">24.遇到难题时我不会轻易下结论</Item>
-<Item Id="25" ReverseScore="0" SubScale="No planning impulsiveness">25.我花钱有计划性</Item>
-<Item Id="26" ReverseScore="0" SubScale="Motor impulsiveness">26.我做事十分莽撞</Item>
-<Item Id="27" ReverseScore="0" SubScale="Cognitive impulsiveness">27.我思考问题时能集中注意力</Item>
-<Item Id="28" ReverseScore="0" SubScale="No planning impulsiveness">28.我很看重对未来的安排</Item>
-<Item Id="29" ReverseScore="0" SubScale="Motor impulsiveness">29.我想到什么就马上去做</Item>
-<Item Id="30" ReverseScore="0" SubScale="Cognitive impulsiveness">30.我容易想出新的办法来解决遇到的困难</Item>
+<Item Id="1" ReverseScore="0" SubScale="无计划冲动性">1.我认真安排每件事</Item>
+<Item Id="2" ReverseScore="0" SubScale="运动冲动性">2.我做事不加思考</Item>
+<Item Id="3" ReverseScore="0" SubScale="认知冲动性">3.遇到问题时我能想出好办法</Item>
+<Item Id="4" ReverseScore="0" SubScale="无计划冲动性">4.我对未来有计划</Item>
+<Item Id="5" ReverseScore="0" SubScale="运动冲动性">5.我不能很好地控制自己的行为</Item>
+<Item Id="6" ReverseScore="0" SubScale="认知冲动性">6.必要时我能够长时间考虑一个问题</Item>
+<Item Id="7" ReverseScore="0" SubScale="无计划冲动性">7.我有规律地存钱或攒钱</Item>
+<Item Id="8" ReverseScore="0" SubScale="运动冲动性">8.我难以控制自己的脾气</Item>
+<Item Id="9" ReverseScore="0" SubScale="认知冲动性">9.我能从不同的角度考虑问题</Item>
+<Item Id="10" ReverseScore="0" SubScale="无计划冲动性">10.我对工作和获得收入有计划</Item>
+<Item Id="11" ReverseScore="0" SubScale="运动冲动性">11.我说话不加思考</Item>
+<Item Id="12" ReverseScore="0" SubScale="认知冲动性">12.遇到问题时我喜欢慢慢考虑</Item>
+<Item Id="13" ReverseScore="0" SubScale="无计划冲动性">13.我做事比较理智</Item>
+<Item Id="14" ReverseScore="0" SubScale="运动冲动性">14.我激动时难以控制自己的行为</Item>
+<Item Id="15" ReverseScore="0" SubScale="认知冲动性">15.遇到难题时我能耐心思考解决问题的办法</Item>
+<Item Id="16" ReverseScore="0" SubScale="无计划冲动性">16.我有规律地安排饮食起居</Item>
+<Item Id="17" ReverseScore="0" SubScale="运动冲动性">17.我容易冲动行事</Item>
+<Item Id="18" ReverseScore="0" SubScale="认知冲动性">18.做决定前，我喜欢仔细考虑得失</Item>
+<Item Id="19" ReverseScore="0" SubScale="无计划冲动性">19.我离开家之前把事情都安排好</Item>
+<Item Id="20" ReverseScore="0" SubScale="运动冲动性">20.我不考虑后果而立即行动</Item>
+<Item Id="21" ReverseScore="0" SubScale="认知冲动性">21.我冷静地思考问题</Item>
+<Item Id="22" ReverseScore="0" SubScale="无计划冲动性">22.我做事时能按计划完成</Item>
+<Item Id="23" ReverseScore="0" SubScale="运动冲动性">23.我容易冲动性购物</Item>
+<Item Id="24" ReverseScore="0" SubScale="认知冲动性">24.遇到难题时我不会轻易下结论</Item>
+<Item Id="25" ReverseScore="0" SubScale="无计划冲动性">25.我花钱有计划性</Item>
+<Item Id="26" ReverseScore="0" SubScale="运动冲动性">26.我做事十分莽撞</Item>
+<Item Id="27" ReverseScore="0" SubScale="认知冲动性">27.我思考问题时能集中注意力</Item>
+<Item Id="28" ReverseScore="0" SubScale="无计划冲动性">28.我很看重对未来的安排</Item>
+<Item Id="29" ReverseScore="0" SubScale="运动冲动性">29.我想到什么就马上去做</Item>
+<Item Id="30" ReverseScore="0" SubScale="认知冲动性">30.我容易想出新的办法来解决遇到的困难</Item>
 </Questions>
 </PsycologyTest>

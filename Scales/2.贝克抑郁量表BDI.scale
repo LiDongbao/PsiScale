@@ -1,8 +1,10 @@
 <PsycologyTest Id="2" Name="贝克抑郁量表BDI" SameChoices="0">
 <Prologue>这个问卷由许多组项目组成，请仔细看每组的项目，然后再每组内选择最适合你现在情况[最近一周，包括今天]的一项描述，并将那个数字圈出。请先读完一组内的各项叙述，然后选择。</Prologue>
-<Groups/>
+<Groups>
+<Item>Total</Item>
+</Groups>
 <Questions>
-<Item Id="1" ReverseScore="0">
+<Item Id="1" ReverseScore="0" SubScale="Total">
 <Text>A 选择最适合你现在情况[最近一周，包括今天]的一项描述</Text>
 <Choices>
 <Item Id="1">我不感到忧愁</Item>
@@ -11,7 +13,7 @@
 <Item Id="4">我非常忧伤或不愉快，以致我不能忍受</Item>
 </Choices>
 </Item>
-<Item Id="2" ReverseScore="0">
+<Item Id="2" ReverseScore="0" SubScale="Total">
 <Text>B 选择最适合你现在情况[最近一周，包括今天]的一项描述</Text>
 <Choices>
 <Item Id="1">对于将来我不感到悲观</Item>
@@ -20,7 +22,7 @@
 <Item Id="4">我感到将来无望，事事都不能变好</Item>
 </Choices>
 </Item>
-<Item Id="3" ReverseScore="0">
+<Item Id="3" ReverseScore="0" SubScale="Total">
 <Text>C 选择最适合你现在情况[最近一周，包括今天]的一项描述</Text>
 <Choices>
 <Item Id="1">我不像一个失败者</Item>
@@ -29,7 +31,7 @@
 <Item Id="4">我感到我是一个彻底失败了的人</Item>
 </Choices>
 </Item>
-<Item Id="4" ReverseScore="0">
+<Item Id="4" ReverseScore="0" SubScale="Total">
 <Text>D 选择最适合你现在情况[最近一周，包括今天]的一项描述</Text>
 <Choices>
 <Item Id="1">我对事物像往常一样满意</Item>
@@ -38,7 +40,7 @@
 <Item Id="4">我对每件事都不满意或讨厌</Item>
 </Choices>
 </Item>
-<Item Id="5" ReverseScore="0">
+<Item Id="5" ReverseScore="0" SubScale="Total">
 <Text>E 选择最适合你现在情况[最近一周，包括今天]的一项描述</Text>
 <Choices>
 <Item Id="1">我没有特别感到内疚</Item>
@@ -47,7 +49,7 @@
 <Item Id="4">我时刻感到内疚</Item>
 </Choices>
 </Item>
-<Item Id="6" ReverseScore="0">
+<Item Id="6" ReverseScore="0" SubScale="Total">
 <Text>F 选择最适合你现在情况[最近一周，包括今天]的一项描述</Text>
 <Choices>
 <Item Id="1">我没有感到正在受惩罚</Item>
@@ -56,7 +58,7 @@
 <Item Id="4">我感到我正在受惩罚</Item>
 </Choices>
 </Item>
-<Item Id="7" ReverseScore="0">
+<Item Id="7" ReverseScore="0" SubScale="Total">
 <Text>G 选择最适合你现在情况[最近一周，包括今天]的一项描述</Text>
 <Choices>
 <Item Id="1">我感到我并不使人失望</Item>
@@ -65,7 +67,7 @@
 <Item Id="4">我痛恨自己</Item>
 </Choices>
 </Item>
-<Item Id="8" ReverseScore="0">
+<Item Id="8" ReverseScore="0" SubScale="Total">
 <Text>H 选择最适合你现在情况[最近一周，包括今天]的一项描述</Text>
 <Choices>
 <Item Id="1">我感觉我并不比别人差</Item>
@@ -74,7 +76,7 @@
 <Item Id="4">每次发生糟糕的事我都责备自己</Item>
 </Choices>
 </Item>
-<Item Id="9" ReverseScore="0">
+<Item Id="9" ReverseScore="0" SubScale="Total">
 <Text>I 选择最适合你现在情况[最近一周，包括今天]的一项描述</Text>
 <Choices>
 <Item Id="1">我没有任何自杀的想法</Item>
@@ -83,7 +85,7 @@
 <Item Id="4">如果我有机会我就会自杀</Item>
 </Choices>
 </Item>
-<Item Id="10" ReverseScore="0">
+<Item Id="10" ReverseScore="0" SubScale="Total">
 <Text>J 选择最适合你现在情况[最近一周，包括今天]的一项描述</Text>
 <Choices>
 <Item Id="1">我并不比以往爱哭</Item>
@@ -92,7 +94,7 @@
 <Item Id="4">我以往能哭，但现在即使我想哭也哭不出来</Item>
 </Choices>
 </Item>
-<Item Id="11" ReverseScore="0">
+<Item Id="11" ReverseScore="0" SubScale="Total">
 <Text>K 选择最适合你现在情况[最近一周，包括今天]的一项描述</Text>
 <Choices>
 <Item Id="1">我并不比以往容易激惹</Item>
@@ -101,7 +103,7 @@
 <Item Id="4">以往能激惹我的那些事情现在则完全不能激惹我</Item>
 </Choices>
 </Item>
-<Item Id="12" ReverseScore="0">
+<Item Id="12" ReverseScore="0" SubScale="Total">
 <Text>L 选择最适合你现在情况[最近一周，包括今天]的一项描述</Text>
 <Choices>
 <Item Id="1">我对他人的兴趣没有减少</Item>
@@ -110,7 +112,7 @@
 <Item Id="4">我对他人现在毫无兴趣</Item>
 </Choices>
 </Item>
-<Item Id="13" ReverseScore="0">
+<Item Id="13" ReverseScore="0" SubScale="Total">
 <Text>M 选择最适合你现在情况[最近一周，包括今天]的一项描述</Text>
 <Choices>
 <Item Id="1">我与以往一样能做决定</Item>
@@ -119,7 +121,7 @@
 <Item Id="4">我现在完全不能做决定</Item>
 </Choices>
 </Item>
-<Item Id="14" ReverseScore="0">
+<Item Id="14" ReverseScore="0" SubScale="Total">
 <Text>N 选择最适合你现在情况[最近一周，包括今天]的一项描述</Text>
 <Choices>
 <Item Id="1">我觉得自己看上去和以前差不多</Item>
@@ -128,7 +130,7 @@
 <Item Id="4">我认为我看上去很丑了</Item>
 </Choices>
 </Item>
-<Item Id="15" ReverseScore="0">
+<Item Id="15" ReverseScore="0" SubScale="Total">
 <Text>O 选择最适合你现在情况[最近一周，包括今天]的一项描述</Text>
 <Choices>
 <Item Id="1">我能像以往一样工作</Item>
@@ -137,7 +139,7 @@
 <Item Id="4">我完全不能工作</Item>
 </Choices>
 </Item>
-<Item Id="16" ReverseScore="0">
+<Item Id="16" ReverseScore="0" SubScale="Total">
 <Text>P 选择最适合你现在情况[最近一周，包括今天]的一项描述</Text>
 <Choices>
 <Item Id="1">我睡眠像以往一样好</Item>
@@ -146,7 +148,7 @@
 <Item Id="4">我比往常早醒几个小时，且不能再入睡</Item>
 </Choices>
 </Item>
-<Item Id="17" ReverseScore="0">
+<Item Id="17" ReverseScore="0" SubScale="Total">
 <Text>Q 选择最适合你现在情况[最近一周，包括今天]的一项描述</Text>
 <Choices>
 <Item Id="1">我现在并不比以往感到容易疲劳</Item>
@@ -155,7 +157,7 @@
 <Item Id="4">我太疲劳了以致我不能做任何事情</Item>
 </Choices>
 </Item>
-<Item Id="18" ReverseScore="0">
+<Item Id="18" ReverseScore="0" SubScale="Total">
 <Text>R 选择最适合你现在情况[最近一周，包括今天]的一项描述</Text>
 <Choices>
 <Item Id="1">我的食欲与以前一样好</Item>
@@ -164,7 +166,7 @@
 <Item Id="4">我完全没有食欲了</Item>
 </Choices>
 </Item>
-<Item Id="19" ReverseScore="0">
+<Item Id="19" ReverseScore="0" SubScale="Total">
 <Text>S 选择最适合你现在情况[最近一周，包括今天]的一项描述</Text>
 <Choices>
 <Item Id="1">我最近没有明显的体重减轻</Item>
@@ -173,7 +175,7 @@
 <Item Id="4">我体重下降超过15斤，我现在控制饮食来减轻体重</Item>
 </Choices>
 </Item>
-<Item Id="20" ReverseScore="0">
+<Item Id="20" ReverseScore="0" SubScale="Total">
 <Text>T 选择最适合你现在情况[最近一周，包括今天]的一项描述</Text>
 <Choices>
 <Item Id="1">与以往相比我并不过分担心身体健康</Item>
@@ -182,7 +184,7 @@
 <Item Id="4">我非常着急身体疾病，以致不能思考任何其它事情</Item>
 </Choices>
 </Item>
-<Item Id="21" ReverseScore="0">
+<Item Id="21" ReverseScore="0" SubScale="Total">
 <Text>U 选择最适合你现在情况[最近一周，包括今天]的一项描述</Text>
 <Choices>
 <Item Id="1">我的性欲最近没有什么变化</Item>
