@@ -18,7 +18,7 @@ CUser::CUser()
 CString CUser::CreateUid()
 {
 	auto now = COleDateTime::GetCurrentTime();
-	return _user_id + now.Format(_T("_%Y%m%d%H%M%S"));
+	return now.Format(_T("%Y%m%d%H%M%S"));
 }
 
 const CString& CUser::GetUserId() const

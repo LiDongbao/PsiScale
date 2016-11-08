@@ -5,6 +5,7 @@
 #include <TChar.h>
 #include <afxstr.h>
 #include <memory>
+#include "Scorer.h"
 
 struct CQuestionChoice
 {
@@ -44,6 +45,7 @@ public:
 
 	bool Load(const CString& file_path);
 	bool Save(const CString& file_path);
+	bool SaveScore(const CString& file_path);
 
 	void SetId(unsigned id);
 	unsigned GetId() const;
@@ -80,6 +82,7 @@ private:
 	std::vector<CString> _groups;
 	std::vector<CPsiScaleQuestion> _questions;
 	std::vector<CQuestionChoice> _choices;
+	std::vector<CScorer> _scores;
 
 	bool _same_choice;
 };

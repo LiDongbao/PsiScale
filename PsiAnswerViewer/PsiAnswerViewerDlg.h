@@ -57,16 +57,14 @@ protected:
 	std::shared_ptr<CAnswerManager> _answer_manager;
 	unsigned int _row;
 	bool _is_answer;
+	bool _is_check_all;
 public:
 	afx_msg void OnCbnSelchangeComboScale();
-	
-	afx_msg void OnBnClickedButtonAdd();
-	afx_msg void OnBnClickedButtonRemove();
 	afx_msg void OnEnChangeEditWorkingFolder();
 	afx_msg void OnBnClickedButtonCopy();
-	afx_msg void OnBnClickedButtonMerge();
 	afx_msg void OnBnClickedCheckAnswer();
 
 	void ClearTable();
 
+	afx_msg void OnBnClickedCheckAllchoose();
 	};

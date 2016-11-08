@@ -85,6 +85,7 @@ void CPsiScaleEditorDlg::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_EDIT_WORKING_FOLDER, _working_folder_edit);
 	DDX_Control(pDX, IDC_COMBO_SCALES, _scales_combo);
 	DDX_Text(pDX, IDC_EDIT_WORKING_FOLDER, _working_folder);
+	DDX_Control(pDX, IDC_SCORE_LIST, _score_list);
 }
 
 BEGIN_MESSAGE_MAP(CPsiScaleEditorDlg, CDialogEx)
@@ -222,6 +223,7 @@ void CPsiScaleEditorDlg::OnBnClickedCheckSameChoice()
 {
 	UpdateData(TRUE);
 	_choice_list.EnableWindow(_use_same_choices);
+	_choice_list.EnableWindow()
 }
 
 CString CPsiScaleEditorDlg::GetScalePath(const CPsiScale& scale)
