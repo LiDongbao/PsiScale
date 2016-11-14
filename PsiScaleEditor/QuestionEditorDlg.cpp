@@ -8,6 +8,7 @@
 #include "afxdialogex.h"
 #include "../PsiCommon/PsiScale.h"
 #include "InputStringDialog.h"
+#include "ScoreList.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -33,12 +34,14 @@ void CQuestionEditorDlg::DoDataExchange(CDataExchange* pDX)
 	DDX_Text(pDX, IDC_EDIT_QUESTION, _question_text);
 	DDX_Control(pDX, IDC_COMBO_GROUPS, _group_combo);
 	DDX_Control(pDX, IDC_CHOICE_LIST, _choice_list);
+	DDX_Control(pDX, IDC_SCORE_LIST, _score_list);
 	DDX_Check(pDX, IDC_CHECK_REVERSE_SCORE, _reverse_score);
 	DDX_Control(pDX, IDC_BUTTON_DELETE, _delete_button);
 	DDX_Control(pDX, IDC_BUTTON_PREV, _prev_button);
 	DDX_Control(pDX, IDC_BUTTON_NEXT, _next_button);
 	DDX_Control(pDX, IDC_BUTTON_NEW, _new_button);
 	DDX_Control(pDX, IDOK, _return_button);
+	DDX_Control(pDX, IDC_STATIC_SCORE_LIST_LABEL, _score_list_label);
 	DDX_Control(pDX, IDC_STATIC_CHOICE_LIST_LABEL, _choice_list_label);
 	DDX_Control(pDX, IDC_GROUP_LABEL, _group_label);
 	DDX_Text(pDX, IDC_STATIC_QUESTION_NUMBER, _question_number);
@@ -124,6 +127,8 @@ void CQuestionEditorDlg::Shrink()
 {
 	_choice_list.ShowWindow(SW_HIDE);
 	_choice_list_label.ShowWindow(SW_HIDE);
+	_score_list.ShowWindow(SW_HIDE);
+	_score_list_label.ShowWindow(SW_HIDE);
 
 	CRect label_rect;
 	_choice_list_label.GetWindowRect(&label_rect);
@@ -207,8 +212,13 @@ HCURSOR CQuestionEditorDlg::OnQueryDragIcon()
 
 void CQuestionEditorDlg::OnBnClickedButtonNew()
 {
+	if (!_scale->IsSameChoice() && _score_list.GetCount() != _choice_list.GetCount())
+	{
+		AfxMessageBox(L"选项数目与选项得分数目不相等");
+		return;
+	}
+	
 	CPsiScaleQuestion new_question;
-
 	_scale->AddQuestion(new_question);
 	_current_question = _scale->GetQuestionCount() - 1;
 
@@ -237,11 +247,17 @@ void CQuestionEditorDlg::UpdateUi()
 		{
 			_choice_list.RemoveItem(0);
 		}
-
+		while (_score_list.GetCount() > 0)
+		{
+			_score_list.RemoveItem(0);
+		}
 		// 更新当前问题的选择。
 		for (auto choice : question.Choices())
 		{
 			_choice_list.AddItem(choice.text, choice.id);
+			CString s;
+			s.Format(_T("%d"), choice.score);
+			_score_list.AddItem(s, choice.id);
 		}
 	}
 	_next_button.EnableWindow(_current_question < int(_scale->GetQuestionCount()) - 1);
@@ -256,7 +272,11 @@ void CQuestionEditorDlg::OnEnChangeEditQuestion()
 {
 	ASSERT(_scale);
 	ASSERT(_current_question < int(_scale->GetQuestionCount()) && _current_question >= 0);
-
+	if (!_scale->IsSameChoice() && _score_list.GetCount() != _choice_list.GetCount())
+	{
+		AfxMessageBox(L"选项数目与选项得分数目不相等");
+		return;
+	}
 	// TODO:  If this is a RICHEDIT control, the control will not
 	// send this notification unless you override the CDialogEx::OnInitDialog()
 	// function and call CRichEditCtrl().SetEventMask()
@@ -271,6 +291,11 @@ void CQuestionEditorDlg::OnEnChangeEditQuestion()
 
 void CQuestionEditorDlg::OnBnClickedButtonNext()
 {
+	if (!_scale->IsSameChoice() && _score_list.GetCount() != _choice_list.GetCount())
+	{
+		AfxMessageBox(L"选项数目与选项得分数目不相等");
+		return;
+	}
 	UpdateQuestion(); // 保存当前的问题
 
 	if (_current_question < int(_scale->GetQuestionCount()) - 1)
@@ -283,6 +308,11 @@ void CQuestionEditorDlg::OnBnClickedButtonNext()
 
 void CQuestionEditorDlg::OnBnClickedButtonPrev()
 {
+	if (!_scale->IsSameChoice()&& _score_list.GetCount()!= _choice_list.GetCount())
+	{
+		AfxMessageBox(L"选项数目与选项得分数目不相等");
+		return;
+	}
 	UpdateQuestion(); // 保存当前的问题
 
 	if (_current_question > 0)
@@ -308,10 +338,10 @@ void CQuestionEditorDlg::OnBnClickedDeleteQuestion()
 
 void CQuestionEditorDlg::UpdateQuestion()
 {
+	//在使用这个函数前判断_scale是否是相同选项，以及_score_list与_choice_list的大小是否相等，如果不相等，则提示并返回。
 	ASSERT(_scale);
 	if (_current_question < 0)
 		return;
-
 	UpdateData();
 
 	ASSERT(_current_question < int(_scale->GetQuestionCount()));
@@ -331,18 +361,26 @@ void CQuestionEditorDlg::UpdateQuestion()
 		// 更新当前问题的选择。
 		auto& choices = question.Choices();
 		choices.resize(_choice_list.GetCount());
-
+		//已经在外部判断过_choice_list 和_score_list的大小是相等的。这里可以加一个assert
+		ASSERT(_choice_list.GetCount() == _score_list.GetCount());
 		for (int i = 0; i < _choice_list.GetCount(); ++i)
 		{
 			choices[i].id = i + 1;
 			choices[i].text = _choice_list.GetItemText(i);
+			choices[i].score = _ttoi(_score_list.GetItemText(i));
 		}
 	}
 }
 
 
-void CQuestionEditorDlg::OnBnClickedOk()
+void CQuestionEditorDlg::OnBnClickedOk() 
 {
+	if (!_scale->IsSameChoice() && _score_list.GetCount() != _choice_list.GetCount())
+	{
+		AfxMessageBox(L"选项数目与选项得分数目不相等");
+		return;
+	}
+
 	UpdateQuestion();
 	CDialogEx::OnOK();
 }

@@ -1,0 +1,127 @@
+<Test>
+<UserInfo UserId="ldb" Password="111111" UID="20161114205433" Name="李冬宝" Pinyin="lidongbao" Nationality="汉" BirthData="2016-11-14 20:54:33" Sex="0" Weight="70" Mobile="15900611731" Email="151@qq.com" Mental="0" Sight="1" Others="1.哈哈哈。
+2.why me？"/>
+<Scale Name="亲社会倾向量表PTM" StartTime="2016-11-14 20:56:14" Finished="1">
+<Answers>
+<Item Id="1" Answer="3" Time="855"/>
+<Item Id="2" Answer="3" Time="161"/>
+<Item Id="3" Answer="3" Time="155"/>
+<Item Id="4" Answer="3" Time="171"/>
+<Item Id="5" Answer="3" Time="128"/>
+<Item Id="6" Answer="3" Time="154"/>
+<Item Id="7" Answer="3" Time="162"/>
+<Item Id="8" Answer="3" Time="161"/>
+<Item Id="9" Answer="3" Time="170"/>
+<Item Id="10" Answer="3" Time="162"/>
+<Item Id="11" Answer="3" Time="139"/>
+<Item Id="12" Answer="3" Time="154"/>
+<Item Id="13" Answer="3" Time="176"/>
+<Item Id="14" Answer="3" Time="145"/>
+<Item Id="15" Answer="3" Time="170"/>
+<Item Id="16" Answer="3" Time="303"/>
+<Item Id="17" Answer="3" Time="162"/>
+<Item Id="18" Answer="3" Time="128"/>
+<Item Id="19" Answer="3" Time="162"/>
+<Item Id="20" Answer="3" Time="168"/>
+<Item Id="21" Answer="3" Time="145"/>
+<Item Id="22" Answer="3" Time="161"/>
+<Item Id="23" Answer="3" Time="162"/>
+<Item Id="24" Answer="3" Time="179"/>
+<Item Id="25" Answer="3" Time="174"/>
+<Item Id="26" Answer="3" Time="154"/>
+</Answers>
+<SubScales>
+<SubScale Name="依从的" Score="15"/>
+<SubScale Name="公开的" Score="12"/>
+<SubScale Name="利他的" Score="12"/>
+<SubScale Name="匿名的" Score="15"/>
+<SubScale Name="情绪的" Score="15"/>
+<SubScale Name="紧急的" Score="9"/>
+</SubScales>
+</Scale>
+<Scale Name="贝克抑郁量表BDI" StartTime="2016-11-14 20:55:48" Finished="1">
+<Answers>
+<Item Id="1" Answer="2" Time="4249"/>
+<Item Id="2" Answer="1" Time="589"/>
+<Item Id="3" Answer="1" Time="184"/>
+<Item Id="4" Answer="1" Time="171"/>
+<Item Id="5" Answer="1" Time="180"/>
+<Item Id="6" Answer="1" Time="143"/>
+<Item Id="7" Answer="1" Time="163"/>
+<Item Id="8" Answer="1" Time="160"/>
+<Item Id="9" Answer="1" Time="178"/>
+<Item Id="10" Answer="1" Time="154"/>
+<Item Id="11" Answer="1" Time="161"/>
+<Item Id="12" Answer="1" Time="144"/>
+<Item Id="13" Answer="1" Time="154"/>
+<Item Id="14" Answer="1" Time="153"/>
+<Item Id="15" Answer="1" Time="160"/>
+<Item Id="16" Answer="1" Time="327"/>
+<Item Id="17" Answer="1" Time="163"/>
+<Item Id="18" Answer="1" Time="195"/>
+<Item Id="19" Answer="1" Time="169"/>
+<Item Id="20" Answer="1" Time="189"/>
+<Item Id="21" Answer="1" Time="186"/>
+</Answers>
+<SubScales>
+<SubScale Name="Total" Score="1"/>
+</SubScales>
+</Scale>
+<Scale Name="贝克焦虑量表BAI" StartTime="2016-11-14 20:55:34" Finished="1">
+<Answers>
+<Item Id="1" Answer="2" Time="3267"/>
+<Item Id="2" Answer="2" Time="185"/>
+<Item Id="3" Answer="2" Time="204"/>
+<Item Id="4" Answer="2" Time="163"/>
+<Item Id="5" Answer="2" Time="139"/>
+<Item Id="6" Answer="2" Time="142"/>
+<Item Id="7" Answer="2" Time="147"/>
+<Item Id="8" Answer="2" Time="147"/>
+<Item Id="9" Answer="2" Time="161"/>
+<Item Id="10" Answer="2" Time="163"/>
+<Item Id="11" Answer="2" Time="156"/>
+<Item Id="12" Answer="2" Time="271"/>
+<Item Id="13" Answer="2" Time="154"/>
+<Item Id="14" Answer="2" Time="162"/>
+<Item Id="15" Answer="2" Time="154"/>
+<Item Id="16" Answer="2" Time="171"/>
+<Item Id="17" Answer="2" Time="159"/>
+<Item Id="18" Answer="2" Time="163"/>
+<Item Id="19" Answer="2" Time="201"/>
+<Item Id="20" Answer="2" Time="297"/>
+<Item Id="21" Answer="2" Time="469"/>
+</Answers>
+<SubScales>
+<SubScale Name="Total" Score="42"/>
+</SubScales>
+</Scale>
+<Scale Name="马氏量表版本1" StartTime="2016-11-14 20:56:02" Finished="1">
+<Answers>
+<Item Id="1" Answer="4" Time="1430"/>
+<Item Id="2" Answer="4" Time="159"/>
+<Item Id="3" Answer="4" Time="138"/>
+<Item Id="4" Answer="4" Time="296"/>
+<Item Id="5" Answer="4" Time="152"/>
+<Item Id="6" Answer="4" Time="158"/>
+<Item Id="7" Answer="4" Time="122"/>
+<Item Id="8" Answer="4" Time="147"/>
+<Item Id="9" Answer="4" Time="161"/>
+<Item Id="10" Answer="4" Time="154"/>
+<Item Id="11" Answer="4" Time="153"/>
+<Item Id="12" Answer="4" Time="278"/>
+<Item Id="13" Answer="4" Time="151"/>
+<Item Id="14" Answer="4" Time="358"/>
+<Item Id="15" Answer="4" Time="131"/>
+<Item Id="16" Answer="4" Time="144"/>
+<Item Id="17" Answer="4" Time="138"/>
+<Item Id="18" Answer="4" Time="155"/>
+<Item Id="19" Answer="4" Time="160"/>
+<Item Id="20" Answer="4" Time="146"/>
+</Answers>
+<SubScales>
+<SubScale Name="对人性的看法" Score="36"/>
+<SubScale Name="抽象或一般性的道德" Score="8"/>
+<SubScale Name="社交技巧的本质" Score="36"/>
+</SubScales>
+</Scale>
+</Test>

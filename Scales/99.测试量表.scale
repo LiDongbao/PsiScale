@@ -1,0 +1,15 @@
+<PsycologyTest Id="99" Name="测试量表" SameChoices="1">
+<Choices>
+<Item Id="1">a</Item>
+<Item Id="2">b</Item>
+<Item Id="3">c</Item>
+</Choices>
+<Prologue>测试</Prologue>
+<Groups>
+<Item>sub1</Item>
+</Groups>
+<Questions>
+<Item Id="1" ReverseScore="0">This is a test for Edit programm.</Item>
+<Item Id="2" ReverseScore="0" SubScale="sub1">This is another test for Edit programm.</Item>
+</Questions>
+</PsycologyTest>

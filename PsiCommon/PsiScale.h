@@ -11,6 +11,7 @@ struct CQuestionChoice
 {
 	unsigned int id;
 	CString text;
+	unsigned int score;
 };
 
 class CPsiScaleQuestion
@@ -37,6 +38,12 @@ private:
 	std::vector<CQuestionChoice> _choices;
 };
 
+struct Score
+{
+	unsigned int id;
+	unsigned int answer;
+};
+
 class CPsiScale
 {
 public:
@@ -45,7 +52,9 @@ public:
 
 	bool Load(const CString& file_path);
 	bool Save(const CString& file_path);
-	bool SaveScore(const CString& file_path);
+
+	bool LoadScore(const CString& file_score_path);
+	bool SaveScore(const CString& file_score_path);
 
 	void SetId(unsigned id);
 	unsigned GetId() const;
@@ -70,7 +79,9 @@ public:
 	const bool IsSameChoice() const;
 	void SetSameChoice(bool samechoice);;
 	std::vector<CQuestionChoice>& Choices();
-
+	void AddScore(const Score& score);
+	const Score& GetScore(unsigned int index) const;
+	std::vector<Score>& Scores();
 
 	void Reset();
 private:
@@ -82,13 +93,7 @@ private:
 	std::vector<CString> _groups;
 	std::vector<CPsiScaleQuestion> _questions;
 	std::vector<CQuestionChoice> _choices;
-	std::vector<CScorer> _scores;
-
+	std::vector<Score> _score;
+	CScorer _scorer;
 	bool _same_choice;
-};
-
-struct Score
-{
-	CString id;
-	CString answer;
 };

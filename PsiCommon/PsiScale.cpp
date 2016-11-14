@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "PsiScale.h"
-
+#include <fstream>
 #include "../Utilities/xml.h"
 
 using namespace Utilities;
@@ -256,6 +256,133 @@ bool CPsiScale::Save(const CString& file_path)
 	return true;
 }
 
+bool CPsiScale::LoadScore(const CString& file_score_path)
+{
+	CScoreMatrix score_matrix;
+	score_matrix.Load(file_score_path);
+	auto matrix_group = score_matrix.GetGroups();
+	auto matrix = score_matrix.ScoreMatrix();
+	if (matrix_group.size() != _groups.size())
+		return false;
+	if (matrix.size() != _questions.size())
+		return false;
+	if (_same_choice && matrix[0].size() != _choices.size())
+		return false;
+
+	for (size_t i = 0; i < matrix_group.size(); ++i)
+	{
+		if (matrix_group[i] != _groups[i])
+			return false;
+	}
+
+	if (_same_choice)
+	{
+		
+		for (size_t i = 0; i < _questions.size(); ++i)
+			for (size_t j = 0; j < _choices.size(); ++j)
+				for (size_t k = 0; k < GetGroupCount(); ++k)
+					if (_questions[i].GetGroup() == _groups[k])
+					{	
+						if (_questions[i].GetReverseScore())
+							_choices[_choices.size() - j - (size_t)1].score = (size_t)matrix[i][j][k];
+						else
+							_choices[j].score = (size_t)matrix[i][j][k];
+					}
+
+		_score.resize(matrix[0].size());
+		for (size_t i = 0; i < _choices.size(); ++i)
+		{
+			_score[i].id = _choices[i].id;
+			_score[i].answer = _choices[i].score;
+		}
+	}
+	else
+	{
+		//non-same choice
+		for (size_t i = 0; i < _questions.size(); ++i)
+			for (size_t j = 0; j < _questions[i].Choices().size(); ++j)
+				for (size_t k = 0; k < GetGroupCount(); ++k)
+					if (_questions[i].GetGroup() == _groups[k])
+					{
+						if (_questions[i].GetReverseScore())
+							_questions[i].Choices()[_questions[i].Choices().size() - j - (size_t)1].score= (size_t)matrix[i][j][k];
+						else
+							_questions[i].Choices()[j].score = (size_t)matrix[i][j][k];
+					}
+	}
+
+	return true;
+}
+
+bool CPsiScale::SaveScore(const CString & file_path)
+{
+	ofstream fout(file_path);
+	if (!fout)
+		return false;
+	if (_same_choice && !_choices.empty())
+		fout << GetQuestionCount() << "\t" << _choices.size() << "\t" << GetGroupCount() <<endl;
+	else if (!_same_choice && !_questions.empty() && !_questions[0].Choices().empty())
+		fout << GetQuestionCount() << "\t" << _questions[0].Choices().size() << "\t" << GetGroupCount() << endl;
+	else
+		return false;
+
+	fout << "\t";
+	for (unsigned int i = 0; i < GetGroupCount(); ++i)
+	{
+		//Change CODE: From Unicode to ANSI
+		int size = WideCharToMultiByte(CP_ACP, 0, _groups[i], -1, NULL, 0, NULL, NULL);
+		char * p =new char[size + 1];
+		WideCharToMultiByte(CP_ACP, 0, _groups[i], -1, p, size, NULL, NULL);
+		fout << "\t" <<p;
+	}
+	fout << endl;
+	if (_same_choice)
+	{
+		for (size_t i = 0; i < _questions.size(); ++i)
+			for (size_t j = 0; j < _choices.size(); ++j)
+				{
+					fout << _questions[i].GetId() << "\t" << _choices[j].id;
+					for (size_t k = 0; k < GetGroupCount(); ++k)
+					{
+						int text;
+						if ((_questions[i].GetGroup() == _groups[k]))
+							if (_questions[i].GetReverseScore())
+								text = _choices[_choices.size() - j - (size_t)1].score;
+							else
+								text = _choices[j].score;
+						else
+							text = 0;
+						fout << "\t" << text;
+					}
+					fout << endl;
+				}
+	}
+	else
+	{
+		//non-same choice
+		for (size_t i = 0; i < _questions.size(); ++i)
+			for (size_t j = 0; j < _questions[i].Choices().size(); ++j)
+			{
+				fout << _questions[i].GetId() << "\t" << _questions[i].Choices()[j].id;
+				for (size_t k = 0; k < GetGroupCount(); ++k)
+				{
+					int text;
+					if (_questions[i].GetGroup() == _groups[k])
+						if (_questions[i].GetReverseScore())
+							text = _questions[i].Choices()[_questions[i].Choices().size() - j - 1].score;
+						else
+							text = _questions[i].Choices()[j].score;
+					else
+							text = 0;
+					fout << "\t" << text;
+				}
+				fout << endl;
+			}
+	}
+	fout.close();
+	return true;
+}
+
 std::vector<CQuestionChoice>& CPsiScale::Choices()
 {
 	return _choices;
@@ -270,6 +397,7 @@ void CPsiScale::Reset()
 	_groups.clear();
 	_questions.clear();
 	_choices.clear();
+	_score.clear();
 	_same_choice = true;
 }
 
@@ -339,4 +467,19 @@ const CString& CPsiScaleQuestion::GetGroup() const
 std::vector<CQuestionChoice>& CPsiScaleQuestion::Choices()
 {
 	return _choices;
+}
+
+void CPsiScale::AddScore(const Score& score)
+{
+	_score.push_back(score);
+}
+const Score& CPsiScale::GetScore(unsigned int index) const 
+{
+	ASSERT(index < _score.size());
+	return _score[index];
+}
+
+std::vector<Score>& CPsiScale::Scores()
+{
+	return _score;
 }

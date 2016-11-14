@@ -92,10 +92,10 @@ bool CScoreMatrix::Load(const wchar_t * path)
 				file >> _matrix[question][choice][group];
 			}
 		}
+		if (question == question_count - 1)
+			break;
 	}
 
-	if (!file)
-		return false;
 
 	return true;
 }
@@ -103,6 +103,11 @@ bool CScoreMatrix::Load(const wchar_t * path)
 double CScoreMatrix::GetWeight(unsigned int question, unsigned int choice, unsigned int group)
 {
 	return _matrix[question][choice - 1][group];
+}
+
+const std::vector<std::vector<std::vector<double>>>& CScoreMatrix::ScoreMatrix() const
+{
+	return _matrix;
 }
 
 const std::vector<CString>& CScoreMatrix::GetGroups() const

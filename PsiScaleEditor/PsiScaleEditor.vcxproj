@@ -194,6 +194,7 @@
     <ClInclude Include="QuestionEditorDlg.h" />
     <ClInclude Include="QuestionListBox.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="ScoreList.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
@@ -204,6 +205,7 @@
     <ClCompile Include="PsiScaleEditorDlg.cpp" />
     <ClCompile Include="QuestionEditorDlg.cpp" />
     <ClCompile Include="QuestionListBox.cpp" />
+    <ClCompile Include="ScoreList.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

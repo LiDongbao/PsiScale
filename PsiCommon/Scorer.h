@@ -59,7 +59,7 @@ public:
 
 	/// 获得第question个问题中选择第choice个答案后，第group个子量表的得分。
 	double GetWeight(unsigned int question, unsigned int choice, unsigned int group);
-	double SetWeight(unsigned int question, unsigned int choise, unsigned int group);
+	const std::vector<std::vector<std::vector<double>>>& ScoreMatrix() const;
 
 	const std::vector<CString>& GetGroups() const;
 protected:

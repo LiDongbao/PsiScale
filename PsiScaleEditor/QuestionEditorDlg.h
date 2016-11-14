@@ -8,6 +8,7 @@
 #include "afxwin.h"
 #include "afxvslistbox.h"
 #include "ChoiceList.h"
+#include "ScoreList.h"
 
 class CPsiScale;
 class CPsiScaleQuestion;
@@ -38,6 +39,7 @@ protected:
 	CString _question_text;
 	CComboBox _group_combo;
 	CChoiceList _choice_list;
+	CScoreList _score_list;
 
 	void UpdateUi();
 	void MoveButtonUp(CButton& button, unsigned int y_pos);
@@ -62,6 +64,7 @@ public:
 	CButton _new_button;
 	CButton _return_button;
 	CStatic _choice_list_label;
+	CStatic _score_list_label;
 	CStatic _group_label;
 	CString _question_number;
 	afx_msg void OnBnClickedOk();

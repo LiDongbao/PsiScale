@@ -11,6 +11,7 @@
 #include "afxeditbrowsectrl.h"
 #include "ChoiceList.h"
 #include "GroupList.h"
+#include "ScoreList.h"
 
 class CPsiScale;
 class CPsiScaleQuestion;
@@ -59,6 +60,7 @@ public:
 	void UpdateScale();
 	void ClearLists();
 	CString GetScalePath(const CPsiScale& scale);
+	CString GetScorePath(const CPsiScale& scale);
 
 	afx_msg void OnBnClickedButtonAddQuestion();
 	afx_msg void OnLbnSelchangeListQuestions();
@@ -79,7 +81,7 @@ public:
 	CQuestionListBox _question_list;
 	CGroupList _group_list;
 	CChoiceList _choice_list;
-
+	CScoreList _score_list;
 	CMFCEditBrowseCtrl _working_folder_edit;
 	CComboBox _scales_combo;
 	CString _working_folder;

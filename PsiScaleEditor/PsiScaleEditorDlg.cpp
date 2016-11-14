@@ -82,6 +82,7 @@ void CPsiScaleEditorDlg::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_QUESTION_LIST, _question_list);
 	DDX_Control(pDX, IDC_GROUP_LIST, _group_list);
 	DDX_Control(pDX, IDC_CHOICE_LIST, _choice_list);
+	DDX_Control(pDX, IDC_SCORE_LIST, _score_list);
 	DDX_Control(pDX, IDC_EDIT_WORKING_FOLDER, _working_folder_edit);
 	DDX_Control(pDX, IDC_COMBO_SCALES, _scales_combo);
 	DDX_Text(pDX, IDC_EDIT_WORKING_FOLDER, _working_folder);
@@ -222,7 +223,7 @@ void CPsiScaleEditorDlg::OnBnClickedCheckSameChoice()
 {
 	UpdateData(TRUE);
 	_choice_list.EnableWindow(_use_same_choices);
-	_choice_list.EnableWindow(_use_same_choices);
+	_score_list.EnableWindow(_use_same_choices);
 }
 
 CString CPsiScaleEditorDlg::GetScalePath(const CPsiScale& scale)
@@ -233,12 +234,21 @@ CString CPsiScaleEditorDlg::GetScalePath(const CPsiScale& scale)
 	return path;
 }
 
+CString CPsiScaleEditorDlg::GetScorePath(const CPsiScale& scale)
+{
+	CString path = _working_folder + _T("\\");
+	path.Format(path + _T("%d.%s.score"), scale.GetId(), scale.GetName());
+
+	return path;
+}
+
 void CPsiScaleEditorDlg::OnBnClickedButtonNew()
 {
 	if (_scale)
 	{
 		UpdateScaleComboCurrentItem();
 		_scale->Save(GetScalePath(*_scale));
+		_scale->SaveScore(GetScorePath(*_scale));
 	}
 	_scale = shared_ptr<CPsiScale>(new CPsiScale);
 	_scales_combo.AddString(_T("新建量表"));
@@ -282,6 +292,11 @@ void CPsiScaleEditorDlg::UpdateScale()
 {
 	if (!_scale)
 		return;
+	if (_use_same_choices && _score_list.GetCount() != _choice_list.GetCount())
+	{
+		AfxMessageBox(L"选项数目和选项得分数目不相等");
+		return;
+	}
 
 	UpdateData();
 	_scale->SetId(_scale_id);
@@ -297,6 +312,14 @@ void CPsiScaleEditorDlg::UpdateScale()
 		{
 			choices[i].id = i + 1;
 			choices[i].text = _choice_list.GetItemText(i);
+			choices[i].score = _ttoi(_score_list.GetItemText(i));
+		}
+		auto& scores = _scale->Scores();
+		scores.resize(_score_list.GetCount());
+		for (int i = 0; i < _score_list.GetCount(); ++i)
+		{
+			scores[i].id = i + 1;
+			scores[i].answer = _ttoi(_score_list.GetItemText(i));
 		}
 	}
 
@@ -316,6 +339,7 @@ void CPsiScaleEditorDlg::UpdateUi()
 	_use_same_choices = _scale->IsSameChoice();
 
 	_choice_list.EnableWindow(_use_same_choices);
+	_score_list.EnableWindow(_use_same_choices);
 
 	ClearLists();
 
@@ -330,12 +354,20 @@ void CPsiScaleEditorDlg::UpdateUi()
 		auto group = _scale->GetGroup(i);
 		_group_list.AddItem(group);
 	}
-
-	for (auto choice : _scale->Choices())
+	if (_use_same_choices)
 	{
-		_choice_list.AddItem(choice.text, choice.id);
-	}
+		for (auto choice : _scale->Choices())
+		{
+			_choice_list.AddItem(choice.text, choice.id);
+		}
 
+		for (auto score_v : _scale->Scores())
+		{
+			CString s;
+			s.Format(_T("%d"), score_v.answer);
+			_score_list.AddItem(s, score_v.id);
+		}
+	}
 	OnQuestionChange();
 
 	UpdateData(FALSE);
@@ -345,7 +377,6 @@ void CPsiScaleEditorDlg::OnQuestionChange()
 {
 	if (!_scale)
 		return;
-
 	int selected = _question_list.GetSelItem();
 	if (selected != -1)
 	{
@@ -357,9 +388,17 @@ void CPsiScaleEditorDlg::OnQuestionChange()
 			{
 				_choice_list.RemoveItem(0);
 			}
+			while (_score_list.GetCount() > 0)
+			{
+				_score_list.RemoveItem(0);
+			}
+
 			for (auto choice : question.Choices())
 			{
 				_choice_list.AddItem(choice.text, choice.id);
+				CString s;
+				s.Format(_T("%d"), choice.score);
+				_score_list.AddItem(s, choice.id);
 			}
 		}
 		_group_list.SelectString(question.GetGroup());
@@ -377,6 +416,10 @@ void CPsiScaleEditorDlg::ClearLists()
 	while (_choice_list.GetCount() > 0)
 	{
 		_choice_list.RemoveItem(0);
+	}
+	while (_score_list.GetCount() > 0)
+	{
+		_score_list.RemoveItem(0);
 	}
 	while (_group_list.GetCount() > 0)
 	{
@@ -408,6 +451,14 @@ void CPsiScaleEditorDlg::OnBnClickedButtonSave()
 {
 	if (!_scale)
 		return;
+	if(_use_same_choices)
+		if (_score_list.GetCount() != _choice_list.GetCount())
+		{
+			CString error;
+			error.Format(_T("选择的数目 %d 个和得分的数目 %d 个不等"), _choice_list.GetCount(), _score_list.GetCount());
+			AfxMessageBox(error);
+			return;
+		}
 
 	UpdateScale();
 
@@ -419,14 +470,15 @@ void CPsiScaleEditorDlg::OnBnClickedButtonSave()
 
 	if (!scale_combo_text.IsEmpty())
 	{
-		CString old_path = _working_folder + _T("\\") + scale_combo_text + _T(".scale");
-		if (::FileExists(old_path))
+		CString old_path_scale = _working_folder + _T("\\") + scale_combo_text + _T(".scale");
+		if (::FileExists(old_path_scale))
 		{
-			CFile::Remove(old_path);
+			CFile::Remove(old_path_scale);
 		}
 	}
 
 	_scale->Save(GetScalePath(*_scale));
+	_scale->SaveScore(GetScorePath(*_scale));
 	UpdateScaleComboCurrentItem();
 }
 
@@ -477,7 +529,7 @@ void CPsiScaleEditorDlg::OnCbnSelchangeComboScales()
 	CString selected_text;
 	_scales_combo.GetLBText(_scales_combo.GetCurSel(), selected_text);
 	CString file_path = _working_folder + _T("\\") + selected_text + _T(".scale");
-
+	CString file_score_path = _working_folder + _T("\\") + selected_text + _T(".score");
 	if (!_scale)
 	{
 		try
@@ -490,8 +542,16 @@ void CPsiScaleEditorDlg::OnCbnSelchangeComboScales()
 		}
 	}
 
-	_scale->Load(file_path);
-
+	if (!::FileExists(file_path))
+	{
+		CString s;
+		s.Format(_T("没有找到量表路径 %s"), file_path);
+		AfxMessageBox(s);
+		return;
+	}
+	else
+		_scale->Load(file_path);
+	
 	if (!_scale)
 	{
 		CString error_message;
@@ -499,6 +559,15 @@ void CPsiScaleEditorDlg::OnCbnSelchangeComboScales()
 		AfxMessageBox(error_message);
 		return;
 	}
+
+	if (!::FileExists(file_score_path))
+	{
+		CString s;
+		s.Format(_T("没有找到该量表对应的得分表 %s,但已经加载量表"), file_score_path);
+		AfxMessageBox(s);
+	}
+	else
+		_scale->LoadScore(file_score_path);
 
 	UpdateUi();
 }
