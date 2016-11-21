@@ -152,6 +152,7 @@ BOOL CPsiAnswerViewerDlg::OnInitDialog()
 			}
 		}
 	}
+	regkey.Close();
 
 	InitialPersonCombo();
 

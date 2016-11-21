@@ -127,6 +127,7 @@ BEGIN_MESSAGE_MAP(CPsycologyTestDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_BUTTON_PROLOGUE, &CPsycologyTestDlg::OnBnClickedButtonPrologue)
 	ON_BN_CLICKED(IDC_BUTTON_PAUSE, &CPsycologyTestDlg::OnBnClickedButtonPause)
 	ON_BN_CLICKED(IDC_BUTTON_STOP, &CPsycologyTestDlg::OnBnClickedButtonStop)
+	ON_BN_CLICKED(IDCANCEL, &CPsycologyTestDlg::OnBnClickExit)
 END_MESSAGE_MAP()
 
 
@@ -541,4 +542,13 @@ void CPsycologyTestDlg::OnBnClickedButtonStop()
 	KillTimer(1);
 
 	EndDialog(0);
+}
+
+void CPsycologyTestDlg::OnBnClickExit()
+{
+	if (AfxMessageBox(_T("是否保存所做修改？"), MB_OKCANCEL) == IDOK)
+	{
+		__super::OnOK();
+	}
+	CDialogEx::OnCancel();
 }

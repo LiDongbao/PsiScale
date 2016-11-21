@@ -58,7 +58,7 @@ public:
 	bool Load(const wchar_t * path);
 
 	/// 获得第question个问题中选择第choice个答案后，第group个子量表的得分。
-	double GetWeight(unsigned int question, unsigned int choice, unsigned int group);
+	double GetWeight(unsigned int question, int choice, unsigned int group);
 	const std::vector<std::vector<std::vector<double>>>& ScoreMatrix() const;
 
 	const std::vector<CString>& GetGroups() const;

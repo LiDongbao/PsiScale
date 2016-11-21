@@ -6,6 +6,7 @@
 #include "PersonalInfoDialog.h"
 #include "afxdialogex.h"
 #include "regex"
+#include <cstring>
 
 // CPersonalInfoDialog dialog
 
@@ -70,7 +71,9 @@ void CPersonalInfoDialog::SetInfo(const PersonalInfo& info)
 	email = info.email;
 	mental = info.mental;
 	sight = info.sight;
-	others = info.others;
+	CString s = info.others;
+	s.Replace(_T("****"),_T("\r\n"));
+	others = s;
 }
 
 
@@ -87,7 +90,9 @@ PersonalInfo CPersonalInfoDialog::GetInfo() const
 	info.email = email;
 	info.mental = mental;
 	info.sight = sight;
-	info.others = others;
+	CString s = others;
+	s.Replace(_T("\r\n"), _T("****"));
+	info.others = s;
 	return info;
 }
 

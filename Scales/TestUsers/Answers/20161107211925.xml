@@ -1,32 +1,31 @@
 <Test>
-<UserInfo UserId="ldb" Password="111" UID="20161107211925" Name="李冬宝" Pinyin="lidongbao" Nationality="汉" BirthData="2016-11-07 21:19:25" Sex="0" Weight="70" Mobile="15900611731" Email="1518425008@qq.com" Mental="1" Sight="0" Others="1.为人随和，乐于助人。
-2.关心集体，乐于奉献。"/>
-<Scale Name="贝克焦虑量表BAI" StartTime="2016-11-07 21:20:20" Finished="1">
+<UserInfo UserId="ldb" Password="111" UID="20161107211925" Name="李冬宝" Pinyin="ldb" Nationality="汉" BirthData="1899-12-30 00:00:00" Sex="0" Weight="-842150451" Mobile="12313" Email="123123" Mental="0" Sight="1" Others="而无法发"/>
+<Scale Name="贝克焦虑量表BAI" StartTime="2016-11-21 20:28:51" Finished="0">
 <Answers>
-<Item Id="1" Answer="4" Time="1412"/>
-<Item Id="2" Answer="4" Time="225"/>
-<Item Id="3" Answer="4" Time="499"/>
-<Item Id="4" Answer="4" Time="187"/>
-<Item Id="5" Answer="4" Time="154"/>
-<Item Id="6" Answer="4" Time="154"/>
-<Item Id="7" Answer="4" Time="163"/>
-<Item Id="8" Answer="4" Time="177"/>
-<Item Id="9" Answer="4" Time="139"/>
-<Item Id="10" Answer="4" Time="186"/>
-<Item Id="11" Answer="4" Time="329"/>
-<Item Id="12" Answer="4" Time="169"/>
-<Item Id="13" Answer="4" Time="155"/>
-<Item Id="14" Answer="4" Time="336"/>
-<Item Id="15" Answer="4" Time="185"/>
-<Item Id="16" Answer="4" Time="163"/>
-<Item Id="17" Answer="4" Time="147"/>
-<Item Id="18" Answer="4" Time="178"/>
-<Item Id="19" Answer="4" Time="164"/>
-<Item Id="20" Answer="4" Time="168"/>
-<Item Id="21" Answer="4" Time="171"/>
+<Item Id="1" Answer="1" Time="1351"/>
+<Item Id="2" Answer="-1" Time="0"/>
+<Item Id="3" Answer="-1" Time="0"/>
+<Item Id="4" Answer="-1" Time="0"/>
+<Item Id="5" Answer="-1" Time="0"/>
+<Item Id="6" Answer="-1" Time="0"/>
+<Item Id="7" Answer="-1" Time="0"/>
+<Item Id="8" Answer="-1" Time="0"/>
+<Item Id="9" Answer="-1" Time="0"/>
+<Item Id="10" Answer="-1" Time="0"/>
+<Item Id="11" Answer="-1" Time="0"/>
+<Item Id="12" Answer="-1" Time="0"/>
+<Item Id="13" Answer="-1" Time="0"/>
+<Item Id="14" Answer="-1" Time="0"/>
+<Item Id="15" Answer="-1" Time="0"/>
+<Item Id="16" Answer="-1" Time="0"/>
+<Item Id="17" Answer="-1" Time="0"/>
+<Item Id="18" Answer="-1" Time="0"/>
+<Item Id="19" Answer="-1" Time="0"/>
+<Item Id="20" Answer="-1" Time="0"/>
+<Item Id="21" Answer="-1" Time="0"/>
 </Answers>
 <SubScales>
-<SubScale Name="Total" Score="84"/>
+<SubScale Name="Total" Score="-19"/>
 </SubScales>
 </Scale>
 </Test>

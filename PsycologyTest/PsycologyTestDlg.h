@@ -95,4 +95,5 @@ public:
 	afx_msg void OnBnClickedButtonPrologue();
 	afx_msg void OnBnClickedButtonPause();
 	afx_msg void OnBnClickedButtonStop();
+	afx_msg void OnBnClickExit();
 };

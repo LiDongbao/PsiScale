@@ -491,6 +491,25 @@ void CPsiScaleEditorDlg::OnEnChangeEditWorkingFolder()
 	// with the ENM_CHANGE flag ORed into the mask.
 
 	UpdateData();
+	//delete _scales_combo
+	auto size_ = _scales_combo.GetCount();
+	for (int i = 0; i < size_; ++i)
+		_scales_combo.DeleteString(0);
+
+	//在_working_folder 最后面加上Scales文件目录
+	if (!_working_folder.IsEmpty() && _working_folder.GetLength() > 6)
+	{
+		_working_folder = _working_folder.Right(6) != L"Scales" ? _working_folder + L"\\Scales" : _working_folder;
+		if (!FileSystem::FileExists(_working_folder))
+			FileSystem::CreateFolderTree(_working_folder);
+	}
+	else if (!_working_folder.IsEmpty() && _working_folder.GetLength() <= 6)
+	{
+		_working_folder += L"\\Scales";
+		if (!FileSystem::FileExists(_working_folder))
+			FileSystem::CreateFolderTree(_working_folder);
+	}
+
 	if (::FileExists(_working_folder))
 	{
 		std::vector<CString> files;
@@ -498,7 +517,7 @@ void CPsiScaleEditorDlg::OnEnChangeEditWorkingFolder()
 			CString filename = ::GetFileNameFromPath(file);
 			files.push_back(filename);
 		});
-
+		
 		std::sort(files.begin(), files.end(), IsShort);
 		std::for_each(files.begin(), files.end(), [this](CString item){
 			_scales_combo.AddString(item); });
@@ -517,6 +536,7 @@ void CPsiScaleEditorDlg::OnEnChangeEditWorkingFolder()
 			regkey.Close();
 		}
 	}
+	UpdateData(false);
 }
 
 
@@ -550,15 +570,10 @@ void CPsiScaleEditorDlg::OnCbnSelchangeComboScales()
 		return;
 	}
 	else
-		_scale->Load(file_path);
-	
-	if (!_scale)
 	{
-		CString error_message;
-		error_message.Format(_T("无法加载量表文件：%s"), file_path);
-		AfxMessageBox(error_message);
-		return;
+		_scale->Load(file_path);
 	}
+
 
 	if (!::FileExists(file_score_path))
 	{
@@ -568,6 +583,14 @@ void CPsiScaleEditorDlg::OnCbnSelchangeComboScales()
 	}
 	else
 		_scale->LoadScore(file_score_path);
+
+	if (!_scale)
+	{
+		CString error_message;
+		error_message.Format(_T("无法加载量表文件：%s"), file_path);
+		AfxMessageBox(error_message);
+		return;
+	}
 
 	UpdateUi();
 }

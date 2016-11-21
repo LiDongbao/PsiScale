@@ -22,29 +22,38 @@ CUserManager::CUserManager() :
 	_initialized(false)
 {
 	CRegKey regkey;
-	if (regkey.Open(HKEY_CURRENT_USER, _T("Software\\SKMR\\PsiScale"), KEY_READ) == ERROR_SUCCESS)
+	if (regkey.Open(HKEY_CURRENT_USER, _T("Software\\SKMR\\PsiScale")) == ERROR_SUCCESS ||	//default is KEY_ALL_ACCESS, KEY_WRITE can only write, KEY_READ only read.
+		regkey.Create(HKEY_CURRENT_USER, _T("Software\\SKMR\\PsiScale")) == ERROR_SUCCESS)
 	{
 		static TCHAR buffer[512];
 		ULONG count = 512;
 		if (regkey.QueryStringValue(_T("WorkingFolder"), buffer, &count) == ERROR_SUCCESS)
 		{
 			if (!FileSystem::FileExists(buffer))
+			{
 				if (!FileSystem::CreateFolderTree(buffer))
-					AfxMessageBox(L"无法创建文件目录！", MB_ICONSTOP);
+					AfxMessageBox(L"无法直接打开和创建工作目录！", MB_ICONSTOP);
+				else
+				{
+					CString s;
+					s.Format(_T("无工作目录！！但已经自动为您创建工作目录：%s，如需改动请在答题前打开PsiScaleEdit程序修改"), buffer);
+					AfxMessageBox(s);
+				}
+			}
 			_logon_info_path = buffer;
+		}
+		else
+		{
+			CString path = L"C:\\SKMR\\PsiScale\\Scales";
+			regkey.SetStringValue(_T("WorkingFolder"), path);
+			CString s;
+			s.Format(_T("无工作目录！！但已经自动为您创建工作目录：%s，如需改动请在答题前打开PsiScaleEdit程序修改"), path);
+			AfxMessageBox(s);
+			_logon_info_path = path;
 		}
 		regkey.Close();
 	}
-	else
-	{
-		_logon_info_path = L"C:\\SKMR\\PsiScale\\Scales";
-		if (regkey.Create(HKEY_CURRENT_USER, _T("Software\\SKMR\\PsiScale")) == ERROR_SUCCESS)
-		{
-			regkey.SetStringValue(_T("WorkingFolder"), _logon_info_path);
-			regkey.Close();
-		}
-	}
-
+	
 	_logon_info_path = _logon_info_path + _T("\\..\\Scales\\TestUsers\\UserInfo.xml");
 
 }
